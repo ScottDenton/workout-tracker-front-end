@@ -1,0 +1,48 @@
+body {
+  background-color: black;
+  color: lightGrey;
+}
+
+.container {
+  display: block;
+  align-items: center;
+  margin: auto;
+  width: 70vw;
+}
+
+.home_container{
+  min-height: 70vh;
+  text-align: center;
+  color: lightGrey;
+};
+
+.signup_container {
+
+}
+
+/* GENERIC CLASSES  */
+
+.inline {
+  display: inline-block;
+}
+.float_right {
+  float: right;
+}
+
+.nav_item {
+  padding: 0px 10px;
+  text-decoration: none;
+  color: lightGrey;
+}
+.left_nav_item {
+  border-right: 1px solid grey;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
