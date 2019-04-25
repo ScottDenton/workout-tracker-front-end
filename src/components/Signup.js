@@ -31,7 +31,6 @@ handleSubmit = (e) => {
   }).then(resp => resp.json())
   .then(user => {
     this.props.setLoggedInUser(user)
-
   })
   this.props.setUnits(this.state.units)
 }

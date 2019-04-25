@@ -14,20 +14,20 @@ class Navbar extends React.Component {
   signedIn = () => {
     return (
       <div className="float_right">
-        <a href="#" className="left_nav_item nav_item"> Home </a>
-        <a href="#" className="nav_item"> Logout </a>
+        <button  className="left_nav_item nav_item"> Home </button>
+        <button className="nav_item" onClick={this.props.signOut}> Logout </button>
       </div>
     )
   }
+
   render () {
-    // throw an if statement to decide which nav to render
+    const navToRender = this.props.userLoggedIn ? this.signedIn() : this.signedOut();
+
     return(
       <div className="navbar_container">
-      {this.signedOut()}
+      {navToRender}
       </div>
-
     )
-
   }
 }
 
