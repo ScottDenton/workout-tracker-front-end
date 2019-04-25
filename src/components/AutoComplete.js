@@ -123,6 +123,7 @@ class AutoComplete extends Component {
           onKeyDown={onKeyDown}
           value={userInput}
           placeholder="Search for exercise"
+          autocomplete="off"
         /> {suggestionsListComponent}
       </Fragment>
     )

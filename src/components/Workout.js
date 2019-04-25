@@ -10,7 +10,7 @@ class Workout extends Component {
       exercise: '',
       date: '',
       workoutName: 'Start a new workout',
-      workoutId: null,
+      workoutId: 1,
       exercises: [],
       weight: '',
       reps: '',
@@ -102,10 +102,25 @@ class Workout extends Component {
         this.setState({
           exercises: [...this.state.exercises, newExercise]
         })
+        this.createNewWorkoutExercise(newExercise.id)
       })
       e.target.reset();
   }
 
+  createNewWorkoutExercise = (id) => {
+    fetch("http://localhost:3000/api/v1/workout_exercises", {
+      method: "POST",
+      headers: {
+        "accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        workout_id: this.state.workoutId,
+        exercise_id: id
+      })
+    }).then(resp => resp.json())
+    .then(console.log)
+  }
 
   renderNewWorkoutForm = () => {
     return (
@@ -131,7 +146,7 @@ class Workout extends Component {
         <input type='number' placeholder="Sets" name="sets" onChange={this.handleChange}/>
         <label> Notes </label>
         <textarea type='text' placeholder="Enter Notes" name="notes" onChange={this.handleChange}/>
-        <input type='submit' value='submit' />
+        <input type='submit' value='Save' />
       </form>
     </div>
     )
@@ -145,7 +160,7 @@ class Workout extends Component {
     if(this.state.workoutId !== null){
       return <div>
         <h3> Completed Exercises </h3>
-        {this.state.exercises.map(exercise => (<li> {exercise.name}</li>))}
+        {this.state.exercises.map(exercise => (<li key={exercise.id}> {exercise.name}</li>))}
         </div>
       }
   }
@@ -157,6 +172,7 @@ class Workout extends Component {
         <h1>{this.state.workoutName} </h1>
         {this.itemsToRender()}
         {this.displayExercises()}
+        <button> Finish Workout </button>
       </div>
 
 
