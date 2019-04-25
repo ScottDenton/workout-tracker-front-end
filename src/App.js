@@ -16,28 +16,32 @@ class App extends Component {
       measurementUnits: "metric",
       currentUser: {},
       userLoggedIn: false,
-      allExerciseNames: []
+      allExercises: []
     }
   }
 
 //BELOW USED FOR INITIAL SEED. ONLY KEEPING
-  // componentDidMount(){
-  //   fetch("http://localhost:3000/api/v1/imported_exercises")
-  //   .then(resp => resp.json())
-  //   .then( data => {
-  //     data.map(exercise => {
-  //
-  //        // this.createNewImportedExercise(exercise)
-  //     })
-  //
-  //   }
-  //   )
-  // }
+  componentDidMount(){
+    fetch("http://localhost:3000/api/v1/imported_exercises")
+    .then(resp => resp.json())
+    .then( data => {
+      data.map(exercise => {
+        this.setState({
+          allExercises: [...this.state.allExercises, exercise.name, exercise.id]
+          })
+      })
+    })
+  }
+//initial load of imported exercises
+  // data.results.map(exercise => {
+  //    this.createNewImportedExercise(exercise)
+  // })
 
-// to fetch entire list of exercises for autocomplete list
+// retrieving list of names and ids for autocomplete
+// data.map(exercise => {
   // this.setState({
-  //         allExerciseNames: [...this.state.allExerciseNames, exercise.name]
-  //       })
+  //   allExerciseNames: [...this.state.allExerciseNames, {exercise.name, exercise.id]
+  //   })
 
   createNewImportedExercise = (data) => {
     const body ={

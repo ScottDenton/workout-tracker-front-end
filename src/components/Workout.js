@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import AutoComplete from './AutoComplete'
 import AutoCompleteItems from '../helpers/AutoCompleteItems';
+import {findExerciseId} from '../helpers/exerciseIdFinder'
 
 class Workout extends Component {
   constructor(props){
@@ -10,7 +11,7 @@ class Workout extends Component {
       exercise: '',
       date: '',
       workoutName: 'Start a new workout',
-      workoutId: 1,
+      workoutId: null,
       exercises: [],
       weight: '',
       reps: '',
@@ -46,6 +47,7 @@ class Workout extends Component {
     this.setState({exercise})
   }
 
+// **** user id is currently hardcoded
   createWorkout = (e) => {
     e.preventDefault();
     const body ={
@@ -84,6 +86,7 @@ class Workout extends Component {
     const body ={
       user_id: 1,
       name: this.state.exercise,
+      imported_id: findExerciseId(this.state.exercise),
       date,
       weight,
       reps,
