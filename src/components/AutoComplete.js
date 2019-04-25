@@ -27,14 +27,16 @@ class AutoComplete extends Component {
       showSuggestions: true,
       userInput
     })
+
   }
 
   onClick = (e) => {
+    this.props.retrieveUserInput(e.currentTarget.innerText)
     this.setState({
       activeSuggestion: 0,
       filteredSuggestions: [],
       showSuggestions: false,
-      userInput: e.target.innerText
+      userInput: e.currentTarget.innerText
     })
   }
 
@@ -43,6 +45,8 @@ class AutoComplete extends Component {
     //checks if enter key is pressed
     // if so sets what ever was currently shown to be the users input
     if(e.key === "Enter"){
+      this.props.retrieveUserInput(filteredSuggestions[activeSuggestion])
+
       this.setState({
         activeSuggestion: 0,
         showSuggestions: false,
@@ -114,6 +118,7 @@ class AutoComplete extends Component {
     return(
       <Fragment>
         <input type="text"
+          name="exercise"
           onChange={onChange}
           onKeyDown={onKeyDown}
           value={userInput}

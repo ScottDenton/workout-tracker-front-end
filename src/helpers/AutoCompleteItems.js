@@ -1,14 +1,12 @@
-import React from 'react'
 
- const AutoCompleteItems = ["Alligator", "Bask",
-     "Crocodilian",
-     "Death Roll",
-     "Eggs",
-     "Jaws",
-     "Reptile",
-     "Solitary",
-     "Tail",
-     "Wetlands"
+ const AutoCompleteItems = [
+    "Abs",
+    "Arms",
+    "Calves",
+    "Chest",
+    "Back",
+    "Shoulders",
+    "Legs"
    ]
 
 

@@ -5,6 +5,7 @@ import './scripts/AutoComplete.css';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
 import Signup from './components/Signup';
+import Workout from './components/Workout';
 import AutoComplete from './components/AutoComplete';
 import AutoCompleteItems from './helpers/AutoCompleteItems';
 
@@ -40,14 +41,17 @@ class App extends Component {
         <>
           <Navbar userLoggedIn={this.state.userLoggedIn}
             signOut={this.signOut}/>
-          <Home />
-          <AutoComplete suggestions={AutoCompleteItems}/>
-          <Signup
-            setUnits={this.setUnits}
-            setLoggedInUser={this.setLoggedInUser}/>
+          <Workout />
         </>
     );
   }
 }
 
 export default App;
+
+
+// <Home />
+// <AutoComplete suggestions={AutoCompleteItems}/>
+// <Signup
+//   setUnits={this.setUnits}
+//   setLoggedInUser={this.setLoggedInUser}/>
