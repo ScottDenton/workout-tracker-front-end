@@ -15,6 +15,7 @@ class Navbar extends Component {
     return (
       <div className="float_right">
         <button  className="left_nav_item nav_item"> Home </button>
+        <button  className="left_nav_item nav_item"> My Account </button>
         <button className="nav_item" onClick={this.props.signOut}> Logout </button>
       </div>
     )

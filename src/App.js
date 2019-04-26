@@ -93,8 +93,9 @@ class App extends Component {
           <Navbar
             signOut={this.signOut}
             currentUser={this.state.currentUser}/>
-          <Exercise currentUser={this.state.currentUser}/>
-          <Home  setLoggedInUser={this.setLoggedInUser} />
+          <Home
+            setLoggedInUser={this.setLoggedInUser}
+            userLoggedIn={this.state.userLoggedIn}/>
         </>
     );
   }
@@ -104,6 +105,7 @@ export default App;
 
 
 // <Login setLoggedInUser={this.setLoggedInUser}/>
+// <Exercise currentUser={this.state.currentUser}/>
 // <Signup
 //   setUnits={this.setUnits}
 //   setLoggedInUser={this.setLoggedInUser}/>
