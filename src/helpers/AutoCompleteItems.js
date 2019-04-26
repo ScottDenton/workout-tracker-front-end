@@ -37,7 +37,6 @@
  "Leg Curls (standing)",
  "Leg Raises, Lying",
  "L Hold",
- "Military Press",
  "Overhead Squat",
  "Plank",
  "Pull-ups",

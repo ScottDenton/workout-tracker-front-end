@@ -13,6 +13,10 @@ class RepCalculator extends Component {
     }
   }
 
+  componentDidMount(){
+    this.fetchExercise()
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.exercise !== this.state.exercise) {
       this.setState({
