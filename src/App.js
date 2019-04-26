@@ -76,10 +76,10 @@ class App extends Component {
   render(){
       return (
         <>
-          <Navbar userLoggedIn={this.state.userLoggedIn}
+          <Navbar
+            userLoggedIn={this.state.userLoggedIn}
             signOut={this.signOut}/>
-          <Login setLoggedInUser={this.setLoggedInUser}/>
-          // <Workout currentUser={this.state.currentUser}/>
+          <Home  setLoggedInUser={this.setLoggedInUser} />
         </>
     );
   }
@@ -88,10 +88,11 @@ class App extends Component {
 export default App;
 
 
-// <Home />
+// <Login setLoggedInUser={this.setLoggedInUser}/>
 // <Signup
 //   setUnits={this.setUnits}
 //   setLoggedInUser={this.setLoggedInUser}/>
+// <Workout currentUser={this.state.currentUser}/>
 // <Exercise currentUser={this.state.currentUser}/>
 // <RepCalculator />
 // <AutoComplete suggestions={AutoCompleteItems}/>
