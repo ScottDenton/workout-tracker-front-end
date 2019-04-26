@@ -10,6 +10,7 @@ import Exercise from './components/Exercise';
 import RepCalculator from './components/RepCalculator';
 import AutoComplete from './components/AutoComplete';
 import AutoCompleteItems from './helpers/AutoCompleteItems';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 class App extends Component {
   constructor(props){
@@ -89,14 +90,45 @@ class App extends Component {
 
   render(){
       return (
-        <>
-          <Navbar
-            signOut={this.signOut}
-            currentUser={this.state.currentUser}/>
-          <Home
-            setLoggedInUser={this.setLoggedInUser}
-            userLoggedIn={this.state.userLoggedIn}/>
-        </>
+        <Router>
+          <React.Fragment>
+            <Route
+              path='/'
+              render={props => (
+                <Navbar {...props}
+                  signOut={this.signOut}
+                  currentUser={this.state.currentUser}
+                  />
+              )}
+            />
+            <Route
+              exact
+              path='/'
+              render={props => (
+                <Home {...props}
+                  setLoggedInUser={this.setLoggedInUser}
+                  userLoggedIn={this.state.userLoggedIn}
+                  />
+              )}
+            />
+            <Route
+              path='/workout'
+              render={props => (
+                <Workout {...props}
+                  currentUser={this.state.currentUser}
+                  />
+              )}
+            />
+            <Route
+              path='/exercise'
+              render={props => (
+                <Exercise {...props}
+                  currentUser={this.state.currentUser}
+                  />
+              )}
+            />
+          </React.Fragment>
+        </Router>
     );
   }
 }

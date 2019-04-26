@@ -1,5 +1,9 @@
 import React from 'react'
 import Login from './Login'
+import { Link } from "react-router-dom";
+
+
+
 
 class Home extends React.Component {
   constructor(props){
@@ -9,7 +13,7 @@ class Home extends React.Component {
     }
   }
 
-renderLogin = () => {
+renderLoginForm = () => {
   return this.state.showLogin ? <Login setLoggedInUser={this.props.setLoggedInUser} /> :
     <div>
       <button onClick={() => this.setState({showLogin: true})}> Login </button>
@@ -19,15 +23,19 @@ renderLogin = () => {
 renderUserOptionsButtons = () => {
   return <div>
     <button>Search</button>
-    <button>Log New Workout</button>
-    <button>Log new Exercise</button>
+    <Link to={"/workout"}>
+      <button>Log New Workout</button>
+    </Link>
+    <Link to={"/exercise"}>
+      <button>Log New Exercise</button>
+    </Link>
   </div>
 }
 
 whichButtonsToRender = () => {
   return this.props.userLoggedIn ?
     <div> {this.renderUserOptionsButtons()} </div> :
-    <div> {this.renderLogin()}</div>
+    <div> {this.renderLoginForm()}</div>
 }
 
   render () {
