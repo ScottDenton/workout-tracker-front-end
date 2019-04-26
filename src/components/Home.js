@@ -10,7 +10,6 @@ class Home extends React.Component {
   }
 
 renderLogin = () => {
-  console.log(this.props)
   return this.state.showLogin ? <Login setLoggedInUser={this.props.setLoggedInUser} /> : <div> </div>
 }
 

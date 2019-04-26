@@ -30,6 +30,7 @@ class Login extends React.Component {
         alert('Invalid credentials')
       } else {
         this.props.setLoggedInUser(user)
+        localStorage.setItem("user_id", user.id )
         alert(`Welcome back ${user.username}`)
       }
     })

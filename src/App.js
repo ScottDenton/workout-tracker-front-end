@@ -69,8 +69,9 @@ class App extends Component {
   signOut = () => {
     this.setState({
       currentUser: {},
-      userLoggedIn: false
+      userLoggedIn: false,
     })
+    localStorage.removeItem("user_id")
   }
 
   render(){
@@ -79,6 +80,7 @@ class App extends Component {
           <Navbar
             userLoggedIn={this.state.userLoggedIn}
             signOut={this.signOut}/>
+          <Exercise currentUser={this.state.currentUser}/>
           <Home  setLoggedInUser={this.setLoggedInUser} />
         </>
     );
@@ -93,6 +95,5 @@ export default App;
 //   setUnits={this.setUnits}
 //   setLoggedInUser={this.setLoggedInUser}/>
 // <Workout currentUser={this.state.currentUser}/>
-// <Exercise currentUser={this.state.currentUser}/>
 // <RepCalculator />
 // <AutoComplete suggestions={AutoCompleteItems}/>

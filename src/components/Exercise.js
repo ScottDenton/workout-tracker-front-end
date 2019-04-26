@@ -43,7 +43,7 @@ class Exercise extends Component {
   saveExercise = (e) => {
     const {date, weight, reps, sets, notes} = this.state
     const body ={
-      user_id: this.props.currentUser.id, // will need to be changed to acticve users id
+      user_id: localStorage.getItem("user_id"), 
       name: this.state.exercise,
       imported_id: findExerciseId(this.state.exercise),
       date, weight, reps, sets, notes

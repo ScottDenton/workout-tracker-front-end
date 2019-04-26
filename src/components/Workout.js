@@ -51,7 +51,7 @@ class Workout extends Component {
   createWorkout = (e) => {
     e.preventDefault();
     const body ={
-      user_id: this.props.currentUser.id,
+      user_id: localStorage.getItem("user_id"),
       name: this.state.name,
       date: this.state.date
     }
@@ -82,7 +82,7 @@ class Workout extends Component {
   saveExerciseToWorkout = (e) => {
     const {date, weight, reps, sets, notes} = this.state
     const body ={
-      user_id: this.props.currentUser.id,
+      user_id: localStorage.getItem("user_id"),
       name: this.state.exercise,
       imported_id: findExerciseId(this.state.exercise),
       date, weight, reps, sets, notes
