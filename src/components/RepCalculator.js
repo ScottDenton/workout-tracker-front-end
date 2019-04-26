@@ -7,8 +7,7 @@ class RepCalculator extends Component {
     super(props)
     this.state = {
       exercise: this.props.exercise,
-      retrievedExercise: '',
-      exerciseFound: false,
+      retrievedExercise: this.props.retrievedExercise,
       oneRepMax: 100
     }
   }
@@ -18,11 +17,11 @@ class RepCalculator extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.exercise !== this.state.exercise) {
+    // checking if props have changed is no longer needed as it stops re rendering the calculator when someone saves a new exercise
       this.setState({
         exercise: nextProps.exercise
       }, this.fetchExercise);
-    }
+
   }
 
   fetchExercise = () => {
@@ -40,11 +39,9 @@ class RepCalculator extends Component {
     .then(exercise => {
       if(exercise.status === 500) {
         this.setState({
-          exerciseFound: false,
         retrievedExercise: ''})
       } else {
         this.setState({
-          exerciseFound: true,
           retrievedExercise: exercise
         }, this.calculateOneRepMax)
       }

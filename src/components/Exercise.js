@@ -14,7 +14,8 @@ class Exercise extends Component {
       weight: '',
       reps: '',
       sets: '',
-      notes: ' '
+      notes: ' ',
+      retrievedExercise: ''
     }
   }
 
@@ -45,11 +46,7 @@ class Exercise extends Component {
       user_id: 1, // will need to be changed to acticve users id
       name: this.state.exercise,
       imported_id: findExerciseId(this.state.exercise),
-      date,
-      weight,
-      reps,
-      sets,
-      notes
+      date, weight, reps, sets, notes
     }
     fetch("http://localhost:3000/api/v1/exercise", {
       method: "POST",
@@ -58,6 +55,10 @@ class Exercise extends Component {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(body)})
+      .then(resp=> resp.json())
+      .then(retrievedExercise => {
+        this.setState({retrievedExercise})
+      })
       e.target.reset();
   }
 
@@ -85,7 +86,9 @@ class Exercise extends Component {
 
   renderRepCalculator = () => {
      if(this.state.exercise !== '') {
-      return <RepCalculator exercise={this.state.exercise} />
+      return <RepCalculator
+      exercise={this.state.exercise}
+      retrievedExercise={this.state.retrievedExercise} />
     }
   }
 
