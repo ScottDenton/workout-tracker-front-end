@@ -79,8 +79,7 @@ class Workout extends Component {
     }, this.saveExerciseToWorkout(e))
   }
 
-// need to add pre filled data once i import it all
-//user ID is still hardcoded until login is done
+// *** user ID is still hardcoded until login is done
   saveExerciseToWorkout = (e) => {
     const {date, weight, reps, sets, notes} = this.state
     const body ={
