@@ -69,10 +69,12 @@ calculateOneRepMax =() => {
    const nineRepCalc= `${Math.floor(repCalculation *.78)}  ${weightUnits}`
    const tenRepCalc= `${Math.floor(repCalculation *.75)}  ${weightUnits}`
 
+   const dateToShow = this.props.date ? this.props.date : this.props.retrievedExercise.date
+
    return(
      <div>
      <h3> {this.state.exercise} </h3>
-     <p> Based on workout from {this.state.retrievedExercise.date} </p>
+     <p> Based on workout from {dateToShow} </p>
        <table>
          <tbody>
            <tr>

@@ -56,7 +56,6 @@ class App extends Component {
       },
       body: JSON.stringify(body)
     }).then(resp => resp.json())
-    .then(console.log)
   }
 
   setUnits = (measurementUnits) =>{

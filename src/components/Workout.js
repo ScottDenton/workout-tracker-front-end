@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import AutoComplete from './AutoComplete'
+import RepCalculator from './RepCalculator'
 import AutoCompleteItems from '../helpers/AutoCompleteItems';
 import {findExerciseId} from '../helpers/exerciseIdFinder'
 
@@ -9,6 +10,7 @@ class Workout extends Component {
     this.state={
       name: '',
       exercise: '',
+      retrievedExercise: '',
       date: '',
       workoutName: 'Start a new workout',
       workoutId: null,
@@ -43,11 +45,9 @@ class Workout extends Component {
   }
 
   retrieveUserInput = (exercise) => {
-    console.log('retrieved', exercise)
     this.setState({exercise})
   }
 
-// **** user id is currently hardcoded
   createWorkout = (e) => {
     e.preventDefault();
     const body ={
@@ -79,18 +79,13 @@ class Workout extends Component {
     }, this.saveExerciseToWorkout(e))
   }
 
-// *** user ID is still hardcoded until login is done
   saveExerciseToWorkout = (e) => {
     const {date, weight, reps, sets, notes} = this.state
     const body ={
       user_id: this.props.currentUser.id,
       name: this.state.exercise,
       imported_id: findExerciseId(this.state.exercise),
-      date,
-      weight,
-      reps,
-      sets,
-      notes
+      date, weight, reps, sets, notes
     }
     fetch("http://localhost:3000/api/v1/exercise", {
       method: "POST",
@@ -102,7 +97,8 @@ class Workout extends Component {
       .then( resp => resp.json())
       .then(newExercise => {
         this.setState({
-          exercises: [...this.state.exercises, newExercise]
+          exercises: [...this.state.exercises, newExercise],
+          retrievedExercise: newExercise
         })
         this.createNewWorkoutExercise(newExercise.id)
       })
@@ -121,7 +117,6 @@ class Workout extends Component {
         exercise_id: id
       })
     }).then(resp => resp.json())
-    .then(console.log)
   }
 
   renderNewWorkoutForm = () => {
@@ -167,12 +162,20 @@ class Workout extends Component {
       }
   }
 
+  renderRepCalculator = () => {
+     if(this.state.retrievedExercise !== '') {
+      return <RepCalculator
+      exercise={this.state.exercise}
+      retrievedExercise={this.state.retrievedExercise}date={this.state.date} />
+    }
+  }
 
   render () {
     return(
       <div>
         <h1>{this.state.workoutName} </h1>
         {this.itemsToRender()}
+        {this.renderRepCalculator()}
         {this.displayExercises()}
         <button> Finish Workout </button>
       </div>
