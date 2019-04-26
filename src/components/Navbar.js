@@ -1,6 +1,6 @@
-import React from 'react'
+import React, {Component} from 'react'
 
-class Navbar extends React.Component {
+class Navbar extends Component {
 
   signedOut = () => {
     return (
@@ -20,12 +20,21 @@ class Navbar extends React.Component {
     )
   }
 
+  navToRender = () => {
+    const userId = this.props.currentUser.id
+    const localId = Number(localStorage.getItem("user_id"))
+    console.log('user id', userId)
+    console.log('local id', localId)
+    if (userId === localId && userId !== undefined){
+      return this.signedIn()
+    } else {
+      return this.signedOut();
+    }
+  }
   render () {
-    const navToRender = this.props.userLoggedIn ? this.signedIn() : this.signedOut();
-
     return(
       <div className="navbar_container">
-      {navToRender}
+      {this.navToRender()}
       </div>
     )
   }

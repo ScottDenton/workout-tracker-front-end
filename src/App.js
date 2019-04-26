@@ -39,6 +39,19 @@ class App extends Component {
   //   allExerciseNames: [...this.state.allExerciseNames, {exercise.name, exercise.id]
   //   })
 
+//retrieves user from local storage and sets as current user
+  componentDidMount(){
+    const id = localStorage.getItem("user_id")
+    if(id){
+      fetch(`http://localhost:3000/api/v1/users/${id}`)
+      .then(resp => resp.json())
+      .then(currentUser => {
+        this.setState({currentUser})
+      })
+
+    }
+  }
+
   createNewImportedExercise = (data) => {
     const body ={
         "imported_id": data.id,
@@ -78,8 +91,8 @@ class App extends Component {
       return (
         <>
           <Navbar
-            userLoggedIn={this.state.userLoggedIn}
-            signOut={this.signOut}/>
+            signOut={this.signOut}
+            currentUser={this.state.currentUser}/>
           <Exercise currentUser={this.state.currentUser}/>
           <Home  setLoggedInUser={this.setLoggedInUser} />
         </>
