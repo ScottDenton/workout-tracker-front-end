@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import AutoComplete from './AutoComplete'
 import AutoCompleteItems from '../helpers/AutoCompleteItems';
 import {findExerciseId} from '../helpers/exerciseIdFinder'
+import RepCalculator from './RepCalculator';
 
 class Exercise extends Component {
   constructor(props){
@@ -82,12 +83,19 @@ class Exercise extends Component {
     )
   }
 
+  renderRepCalculator = () => {
+     if(this.state.exercise !== '') {
+      return <RepCalculator exercise={this.state.exercise} />
+    }
+  }
+
 
   render () {
     return(
       <div>
         <h1>Add a new workout </h1>
         {this.renderNewExerciseForm()}
+        {this.renderRepCalculator()}
       </div>
 
 

@@ -78,7 +78,7 @@ class App extends Component {
         <>
           <Navbar userLoggedIn={this.state.userLoggedIn}
             signOut={this.signOut}/>
-          <RepCalculator />
+          <Exercise />
         </>
     );
   }
@@ -89,7 +89,7 @@ export default App;
 
 // <Home />
 // <Workout />
-// <Exercise />
+// <RepCalculator />
 // <AutoComplete suggestions={AutoCompleteItems}/>
 // <Signup
 //   setUnits={this.setUnits}

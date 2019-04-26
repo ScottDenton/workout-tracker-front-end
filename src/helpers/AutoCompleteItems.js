@@ -8,7 +8,6 @@
  "Barbell Triceps Extension",
  "Bear Walk",
  "Bench Press",
- "Bear Walk",
  "Benchpress Dumbbells",
  "Bench Press Narrow Grip",
  "Bent Over Barbell Row",
