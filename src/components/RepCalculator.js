@@ -70,54 +70,58 @@ calculateOneRepMax =() => {
    const tenRepCalc= `${Math.floor(repCalculation *.75)}  ${weightUnits}`
 
    return(
-     <table>
-     <tbody>
-       <tr>
-         <th> Reps </th>
-         <th> Weight </th>
-       </tr>
-       <tr>
-         <th> 1 RM </th>
-         <th> {oneRepCalc} </th>
-       </tr>
-       <tr>
-         <th> 2 RM </th>
-         <th> {twoRepCalc} </th>
-       </tr>
-       <tr>
-         <th> 3 RM</th>
-         <th> {threeRepCalc} </th>
-       </tr>
-       <tr>
-         <th> 4 RM</th>
-         <th> {fourRepCalc} </th>
-       </tr>
-       <tr>
-         <th> 5 RM</th>
-         <th> {fiveRepCalc} </th>
-       </tr>
-       <tr>
-         <th> 6 RM</th>
-         <th> {sixRepCalc} </th>
-       </tr>
-       <tr>
-         <th> 7 RM</th>
-         <th> {sevenRepCalc} </th>
-       </tr>
-       <tr>
-         <th> 8 RM</th>
-         <th> {eightRepCalc} </th>
-       </tr>
-       <tr>
-         <th> 9 RM</th>
-         <th> {nineRepCalc} </th>
-       </tr>
-       <tr>
-         <th> 10 RM</th>
-         <th> {tenRepCalc} </th>
-       </tr>
-       </tbody>
-     </table>
+     <div>
+     <h3> {this.state.exercise} </h3>
+     <p> Based on workout from {this.state.retrievedExercise.date} </p>
+       <table>
+         <tbody>
+           <tr>
+             <th> Reps </th>
+             <th> Weight </th>
+           </tr>
+           <tr>
+             <th> 1 RM </th>
+             <th> {oneRepCalc} </th>
+           </tr>
+           <tr>
+             <th> 2 RM </th>
+             <th> {twoRepCalc} </th>
+           </tr>
+           <tr>
+             <th> 3 RM</th>
+             <th> {threeRepCalc} </th>
+           </tr>
+           <tr>
+             <th> 4 RM</th>
+             <th> {fourRepCalc} </th>
+           </tr>
+           <tr>
+             <th> 5 RM</th>
+             <th> {fiveRepCalc} </th>
+           </tr>
+           <tr>
+             <th> 6 RM</th>
+             <th> {sixRepCalc} </th>
+           </tr>
+           <tr>
+             <th> 7 RM</th>
+             <th> {sevenRepCalc} </th>
+           </tr>
+           <tr>
+             <th> 8 RM</th>
+             <th> {eightRepCalc} </th>
+           </tr>
+           <tr>
+             <th> 9 RM</th>
+             <th> {nineRepCalc} </th>
+           </tr>
+           <tr>
+             <th> 10 RM</th>
+             <th> {tenRepCalc} </th>
+           </tr>
+         </tbody>
+       </table>
+     </div>
    )
  }
 
