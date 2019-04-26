@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './scripts/App.css';
 import './scripts/AutoComplete.css';
 import Home from './components/Home';
+import Login from './components/Login';
 import Navbar from './components/Navbar';
 import Signup from './components/Signup';
 import Workout from './components/Workout';
@@ -78,7 +79,8 @@ class App extends Component {
         <>
           <Navbar userLoggedIn={this.state.userLoggedIn}
             signOut={this.signOut}/>
-          <Exercise />
+          <Login setLoggedInUser={this.setLoggedInUser}/>
+          // <Workout currentUser={this.state.currentUser}/>
         </>
     );
   }
@@ -88,9 +90,9 @@ export default App;
 
 
 // <Home />
-// <Workout />
-// <RepCalculator />
-// <AutoComplete suggestions={AutoCompleteItems}/>
 // <Signup
 //   setUnits={this.setUnits}
 //   setLoggedInUser={this.setLoggedInUser}/>
+// <Exercise currentUser={this.state.currentUser}/>
+// <RepCalculator />
+// <AutoComplete suggestions={AutoCompleteItems}/>

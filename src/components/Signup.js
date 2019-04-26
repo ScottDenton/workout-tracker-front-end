@@ -5,7 +5,7 @@ constructor(){
   super()
   this.state={
     username: '',
-    password_digest: '',
+    password: '',
     date_of_birth: '',
     units: 'metric',
     height: null,
@@ -56,7 +56,7 @@ handleSubmit = (e) => {
           </div>
           <div>
             <label>Password: </label>
-            <input type='password' name='password_digest'
+            <input type='password' name='password'
               placeholder="Password"
               onChange={this.handleChange} />
           </div>
