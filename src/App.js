@@ -127,6 +127,15 @@ class App extends Component {
                   />
               )}
             />
+            <Route
+              path='/signup'
+              render={props => (
+                <Signup {...props}
+                  setUnits={this.setUnits}
+                  setLoggedInUser={this.setLoggedInUser}
+                  />
+              )}
+            />
           </React.Fragment>
         </Router>
     );

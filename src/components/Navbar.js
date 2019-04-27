@@ -1,12 +1,21 @@
 import React, {Component} from 'react'
+import { Link } from "react-router-dom";
+
 
 class Navbar extends Component {
 
   signedOut = () => {
     return (
       <div className="float_right">
-        <a href="#" className="left_nav_item nav_item"> Signup </a>
-        <a href="#" className="nav_item"> About </a>
+        <Link to={"/"}>
+          <a className="left_nav_item nav_item">Home</a>
+        </Link>
+        <Link to={"/signup"}>
+          <a className="left_nav_item nav_item">SignUp</a>
+        </Link>
+        <Link to={"/"}>
+          <a className=" nav_item">About</a>
+        </Link>
       </div>
     )
   }
@@ -14,9 +23,15 @@ class Navbar extends Component {
   signedIn = () => {
     return (
       <div className="float_right">
-        <button  className="left_nav_item nav_item"> Home </button>
-        <button  className="left_nav_item nav_item"> My Account </button>
-        <button className="nav_item" onClick={this.props.signOut}> Logout </button>
+        <Link to={"/"}>
+          <a className="left_nav_item nav_item">Home</a>
+        </Link>
+        <Link to={"/"}>
+          <a className="left_nav_item nav_item">My Account</a>
+        </Link>
+        <Link to={"/"} onClick={this.props.signOut}>
+          <a className="nav_item">Logout</a>
+        </Link>
       </div>
     )
   }
