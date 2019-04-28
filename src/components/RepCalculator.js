@@ -127,11 +127,21 @@ calculateOneRepMax =() => {
    )
  }
 
+ renderNotes = () => {
+   return <div>
+     <h5> Notes: </h5>
+     <p> {this.state.retrievedExercise.notes}</p>
+   </div>
+ }
+
   render(){
     const tableToRender = this.state.retrievedExercise !== '' ? this.renderTable() : <h1> Select an exercise </h1>
 
+  const notesToRender = this.state.retrievedExercise.nots !=='' ? this.renderNotes() : <h5> You do not make any notes last time you did this exercise </h5>
+
     return(<div>
       {tableToRender}
+      {notesToRender}
       </div>
     )
   }
