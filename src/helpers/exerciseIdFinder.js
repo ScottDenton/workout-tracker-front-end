@@ -13,7 +13,6 @@ const allExercisesWithIds = {
   "Bear Walk": 6,
   "Barbell Lunges": 7,
   "Barbell Triceps Extension": 8,
-  // "Bear Walk": 9,
   "Benchpress Dumbbells": 10,
   "Bench Press Narrow Grip": 12,
   "Bent-over Lateral Raises": 13,

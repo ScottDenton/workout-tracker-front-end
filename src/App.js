@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Navbar from './components/Navbar';
 import Signup from './components/Signup';
+import Search from './components/Search';
 import Workout from './components/Workout';
 import Exercise from './components/Exercise';
 import RepCalculator from './components/RepCalculator';
@@ -133,6 +134,14 @@ class App extends Component {
                 <Signup {...props}
                   setUnits={this.setUnits}
                   setLoggedInUser={this.setLoggedInUser}
+                  />
+              )}
+            />
+            <Route
+              path='/search'
+              render={props => (
+                <Search {...props}
+                  currentUser={this.state.currentUser}
                   />
               )}
             />
