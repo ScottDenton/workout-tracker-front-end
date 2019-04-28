@@ -47,7 +47,7 @@ class App extends Component {
       fetch(`http://localhost:3000/api/v1/users/${id}`)
       .then(resp => resp.json())
       .then(currentUser => {
-        this.setState({currentUser})
+        this.setState({currentUser, userLoggedIn: true})
       })
 
     }
