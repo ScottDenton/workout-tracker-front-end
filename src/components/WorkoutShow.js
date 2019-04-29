@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import AutoComplete from './AutoComplete'
 import RepCalculator from './RepCalculator'
 import AutoCompleteItems from '../helpers/AutoCompleteItems';
+import {findExerciseId} from '../helpers/exerciseIdFinder'
 
 class WorkoutShow extends Component {
   constructor(props){
@@ -65,9 +66,6 @@ class WorkoutShow extends Component {
       )
   }
 
-  renderExercises = () => {
-    return this.state.exercises.map(exercise => this.listExercise(exercise))
-  }
 
   updateShowForm = (exercise) => {
     const updatedExercises = this.state.exercises.map(ex => {
@@ -78,6 +76,10 @@ class WorkoutShow extends Component {
     this.setState({
       exercises: updatedExercises
     })
+  }
+  
+  renderExercises = () => {
+    return this.state.exercises.map(exercise => this.listExercise(exercise))
   }
 
   listExercise = (exercise) => {
@@ -109,12 +111,17 @@ class WorkoutShow extends Component {
     })
     .then(resp => resp.json())
     .then(newWorkout => {
-      this.setState({newWorkout})
-    }, this.saveExerciseToWorkout(e, exercise))
+      this.setState({
+        newWorkout
+      })
+    })
+    .then(this.saveExerciseToWorkout(e, exercise))
+
     : this.saveExerciseToWorkout(e, exercise)
   }
 
   saveExerciseToWorkout = (e, exercise) =>{
+    this.updateShowForm(exercise)
     const weight = e.target.querySelector("[name='weight']").value
     const reps = e.target.querySelector("[name='reps']").value
     const sets = e.target.querySelector("[name='sets']").value
@@ -132,7 +139,6 @@ class WorkoutShow extends Component {
       },
       body: JSON.stringify(body)})
       .then(resp=> resp.json())
-      // .then(console.log)
       .then(exercise => {
         this.addExerciseToWorkout(exercise)
       })
@@ -144,7 +150,7 @@ class WorkoutShow extends Component {
        exercise_id: exercise.id
      }
      console.log('fetch body', body)
-     
+
      fetch("http://localhost:3000/api/v1/workout_exercises", {
        method: "POST",
        headers: {
@@ -184,6 +190,53 @@ class WorkoutShow extends Component {
     )
   }
 
+  retrieveUserInput = (exercise) => {
+    this.setState({exercise})
+  }
+
+  addExercise = (e) => {
+    e.preventDefault();
+    const {date, weight, reps, sets, notes} = this.state
+    const body ={
+      user_id: localStorage.getItem("user_id"),
+      name: this.state.exercise,
+      imported_id: findExerciseId(this.state.exercise),
+      date, weight, reps, sets, notes
+    }
+    fetch("http://localhost:3000/api/v1/exercise", {
+      method: "POST",
+      headers: {
+        "accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body)})
+      .then(resp=> resp.json())
+      .then(exercise => {
+        this.addExerciseToWorkout(exercise)
+      })
+  }
+
+  renderNewExercise = () => {
+    return (
+    <div>
+      <h4> Add a new Exercise </h4>
+      <form onSubmit={this.addExercise}>
+        <label> Exercise </label>
+        <AutoComplete suggestions={AutoCompleteItems} retrieveUserInput={this.retrieveUserInput} />
+        <label> Weight </label>
+        <input type='number' placeholder="Weight" name="weight"  onChange={this.handleChange}/>
+        <label> Reps </label>
+        <input type='number' placeholder="Reps" name="reps" onChange={this.handleChange}/>
+        <label> Sets </label>
+        <input type='number' placeholder="Sets" name="sets" onChange={this.handleChange}/>
+        <label> Notes </label>
+        <textarea type='text' placeholder="Enter Notes" name="notes" onChange={this.handleChange}/>
+        <input type='submit' value='Save' />
+      </form>
+    </div>
+    )
+  }
+
   render () {
     const {name, date} = this.state.workout
 
@@ -195,8 +248,7 @@ class WorkoutShow extends Component {
         <h2>{name} </h2>
         <h5>{date} </h5>
         {exercisesToRender}
-
-
+        {this.renderNewExercise()}
       </div>
     )
 

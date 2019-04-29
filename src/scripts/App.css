@@ -38,6 +38,26 @@ body {
   border-right: 1px solid grey;
 }
 
+.workout_list {
+  color: white;
+  list-style: none;
+}
+
+a:link {
+  color: white;
+  text-decoration: none;
+  transition: .6s;
+  padding: 5px;
+}
+
+ a:visited {
+  color: lightGrey;
+}
+
+a:link:hover{
+  font-size: 1.3em
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

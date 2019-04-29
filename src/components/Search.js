@@ -122,6 +122,7 @@ class Search extends Component {
                 state: {workout}
               }}>
               <li
+                className ="workout_list"
                 key={workout.id}
                 onClick={() => {this.handleClickOnWorkout(workout)}}>
                 {workout.name}
