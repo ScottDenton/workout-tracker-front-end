@@ -4,6 +4,7 @@ import AutoCompleteItems from '../helpers/AutoCompleteItems';
 import {findExerciseId} from '../helpers/exerciseIdFinder'
 import {workoutFinder} from '../helpers/WorkoutFinder'
 
+
 class Search extends Component {
   constructor(props){
     super(props)
@@ -22,20 +23,6 @@ class Search extends Component {
   componentDidMount(){
     this.fetchWorkouts();
     this.fetchExercises();
-    this.setDate();
-  }
-
-//move to helper method as also used in workout component
-  setDate = () => {
-    const today = new Date();
-    const year = today.getFullYear()
-    const month = (today.getMonth() + 1) < 10 ?
-      `0${today.getMonth() + 1}` :  today.getMonth() +1
-    const day = today.getDate() < 10 ?
-      `0${today.getDate()}` : today.getDate()
-    const date = `${year}-${month}-${day}`
-
-    this.setState({date})
   }
 
   handleCriteriaChange = (e) => {
@@ -120,7 +107,7 @@ class Search extends Component {
     return this.state.workouts ?
       <div>
         <ul>
-        {filteredWorkouts.map(workout => {
+        {this.filterByDate(filteredWorkouts).map(workout => {
           return(
             <li
               key={workout.id}
@@ -143,7 +130,7 @@ class Search extends Component {
     return this.state.exercises ?
       <div>
         <ul>
-        {filteredExercises.map(exercise => {
+        {this.filterByDate(filteredExercises).map(exercise => {
           return (
             <li
               key={exercise.id}
@@ -157,6 +144,9 @@ class Search extends Component {
       : <div> ...loading </div>
   }
 
+  filterByDate = (array) => {
+  return  this.state.date == '' ? array : array.filter(exercise => new Date(exercise.date) - new Date(this.state.date) > 0)
+  }
 
   handleClickOnExercise = (exercise) => {
       console.log('clicked on ', exercise)
@@ -172,7 +162,6 @@ class Search extends Component {
     const resultsToRender = this.state.searchSelection === 'workout' ?
     this.renderWorkoutList() : this.renderExerciseList()
 
-
     return(
       <div>
         <form>
@@ -182,7 +171,7 @@ class Search extends Component {
             <option value = 'exercise'> Execise </option>
           </select>
           {nameSearch}
-          <label> Date: </label>
+          <label> Date From: </label>
           <input type='date' name='date'
             value={this.state.date}
             onChange={this.handleChange}/>
