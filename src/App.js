@@ -8,6 +8,7 @@ import Search from './components/Search';
 import Workout from './components/Workout';
 import Exercise from './components/Exercise';
 import WorkoutShow from './components/WorkoutShow';
+import ExerciseShow from './components/ExerciseShow';
 import AutoComplete from './components/AutoComplete';
 import AutoCompleteItems from './helpers/AutoCompleteItems';
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -121,6 +122,7 @@ class App extends Component {
               )}
             />
             <Route
+              exact
               path='/exercise'
               render={props => (
                 <Exercise {...props}
@@ -150,6 +152,15 @@ class App extends Component {
               path='/workout/:id'
               render={props => (
                 <WorkoutShow {...props}
+                  currentUser={this.state.currentUser}
+                  />
+              )}
+            />
+            <Route
+              exact
+              path='/exercise/:id'
+              render={props => (
+                <ExerciseShow {...props}
                   currentUser={this.state.currentUser}
                   />
               )}

@@ -30,7 +30,11 @@ handleSubmit = (e) => {
     body: JSON.stringify(this.state)
   }).then(resp => resp.json())
   .then(user => {
-    this.props.setLoggedInUser(user)
+    if(user.id !== null){
+      this.props.setLoggedInUser(user)
+    } else {
+      alert("That username is already taken")
+    }
   })
   this.props.setUnits(this.state.units)
 }

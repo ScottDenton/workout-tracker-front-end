@@ -38,9 +38,13 @@ body {
   border-right: 1px solid grey;
 }
 
-.workout_list {
+.search_list {
   color: white;
   list-style: none;
+}
+
+.small {
+  font-size: 0.9rem;
 }
 
 a:link {
@@ -56,6 +60,14 @@ a:link {
 
 a:link:hover{
   font-size: 1.3em
+}
+
+.exercise_container{
+  margin: 40px;
+}
+.exercise_name {
+  margin: 0px 10px;
+  padding-bottom: 10px;
 }
 
 @keyframes App-logo-spin {

@@ -122,7 +122,7 @@ class Search extends Component {
                 state: {workout}
               }}>
               <li
-                className ="workout_list"
+                className ="search_list"
                 key={workout.id}
                 onClick={() => {this.handleClickOnWorkout(workout)}}>
                 {workout.name}
@@ -149,11 +149,17 @@ class Search extends Component {
         <ul>
         {this.filterByDate(filteredExercises).map(exercise => {
           return (
-            <li
-              key={exercise.id}
-              onClick={() => {this.handleClickOnExercise(exercise)}}>
-              {exercise.name}
-            </li>
+            <Link to={{
+                pathname: `/exercise/${exercise.id}`,
+                state: {exercise}
+              }}>
+              <li
+                className="search_list"
+                key={exercise.id}
+                onClick={() => {this.handleClickOnExercise(exercise)}}>
+                {exercise.name}
+              </li>
+            </Link>
           )
         })}
         </ul>

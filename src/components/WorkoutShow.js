@@ -77,16 +77,16 @@ class WorkoutShow extends Component {
       exercises: updatedExercises
     })
   }
-  
+
   renderExercises = () => {
     return this.state.exercises.map(exercise => this.listExercise(exercise))
   }
 
   listExercise = (exercise) => {
     return (
-      <div>
-        <h5> {exercise.name}</h5>
-        <h5>{exercise.weight}kgs x {exercise.reps} reps(s)</h5>
+      <div className="exercise_container">
+        <div className="exercise_name"> {exercise.name} - {exercise.weight}kgs x {exercise.reps} reps(s)</div>
+
           {exercise.showForm === true ? this.renderNewExerciseForm(exercise) : <button onClick={() => this.updateShowForm(exercise)}> Add to workout </button> }
       </div>
     )
@@ -245,8 +245,8 @@ class WorkoutShow extends Component {
       <p> It doesnt look like you recorded any exercises for this workout</p>
     return(
       <div>
-        <h2>{name} </h2>
-        <h5>{date} </h5>
+        <h2>{name} - <span className='small'>{date} </span> </h2>
+
         {exercisesToRender}
         {this.renderNewExercise()}
       </div>
