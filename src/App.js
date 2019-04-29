@@ -2,13 +2,12 @@ import React, {Component} from 'react';
 import './scripts/App.css';
 import './scripts/AutoComplete.css';
 import Home from './components/Home';
-import Login from './components/Login';
 import Navbar from './components/Navbar';
 import Signup from './components/Signup';
 import Search from './components/Search';
 import Workout from './components/Workout';
 import Exercise from './components/Exercise';
-import RepCalculator from './components/RepCalculator';
+import WorkoutShow from './components/WorkoutShow';
 import AutoComplete from './components/AutoComplete';
 import AutoCompleteItems from './helpers/AutoCompleteItems';
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -20,7 +19,7 @@ class App extends Component {
       measurementUnits: "metric",
       currentUser: {},
       userLoggedIn: false,
-      allExercises: []
+      allExercises: [],
     }
   }
 
@@ -54,24 +53,24 @@ class App extends Component {
     }
   }
 
-  createNewImportedExercise = (data) => {
-    const body ={
-        "imported_id": data.id,
-        "description": data.description,
-        "name": data.name,
-        "category": data.category,
-        "muscles": data.muscles,
-        "equipment": data.equipment
-      }
-    fetch("http://localhost:3000/api/v1/imported_exercises", {
-      method: "POST",
-      headers: {
-        "accept": "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(body)
-    }).then(resp => resp.json())
-  }
+  // createNewImportedExercise = (data) => {
+  //   const body ={
+  //       "imported_id": data.id,
+  //       "description": data.description,
+  //       "name": data.name,
+  //       "category": data.category,
+  //       "muscles": data.muscles,
+  //       "equipment": data.equipment
+  //     }
+  //   fetch("http://localhost:3000/api/v1/imported_exercises", {
+  //     method: "POST",
+  //     headers: {
+  //       "accept": "application/json",
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify(body)
+  //   }).then(resp => resp.json())
+  // }
 
   setUnits = (measurementUnits) =>{
     this.setState({measurementUnits})
@@ -113,6 +112,7 @@ class App extends Component {
               )}
             />
             <Route
+              exact
               path='/workout'
               render={props => (
                 <Workout {...props}
@@ -141,6 +141,15 @@ class App extends Component {
               path='/search'
               render={props => (
                 <Search {...props}
+                  currentUser={this.state.currentUser}
+                  />
+              )}
+            />
+            <Route
+              exact
+              path='/workout/:id'
+              render={props => (
+                <WorkoutShow {...props}
                   currentUser={this.state.currentUser}
                   />
               )}

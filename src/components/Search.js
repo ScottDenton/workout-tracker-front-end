@@ -1,9 +1,5 @@
 import React, {Component} from 'react'
-import AutoComplete from './AutoComplete'
-import AutoCompleteItems from '../helpers/AutoCompleteItems';
-import {findExerciseId} from '../helpers/exerciseIdFinder'
-import {workoutFinder} from '../helpers/WorkoutFinder'
-
+import { Link } from "react-router-dom";
 
 class Search extends Component {
   constructor(props){
@@ -25,6 +21,16 @@ class Search extends Component {
     this.fetchExercises();
   }
 
+  //clears the inputs and reloads the results
+  clickedSearchAgain = () => {
+    this.fetchWorkouts();
+    this.fetchExercises();
+    this.setState({
+      date: '',
+      filteredWorkout: '',
+      filteredExercise: ''
+    })
+  }
   handleCriteriaChange = (e) => {
     const searchSelection = e.target.value
     this.setState({ searchSelection })
@@ -106,14 +112,21 @@ class Search extends Component {
 
     return this.state.workouts ?
       <div>
+        <h1> My Completed Workouts</h1>
+        <h5> Click on a workout do it again</h5>
         <ul>
         {this.filterByDate(filteredWorkouts).map(workout => {
           return(
-            <li
-              key={workout.id}
-              onClick={() => {this.handleClickOnWorkout(workout)}}>
-              {workout.name}
-            </li>
+            <Link to={{
+                pathname: `/workout/${workout.id}`,
+                state: {workout}
+              }}>
+              <li
+                key={workout.id}
+                onClick={() => {this.handleClickOnWorkout(workout)}}>
+                {workout.name}
+              </li>
+            </Link>
           )
         })}
         </ul>
@@ -129,6 +142,9 @@ class Search extends Component {
 
     return this.state.exercises ?
       <div>
+        <h1> My Completed Exercises</h1>
+
+        <h5> Click on an exercise for more details</h5>
         <ul>
         {this.filterByDate(filteredExercises).map(exercise => {
           return (
@@ -145,11 +161,11 @@ class Search extends Component {
   }
 
   filterByDate = (array) => {
-  return  this.state.date == '' ? array : array.filter(exercise => new Date(exercise.date) - new Date(this.state.date) > 0)
+  return  this.state.date === '' ? array : array.filter(exercise => new Date(exercise.date) - new Date(this.state.date) > 0)
   }
 
   handleClickOnExercise = (exercise) => {
-      console.log('clicked on ', exercise)
+    console.log('clicked on ', exercise)
   }
   handleClickOnWorkout = (workout) => {
       console.log('clicked on ', workout)
@@ -176,6 +192,7 @@ class Search extends Component {
             value={this.state.date}
             onChange={this.handleChange}/>
         </form>
+        <button onClick={this.clickedSearchAgain}> Start Fresh </button>
         <hr />
         {resultsToRender}
       </div>
