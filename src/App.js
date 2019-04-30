@@ -54,7 +54,7 @@ class App extends Component {
 
   // createNewImportedExercise = (data) => {
   //   const body ={
-  //       "imported_id": data.id,
+  //       "imported_exercise_id": data.id,
   //       "description": data.description,
   //       "name": data.name,
   //       "category": data.category,

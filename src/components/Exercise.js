@@ -46,7 +46,7 @@ class Exercise extends Component {
     const body ={
       user_id: localStorage.getItem("user_id"),
       name: this.state.exercise,
-      imported_id: findExerciseId(this.state.exercise),
+      imported_exercise_id: findExerciseId(this.state.exercise),
       date, weight, reps, sets, notes
     }
 

@@ -104,7 +104,7 @@ class WorkoutShow extends Component {
 
     const body={
       user_id: localStorage.getItem("user_id"),
-      weight, reps, sets, notes, date:this.state.date, imported_id: exercise.imported_id, name: exercise.name
+      weight, reps, sets, notes, date:this.state.date, imported_exercise_id: exercise.imported_exercise_id, name: exercise.name
     }
     postNewExercise(body)
       .then(exercise => {
@@ -156,7 +156,7 @@ class WorkoutShow extends Component {
     const body ={
       user_id: localStorage.getItem("user_id"),
       name: this.state.exercise,
-      imported_id: findExerciseId(this.state.exercise),
+      imported_exercise_id: findExerciseId(this.state.exercise),
       date, weight, reps, sets, notes
     }
     postNewExercise(body)

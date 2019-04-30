@@ -25,7 +25,7 @@ class RepCalculator extends Component {
 
   fetchExercise = () => {
     const exerciseId = findExerciseId(this.state.exercise)
-    const body = {imported_id: exerciseId}
+    const body = {imported_exercise_id: exerciseId}
 
     findExerciseById(body)
     .then(exercise => {
