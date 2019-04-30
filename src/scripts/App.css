@@ -153,6 +153,23 @@ a:link {
   color: lightGrey;
 }
 
+/* Card */
+
+.card{
+  width: 300px;
+  border: 1px solid white;
+}
+.card-description{
+  height: 100px;
+  padding: 10px;
+  overflow: scroll;
+  color: black;
+  background-color: white;
+}
+
+
+/*  */
+
 
 @keyframes App-logo-spin {
   from {

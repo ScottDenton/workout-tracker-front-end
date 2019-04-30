@@ -115,3 +115,14 @@ export const findWorkoutsExercises = (body) => {
   })
   .then(resp => resp.json())
 }
+
+export const getDescription = (body) => {
+  return fetch("http://localhost:3000/api/v1/exercise/getDescription",{
+    method: "POST",
+    headers: {
+      "accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(body)
+  }).then(resp => resp.json())
+}

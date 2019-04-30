@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import {findUsersWorkouts} from '../helpers/helpers'
 import {findUsersExercises} from '../helpers/helpers'
 import {SearchForm} from '../helpers/forms'
+import ExerciseCard from './ExerciseCard'
 
 class Search extends Component {
   constructor(props){
@@ -139,7 +140,7 @@ class Search extends Component {
               <li
                 className="search_list"
                 key={exercise.id}>
-                {exercise.name}
+                <ExerciseCard exercise={exercise} />
               </li>
             </Link>
           )
