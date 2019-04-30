@@ -15,7 +15,7 @@ class WorkoutShow extends Component {
       workout: '',
       exercises: '',
       newWorkout: '',
-      newExercises: [],
+      newExercises: '',
       date: '',
       weight: '',
       reps: '',
@@ -84,7 +84,6 @@ class WorkoutShow extends Component {
       name: this.state.workout.name,
       date: this.state.date
     }
-    console.log('hitting save exercise')
     this.state.newWorkout === '' ?
     postNewWorkout(body)
     .then(newWorkout => {
@@ -124,7 +123,6 @@ class WorkoutShow extends Component {
        workout_id: this.state.newWorkout.id,
        exercise_id: exercise.id
      }
-     console.log('hitting aadd exercise to workout')
      postNewWorkoutExercise(body)
    }
 
@@ -159,7 +157,6 @@ class WorkoutShow extends Component {
 
   addExercise = (e) => {
     e.preventDefault();
-    console.log('inside add exercise')
     const {date, weight, reps, sets, notes} = this.state
     const body ={
       user_id: localStorage.getItem("user_id"),
@@ -198,10 +195,10 @@ class WorkoutShow extends Component {
   }
 
   displayExercises = () => {
-    return <div>
+    return this.state.newExercises !== '' ? <div>
       <h3> Completed Exercises </h3>
       {this.state.newExercises.map(exercise => (<li key={exercise.id}> {exercise.name}</li>))}
-      </div>
+    </div> : <div></div>
   }
 
   render () {

@@ -7,14 +7,12 @@ class Navbar extends Component {
   signedOut = () => {
     return (
       <div className="float_right">
-        <Link to={"/"}>
-          <a className="left_nav_item nav_item">Home</a>
+        <Link to={"/"} className='left_nav_item nav_item'>
+          Home
         </Link>
-        <Link to={"/signup"}>
-          <a className="left_nav_item nav_item">SignUp</a>
+        <Link to={"/signup"}className="left_nav_item nav_item">SignUp
         </Link>
-        <Link to={"/"}>
-          <a className=" nav_item">About</a>
+        <Link to={"/"}className=" nav_item">About
         </Link>
       </div>
     )
@@ -23,15 +21,18 @@ class Navbar extends Component {
   signedIn = () => {
     return (
       <div className="float_right">
-        <Link to={"/"}>
-          <a className="left_nav_item nav_item">Home</a>
-        </Link>
-        <Link to={"/"}>
-          <a className="left_nav_item nav_item">My Account</a>
-        </Link>
-        <Link to={"/"} onClick={this.props.signOut}>
-          <a className="nav_item">Logout</a>
-        </Link>
+        <div className='left_nav_item'>
+          <Link to={"/"} className="nav_item">Home
+          </Link>
+        </div>
+        <div className='left_nav_item'>
+          <Link to={"/"}className=" nav_item">My Account
+          </Link>
+        </div>
+        <div className='left_nav_item'>
+          <Link to={"/"} onClick={this.props.signOut} className="nav_item">Logout
+          </Link>
+        </div>
       </div>
     )
   }
@@ -47,8 +48,8 @@ class Navbar extends Component {
   }
   render () {
     return(
-      <div className="navbar_container">
-      {this.navToRender()}
+      <div>
+        {this.navToRender()}
       </div>
     )
   }

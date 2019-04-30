@@ -43,7 +43,17 @@ whichButtonsToRender = () => {
       <div className="container">
         <div className="home_container">
           <h1> Workout Tracker </h1>
-          <p> Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod  maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.
+          <p>
+            Login below or signup for a new account to start tracking your workouts.
+          </p>
+          <p>
+          Once logged in you can create a new workout and select from a collection of 200 different exercises to add to your workout.
+          </p>
+          <p>
+            When you complete an exervise for the first time you will be shown suggested weights and reps to help you continue your progression in your next workout.
+          </p>
+          <p>
+            If you dont want to log a full workout, you can just log a one off exercise and it will still be saved for your next workout.
           </p>
           <hr />
           {this.whichButtonsToRender()}

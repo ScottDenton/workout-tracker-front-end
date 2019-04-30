@@ -33,6 +33,7 @@ class ExerciseShow extends Component {
   render () {
     return(<div>
       {this.renderRepCalculator()}
+      <button onClick={() => this.props.history.goBack()}> Back To Search</button>
       </div>
     )
   }
