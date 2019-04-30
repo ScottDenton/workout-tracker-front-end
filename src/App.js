@@ -9,8 +9,6 @@ import Workout from './components/Workout';
 import Exercise from './components/Exercise';
 import WorkoutShow from './components/WorkoutShow';
 import ExerciseShow from './components/ExerciseShow';
-import AutoComplete from './components/AutoComplete';
-import AutoCompleteItems from './helpers/AutoCompleteItems';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 class App extends Component {

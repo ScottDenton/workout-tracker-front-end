@@ -3,6 +3,8 @@ import AutoComplete from './AutoComplete'
 import RepCalculator from './RepCalculator'
 import AutoCompleteItems from '../helpers/AutoCompleteItems';
 import {findExerciseId} from '../helpers/exerciseIdFinder'
+import {setDate} from '../helpers/helpers.js'
+
 
 class Workout extends Component {
   constructor(props){
@@ -23,18 +25,7 @@ class Workout extends Component {
   }
 
   componentDidMount(){
-    this.setDate();
-  }
-
-  setDate = () => {
-    const today = new Date();
-    const year = today.getFullYear()
-    const month = (today.getMonth() + 1) < 10 ?
-      `0${today.getMonth() + 1}` :  today.getMonth() +1
-    const day = today.getDate() < 10 ?
-      `0${today.getDate()}` : today.getDate()
-    const date = `${year}-${month}-${day}`
-
+    const date = setDate()
     this.setState({date})
   }
 
