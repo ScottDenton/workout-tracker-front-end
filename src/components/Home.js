@@ -14,20 +14,20 @@ renderLoginForm = () => {
   return this.state.showLogin ?
     <Login setLoggedInUser={this.props.setLoggedInUser} /> :
     <div>
-      <button onClick={() => this.setState({showLogin: true})}> Login </button>
+      <button className=" small button blue" onClick={() => this.setState({showLogin: true})}> Login </button>
     </div>
 }
 
 renderUserOptionsButtons = () => {
   return <div>
     <Link to={"/search"}>
-      <button>Search</button>
+      <button className="small button blue">Search</button>
     </Link>
     <Link to={"/workout"}>
-      <button>Log New Workout</button>
+      <button className="small button blue">Log New Workout</button>
     </Link>
     <Link to={"/exercise"}>
-      <button>Log New Exercise</button>
+      <button className="small button blue">Log New Exercise</button>
     </Link>
   </div>
 }
@@ -41,7 +41,7 @@ whichButtonsToRender = () => {
   render () {
     return(
       <div className="container">
-        <div className="home_container">
+        <div className="child_container">
           <h1> Workout Tracker </h1>
           <p>
             Login below or signup for a new account to start tracking your workouts.

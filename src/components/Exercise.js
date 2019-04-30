@@ -48,8 +48,6 @@ class Exercise extends Component {
       imported_exercise_id: findExerciseId(this.state.exercise),
       date, weight, reps, sets, notes
     }
-    console.log(body)
-    alert('made it to the save')
     postNewExercise(body)
     .then(retrievedExercise => {
       this.setState({retrievedExercise})
@@ -59,7 +57,7 @@ class Exercise extends Component {
 
   renderNewExerciseForm = () => {
     return (<div>
-      <h4> Add new Exercise </h4>
+      <h2 className="center"> Save a New Exercise </h2>
       <NewExerciseForm
         onSubmit={this.addExercise}
         onChange={this.handleChange}
@@ -71,16 +69,23 @@ class Exercise extends Component {
 
   renderRepCalculator = () => {
      if(this.state.exercise !== '') {
-      return <RepCalculator
+      return <div className='container'>
+      <RepCalculator
       exercise={this.state.exercise}
       retrievedExercise={this.state.retrievedExercise} />
+    </div>
+  } else {
+    return <div className="centered_text">
+      <span>Select an exercise you've done before to see a suggested rep/weight scheme
+      </span>
+    </div>
     }
   }
 
 
   render () {
     return(
-      <div>
+      <div className="container grid">
         {this.renderNewExerciseForm()}
         {this.renderRepCalculator()}
       </div>

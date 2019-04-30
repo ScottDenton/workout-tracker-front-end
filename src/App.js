@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './scripts/App.css';
 import './scripts/AutoComplete.css';
+import './scripts/button.css';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
 import Signup from './components/Signup';

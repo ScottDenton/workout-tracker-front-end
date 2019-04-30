@@ -7,13 +7,19 @@ class Navbar extends Component {
   signedOut = () => {
     return (
       <div className="float_right">
-        <Link to={"/"} className='left_nav_item nav_item'>
-          Home
-        </Link>
-        <Link to={"/signup"}className="left_nav_item nav_item">SignUp
-        </Link>
+        <div className='left_nav_item'>
+          <Link to={"/"} className=' nav_item'>
+            Home
+          </Link>
+        </div>
+        <div className='left_nav_item'>
+          <Link to={"/signup"}className=" nav_item">SignUp
+          </Link>
+        </div>
+        <div className='left_nav_item'>
         <Link to={"/"}className=" nav_item">About
-        </Link>
+          </Link>
+          </div>
       </div>
     )
   }

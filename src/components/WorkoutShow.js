@@ -7,6 +7,7 @@ import {postNewExercise} from '../helpers/helpers.js'
 import {postNewWorkout} from '../helpers/helpers.js'
 import {postNewWorkoutExercise} from '../helpers/helpers.js'
 import {findWorkoutsExercises} from '../helpers/helpers.js'
+import { Link } from "react-router-dom";
 
 class WorkoutShow extends Component {
   constructor(props){
@@ -70,9 +71,12 @@ class WorkoutShow extends Component {
   listExercise = (exercise) => {
     return (
       <div className="exercise_container">
-        <div className="exercise_name"> {exercise.name} - {exercise.weight}kgs x {exercise.reps} reps(s)</div>
+        <div className="exercise_name">
+          {exercise.name} - {exercise.weight}kgs x {exercise.reps} reps</div>
 
-          {exercise.showForm === true ? this.renderNewExerciseForm(exercise) : <button onClick={() => this.updateShowForm(exercise)}> Add to workout </button> }
+          {exercise.showForm === true ? this.renderNewExerciseForm(exercise) : <button
+            className="button small blue"
+            onClick={() => this.updateShowForm(exercise)}> Add to new workout </button> }
       </div>
     )
   }
@@ -106,7 +110,6 @@ class WorkoutShow extends Component {
       user_id: localStorage.getItem("user_id"),
       weight, reps, sets, notes, date:this.state.date, imported_exercise_id: exercise.imported_exercise_id, name: exercise.name
     }
-    console.log('hitting save exercise to workout')
     postNewExercise(body)
       .then(newExercise => {
         console.log('inside post new exercise')
@@ -177,7 +180,8 @@ class WorkoutShow extends Component {
     return (
     <div>
       <h4> Add a new Exercise </h4>
-      <form onSubmit={this.addExercise}>
+      <form className='form_inline'
+        onSubmit={this.addExercise}>
         <label> Exercise </label>
         <AutoComplete suggestions={AutoCompleteItems} retrieveUserInput={this.retrieveUserInput} />
         <label> Weight </label>
@@ -208,12 +212,18 @@ class WorkoutShow extends Component {
       this.renderExercises() :
       <p> It doesnt look like you recorded any exercises for this workout</p>
     return(
-      <div>
-        <h2>{name} - <span className='small'>{date} </span> </h2>
-
-        {exercisesToRender}
+      <div className='container'>
+        <h2>Name: {name} </h2>
+        <h3>Date: {date}</h3>
+        <div>
+          <h3> Completed Exercises For This Workout</h3>
+          {exercisesToRender}
+        </div>
         {this.renderNewExercise()}
         {this.displayExercises()}
+        <Link to={"/"}>
+          <button className="small button red">End Workout</button>
+          </Link>
       </div>
     )
 

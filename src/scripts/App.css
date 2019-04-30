@@ -4,23 +4,23 @@ body {
 }
 
 .container {
-padding: 10% 20%;
-width: 50%;
+padding: 5% 25%;
+width: 60%;
 
 }
 
-.home_container {
+.child_container {
   margin: auto;
   text-align: center;
   width: 100%;
   color: lightGrey;
 }
 
-.signup_container {
-  margin: auto;
-  text-align: center;
-  width: 100%;
-  color: lightGrey;
+.grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  vertical-align: middle;
 }
 
 .form{
@@ -34,10 +34,36 @@ width: 50%;
   text-align: left;
 }
 
-.form_item input{
+.form_item input, textarea, select{
+float: right;
+margin-right: 20%;
 margin-left: 20px;
-padding: 2px 10px;
+padding: 0px 10px;
+width: 150px;
 text-align: center;
+}
+
+.form_inline{
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.form-inline label {
+  margin: 5px 10px 5px 0;
+}
+
+.form-inline input {
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+}
+
+.search_form{
+  padding:20px;
+}
+
+.search_form > div {
+  display: inline-block;
 }
 
 .btn {
@@ -58,6 +84,7 @@ transition: 0.4s;
   float: right;
 }
 
+
 .float_right > div {
   display: inline-block;
 }
@@ -73,14 +100,47 @@ transition: 0.4s;
   text-align: center;
 }
 
+
+.exercise_name {
+  margin: 20px 10px;
+  padding-bottom: 0px;
+}
+
+.workout_show{
+  display: inline-block;
+}
+
 .search_list {
   color: white;
   list-style: none;
 }
 
-.small {
-  font-size: 0.9rem;
+
+.center {
+  text-align: center;
 }
+
+.centered_text {
+  text-align: center;
+  padding: 40% 0;
+}
+
+
+ /* workout show  */
+.show_right{
+  float: right;
+  width: 50%;
+}
+
+.show_left {
+  float: left;
+  width: 50%;
+}
+
+.show_bottom {
+  width: 100%;
+}
+/*  */
 
 a:link {
   color: white;
@@ -93,13 +153,6 @@ a:link {
   color: lightGrey;
 }
 
-.exercise_container{
-  margin: 40px;
-}
-.exercise_name {
-  margin: 0px 10px;
-  padding-bottom: 10px;
-}
 
 @keyframes App-logo-spin {
   from {

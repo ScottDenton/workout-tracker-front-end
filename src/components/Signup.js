@@ -53,7 +53,7 @@ handleSubmit = (e) => {
 
     return (
       <div className='container'>
-        <div className="signup_container">
+        <div className="child_container">
           <p className="signup_disclaimer">
             DISCLAIMER: Everything within is to be considered advice only. You should seek medical advice before starting any new exercise routine. Dont blame me if you go to heavy and squish yourself...
           </p>

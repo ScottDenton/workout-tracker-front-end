@@ -3,10 +3,12 @@ import AutoComplete from './AutoComplete'
 import RepCalculator from './RepCalculator'
 import AutoCompleteItems from '../helpers/AutoCompleteItems';
 import {findExerciseId} from '../helpers/exerciseIdFinder'
-import {setDate} from '../helpers/helpers.js'
-import {postNewExercise} from '../helpers/helpers.js'
-import {postNewWorkoutExercise} from '../helpers/helpers.js'
-import {postNewWorkout} from '../helpers/helpers.js'
+import {setDate} from '../helpers/helpers'
+import {postNewExercise} from '../helpers/helpers'
+import {postNewWorkoutExercise} from '../helpers/helpers'
+import {postNewWorkout} from '../helpers/helpers'
+import { Link } from "react-router-dom";
+
 
 
 class Workout extends Component {
@@ -94,10 +96,16 @@ class Workout extends Component {
 
   renderNewWorkoutForm = () => {
     return (
-    <form onSubmit={this.createWorkout}>
-      <label htmlFor="name"> Name this workout </label>
-      <input type="text" name="name" placeholder="Give this workout a name to find it easier later" onChange={this.handleChange}/>
-      <input type="submit" value="Start Working" />
+    <form className='form'
+      onSubmit={this.createWorkout}>
+      <div className='form_item'>
+        <label htmlFor="name"> Name this workout </label>
+        <input type="text" name="name"
+          placeholder="Workout Name" onChange={this.handleChange}/>
+      </div>
+      <div className='form_item'>
+        <input className='button small blue' type="submit" value="Start Working" />
+      </div>
     </form>
     )
   }
@@ -121,7 +129,7 @@ class Workout extends Component {
         <label> Notes </label>
         <textarea type='text'
           placeholder="Enter Notes" name="notes" onChange={this.handleChange}/>
-        <input type='submit' value='Save' />
+        <input className=" button small blue" type='submit' value='Save' />
       </form>
     </div>
     )
@@ -151,12 +159,14 @@ class Workout extends Component {
 
   render () {
     return(
-      <div>
-        <h1>{this.state.workoutName} </h1>
+      <div className='container'>
+        <h1 className='center'>{this.state.workoutName} </h1>
         {this.itemsToRender()}
         {this.renderRepCalculator()}
         {this.displayExercises()}
-        <button> Finish Workout </button>
+        <Link to={"/"}>
+          <button className="small button red">End Workout</button>
+        </Link>
       </div>
 
 

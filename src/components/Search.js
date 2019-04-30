@@ -161,13 +161,14 @@ class Search extends Component {
     this.renderWorkoutList() : this.renderExerciseList()
 
     return(
-      <div>
+      <div className="container">
+        <h1 className='center'> Search</h1>
         <SearchForm
           handleCriteriaChange={this.handleCriteriaChange}
           nameSearch={nameSearch}
           date={this.state.date}
           handleChange={this.handleChange}/>
-        <button
+        <button className="button small green"
           onClick={this.clickedSearchAgain}> Start Fresh
         </button>
         <hr />
