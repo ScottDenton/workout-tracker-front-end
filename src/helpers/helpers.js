@@ -30,7 +30,7 @@ export const postNewExercise = (body) => {
     },
     body: JSON.stringify(body)
   })
-    .then(resp=> resp.json())
+    .then(resp => resp.json())
 }
 
 export const postNewWorkoutExercise = (body) => {

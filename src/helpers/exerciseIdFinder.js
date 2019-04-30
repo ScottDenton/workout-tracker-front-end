@@ -1,7 +1,6 @@
 const findExerciseId = (exerciseName) => {
   return allExercisesWithIds[exerciseName]
 }
-
 export {findExerciseId}
 
 const allExercisesWithIds = {

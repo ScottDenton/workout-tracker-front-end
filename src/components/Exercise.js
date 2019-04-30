@@ -36,7 +36,6 @@ class Exercise extends Component {
 // retrieves the selected workout name/id from autocomplete component, saves it to state then completes fetch only when that is done.
   addExercise = (e) => {
     e.preventDefault();
-    alert('made it to the save')
     const exercise = document.querySelector("[name=exercise]").value
     this.setState({exercise}, this.saveExercise(e))
   }
@@ -49,7 +48,8 @@ class Exercise extends Component {
       imported_exercise_id: findExerciseId(this.state.exercise),
       date, weight, reps, sets, notes
     }
-
+    console.log(body)
+    alert('made it to the save')
     postNewExercise(body)
     .then(retrievedExercise => {
       this.setState({retrievedExercise})

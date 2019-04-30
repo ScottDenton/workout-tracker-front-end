@@ -15,6 +15,7 @@ class WorkoutShow extends Component {
       workout: '',
       exercises: '',
       newWorkout: '',
+      newExercises: [],
       date: '',
       weight: '',
       reps: '',
@@ -83,7 +84,7 @@ class WorkoutShow extends Component {
       name: this.state.workout.name,
       date: this.state.date
     }
-
+    console.log('hitting save exercise')
     this.state.newWorkout === '' ?
     postNewWorkout(body)
     .then(newWorkout => {
@@ -106,9 +107,15 @@ class WorkoutShow extends Component {
       user_id: localStorage.getItem("user_id"),
       weight, reps, sets, notes, date:this.state.date, imported_exercise_id: exercise.imported_exercise_id, name: exercise.name
     }
+    console.log('hitting save exercise to workout')
     postNewExercise(body)
-      .then(exercise => {
-        this.addExerciseToWorkout(exercise)
+      .then(newExercise => {
+        console.log('inside post new exercise')
+        this.addExerciseToWorkout(newExercise)
+        this.setState({
+          newExercises: [...this.state.newExercises, newExercise],
+          retrievedExercise: newExercise
+        })
       })
    }
 
@@ -117,8 +124,8 @@ class WorkoutShow extends Component {
        workout_id: this.state.newWorkout.id,
        exercise_id: exercise.id
      }
+     console.log('hitting aadd exercise to workout')
      postNewWorkoutExercise(body)
-       .then(console.log)
    }
 
   renderNewExerciseForm = (exercise) => {
@@ -152,6 +159,7 @@ class WorkoutShow extends Component {
 
   addExercise = (e) => {
     e.preventDefault();
+    console.log('inside add exercise')
     const {date, weight, reps, sets, notes} = this.state
     const body ={
       user_id: localStorage.getItem("user_id"),
@@ -160,8 +168,11 @@ class WorkoutShow extends Component {
       date, weight, reps, sets, notes
     }
     postNewExercise(body)
-    .then(exercise => {
-      this.addExerciseToWorkout(exercise)
+    .then(newExercise => {
+      this.addExerciseToWorkout(newExercise)
+      this.setState({
+        newExercises: [...this.state.newExercises, newExercise]
+      })
     })
   }
 
@@ -186,6 +197,13 @@ class WorkoutShow extends Component {
     )
   }
 
+  displayExercises = () => {
+    return <div>
+      <h3> Completed Exercises </h3>
+      {this.state.newExercises.map(exercise => (<li key={exercise.id}> {exercise.name}</li>))}
+      </div>
+  }
+
   render () {
     const {name, date} = this.state.workout
 
@@ -198,6 +216,7 @@ class WorkoutShow extends Component {
 
         {exercisesToRender}
         {this.renderNewExercise()}
+        {this.displayExercises()}
       </div>
     )
 
