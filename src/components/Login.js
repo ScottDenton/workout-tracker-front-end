@@ -1,4 +1,6 @@
 import React from 'react'
+import {createSession} from '../helpers/helpers'
+import {LoginForm} from '../helpers/forms'
 
 class Login extends React.Component {
   constructor(props){
@@ -17,14 +19,7 @@ class Login extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    fetch('http://localhost:3000/api/v1/sessions/create', {
-      method: "POST",
-      headers: {
-        "accept": "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(this.state)
-    }).then(resp => resp.json())
+    createSession(this.state)
     .then(user => {
       if(user.status === 500 || user.errors){
         alert('Invalid credentials')
@@ -34,21 +29,19 @@ class Login extends React.Component {
         alert(`Welcome back ${user.username}`)
       }
     })
-
   }
 
   loginForm = () => {
-    return <div>
-      <form onSubmit={this.handleSubmit}>
-      <input type='text' name='username' value={this.state.username}
-      placeholder="Username" onChange={this.handleChange}
-      />
-      <input type='password' name='password' value={this.state.password}
-      placeholder="Password" onChange={this.handleChange} />
-      <input type="submit" value="Login" />
-
-      </form>
-    </div>
+    return (
+      <div>
+        <LoginForm
+          handleSubmit={this.handleSubmit}
+          handleChange={this.handleChange}
+          username={this.state.username}
+          password={this.state.password}
+          />
+      </div>
+    )
   }
   render () {
     return(
@@ -56,7 +49,6 @@ class Login extends React.Component {
         {this.loginForm()}
       </div>
     )
-
   }
 }
 

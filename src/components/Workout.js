@@ -4,6 +4,9 @@ import RepCalculator from './RepCalculator'
 import AutoCompleteItems from '../helpers/AutoCompleteItems';
 import {findExerciseId} from '../helpers/exerciseIdFinder'
 import {setDate} from '../helpers/helpers.js'
+import {postNewExercise} from '../helpers/helpers.js'
+import {postNewWorkoutExercise} from '../helpers/helpers.js'
+import {postNewWorkout} from '../helpers/helpers.js'
 
 
 class Workout extends Component {
@@ -46,14 +49,7 @@ class Workout extends Component {
       name: this.state.name,
       date: this.state.date
     }
-    fetch("http://localhost:3000/api/v1/workouts", {
-    method: "POST",
-    headers: {
-      "accept": "application/json",
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(body)})
-    .then(resp => resp.json())
+    postNewWorkout(body)
     .then(workout => {
       this.setState({
         workoutId: workout.id,
@@ -65,9 +61,8 @@ class Workout extends Component {
   addExercise = (e) => {
     e.preventDefault();
     const exercise = document.querySelector("[name=exercise]").value
-    this.setState({
-      exercise
-    }, this.saveExerciseToWorkout(e))
+    this.setState({exercise},
+    this.saveExerciseToWorkout(e))
   }
 
   saveExerciseToWorkout = (e) => {
@@ -78,14 +73,7 @@ class Workout extends Component {
       imported_id: findExerciseId(this.state.exercise),
       date, weight, reps, sets, notes
     }
-    fetch("http://localhost:3000/api/v1/exercise", {
-      method: "POST",
-      headers: {
-        "accept": "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(body)})
-      .then( resp => resp.json())
+    postNewExercise(body)
       .then(newExercise => {
         this.setState({
           exercises: [...this.state.exercises, newExercise],
@@ -97,17 +85,11 @@ class Workout extends Component {
   }
 
   createNewWorkoutExercise = (id) => {
-    fetch("http://localhost:3000/api/v1/workout_exercises", {
-      method: "POST",
-      headers: {
-        "accept": "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        workout_id: this.state.workoutId,
-        exercise_id: id
-      })
-    }).then(resp => resp.json())
+    const body = {
+      workout_id: this.state.workoutId,
+      exercise_id: id
+    }
+    postNewWorkoutExercise(body)
   }
 
   renderNewWorkoutForm = () => {
@@ -125,15 +107,20 @@ class Workout extends Component {
       <h4> Add new Exercise </h4>
       <form onSubmit={this.addExercise}>
         <label> Exercise </label>
-        <AutoComplete suggestions={AutoCompleteItems} retrieveUserInput={this.retrieveUserInput} />
+        <AutoComplete
+          suggestions={AutoCompleteItems} retrieveUserInput={this.retrieveUserInput} />
         <label> Weight </label>
-        <input type='number' placeholder="Weight" name="weight"  onChange={this.handleChange}/>
+        <input type='number'
+          placeholder="Weight" name="weight"  onChange={this.handleChange}/>
         <label> Reps </label>
-        <input type='number' placeholder="Reps" name="reps" onChange={this.handleChange}/>
+        <input type='number'
+          placeholder="Reps" name="reps" onChange={this.handleChange}/>
         <label> Sets </label>
-        <input type='number' placeholder="Sets" name="sets" onChange={this.handleChange}/>
+        <input type='number'
+          placeholder="Sets" name="sets" onChange={this.handleChange}/>
         <label> Notes </label>
-        <textarea type='text' placeholder="Enter Notes" name="notes" onChange={this.handleChange}/>
+        <textarea type='text'
+          placeholder="Enter Notes" name="notes" onChange={this.handleChange}/>
         <input type='submit' value='Save' />
       </form>
     </div>
@@ -157,7 +144,8 @@ class Workout extends Component {
      if(this.state.retrievedExercise !== '') {
       return <RepCalculator
       exercise={this.state.exercise}
-      retrievedExercise={this.state.retrievedExercise}date={this.state.date} />
+      retrievedExercise={this.state.retrievedExercise}
+      date={this.state.date} />
     }
   }
 

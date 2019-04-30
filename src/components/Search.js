@@ -1,5 +1,8 @@
 import React, {Component} from 'react'
 import { Link } from "react-router-dom";
+import {findUsersWorkouts} from '../helpers/helpers'
+import {findUsersExercises} from '../helpers/helpers'
+import {SearchForm} from '../helpers/forms'
 
 class Search extends Component {
   constructor(props){
@@ -44,30 +47,16 @@ class Search extends Component {
 
 // fetch all of a users workouts
   fetchWorkouts = () => {
-    fetch("http://localhost:3000/api/v1/all_exercises/userWorkouts", {
-      method: "POST",
-      headers: {
-        "accept": "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({user_id: this.props.currentUser.id})
-    })
-    .then(resp => resp.json())
+    const body = {user_id: this.props.currentUser.id}
+    findUsersWorkouts(body)
     .then(workouts => {
       this.setState({workouts})
     })
   }
   //fetch of all of users exercises
   fetchExercises = () => {
-    fetch("http://localhost:3000/api/v1/all_exercises/userExercises", {
-      method: "POST",
-      headers: {
-        "accept": "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({user_id: this.props.currentUser.id})
-    })
-    .then(resp => resp.json())
+    const body = {user_id: this.props.currentUser.id}
+    findUsersExercises(body)
     .then(exercises => {
       this.setState({exercises})
     })
@@ -78,10 +67,10 @@ class Search extends Component {
     return (
     <div>
       <label> Find By Name: </label>
-        <input type='text' name='filteredWorkout'
-          value={this.state.filteredWorkout}
-          onChange={this.handleChange}
-          placeholder="Search By Workout Name"/>
+      <input type='text' name='filteredWorkout'
+        value={this.state.filteredWorkout}
+        onChange={this.handleChange}
+        placeholder="Search By Workout Name"/>
     </div>
     )
   }
@@ -90,18 +79,14 @@ class Search extends Component {
     return (
       <div>
         <label> Find By Exercise: </label>
-          <input type='text' name='filteredExercise'
-            value={this.state.filteredExercise}
-            onChange={this.handleChange}
-            placeholder="Exercise Name"/>
+        <input type='text' name='filteredExercise'
+          value={this.state.filteredExercise}
+          onChange={this.handleChange}
+          placeholder="Exercise Name"/>
       </div>
     )
   }
 
-//takes users choice from autocomplete field and saves it
-  // retrieveUserInput = (filteredExercise) => {
-  //   this.setState({filteredExercise})
-  // }
 
   renderWorkoutList = () => {
     const filteredWorkouts = this.state.filteredWorkout === '' ?
@@ -118,13 +103,12 @@ class Search extends Component {
         {this.filterByDate(filteredWorkouts).map(workout => {
           return(
             <Link to={{
-                pathname: `/workout/${workout.id}`,
-                state: {workout}
-              }}>
+              pathname: `/workout/${workout.id}`,
+              state: {workout}
+            }}>
               <li
                 className ="search_list"
-                key={workout.id}
-                onClick={() => {this.handleClickOnWorkout(workout)}}>
+                key={workout.id}>
                 {workout.name}
               </li>
             </Link>
@@ -144,7 +128,6 @@ class Search extends Component {
     return this.state.exercises ?
       <div>
         <h1> My Completed Exercises</h1>
-
         <h5> Click on an exercise for more details</h5>
         <ul>
         {this.filterByDate(filteredExercises).map(exercise => {
@@ -155,8 +138,7 @@ class Search extends Component {
               }}>
               <li
                 className="search_list"
-                key={exercise.id}
-                onClick={() => {this.handleClickOnExercise(exercise)}}>
+                key={exercise.id}>
                 {exercise.name}
               </li>
             </Link>
@@ -171,13 +153,6 @@ class Search extends Component {
   return  this.state.date === '' ? array : array.filter(exercise => new Date(exercise.date) - new Date(this.state.date) > 0)
   }
 
-  handleClickOnExercise = (exercise) => {
-    console.log('clicked on ', exercise)
-  }
-  handleClickOnWorkout = (workout) => {
-      console.log('clicked on ', workout)
-  }
-
   render () {
     const nameSearch = this.state.searchSelection === 'workout' ?
     this.workoutNameSearch() : this.exerciseNameSearch()
@@ -187,19 +162,14 @@ class Search extends Component {
 
     return(
       <div>
-        <form>
-          <label> Search by: </label>
-          <select onChange={this.handleCriteriaChange}>
-            <option value='workout'> Workout </option>
-            <option value = 'exercise'> Execise </option>
-          </select>
-          {nameSearch}
-          <label> Date From: </label>
-          <input type='date' name='date'
-            value={this.state.date}
-            onChange={this.handleChange}/>
-        </form>
-        <button onClick={this.clickedSearchAgain}> Start Fresh </button>
+        <SearchForm
+          handleCriteriaChange={this.handleCriteriaChange}
+          nameSearch={nameSearch}
+          date={this.state.date}
+          handleChange={this.handleChange}/>
+        <button
+          onClick={this.clickedSearchAgain}> Start Fresh
+        </button>
         <hr />
         {resultsToRender}
       </div>

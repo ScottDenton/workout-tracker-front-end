@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {findExerciseId} from '../helpers/exerciseIdFinder'
+import {findExerciseById} from '../helpers/helpers.js'
 
 class RepCalculator extends Component {
   // rep calculator taken from https://strengthlevel.com/one-rep-max-calculator
@@ -17,29 +18,19 @@ class RepCalculator extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // checking if props have changed is no longer needed as it stops re rendering the calculator when someone saves a new exercise
-      this.setState({
-        exercise: nextProps.exercise
-      }, this.fetchExercise);
-
+    this.setState({
+      exercise: nextProps.exercise
+    }, this.fetchExercise);
   }
 
   fetchExercise = () => {
     const exerciseId = findExerciseId(this.state.exercise)
     const body = {imported_id: exerciseId}
 
-    fetch("http://localhost:3000/api/v1/all_exercises/find", {
-      method: "POST",
-      headers: {
-      "accept": "application/json",
-      "Content-Type": "application/json"
-      },
-      body: JSON.stringify(body)
-    }).then(resp => resp.json())
+    findExerciseById(body)
     .then(exercise => {
       if(exercise.status === 500) {
-        this.setState({
-        retrievedExercise: ''})
+        this.setState({ retrievedExercise: ''})
       } else {
         this.setState({
           retrievedExercise: exercise
@@ -48,15 +39,15 @@ class RepCalculator extends Component {
     })
  }
 
-calculateOneRepMax =() => {
-  //Using Bryzcki formula for calculation
-  // formula = weight * (36 / 37-reps)
+  calculateOneRepMax =() => {
+    // Bryzcki formula for calculation
+    // formula = weight * (36 / 37-reps)
     const{weight, reps} = this.state.retrievedExercise
     const oneRepMax = weight * (36/ (37-reps))
     this.setState({oneRepMax})
-}
- renderTable = () => {
-   const repCalculation= this.state.oneRepMax
+  }
+  renderTable = () => {
+    const repCalculation= this.state.oneRepMax
    const weightUnits = "kgs"
    const oneRepCalc= `${Math.floor(repCalculation)}  ${weightUnits}`
    const twoRepCalc= `${Math.floor(repCalculation *.97)}  ${weightUnits}`
@@ -71,8 +62,7 @@ calculateOneRepMax =() => {
 
    const dateToShow = this.props.date ? this.props.date : this.props.retrievedExercise.date
 
-   return(
-     <div>
+   return<div>
      <h3> {this.state.exercise} </h3>
      <p> Based on workout from {dateToShow} </p>
        <table>
@@ -124,7 +114,6 @@ calculateOneRepMax =() => {
          </tbody>
        </table>
      </div>
-   )
  }
 
  renderNotes = () => {
@@ -139,13 +128,11 @@ calculateOneRepMax =() => {
 
   const notesToRender = this.state.retrievedExercise.nots !=='' ? this.renderNotes() : <h5> You do not make any notes last time you did this exercise </h5>
 
-    return(<div>
-      {tableToRender}
-      {notesToRender}
+    return<div>
+        {tableToRender}
+        {notesToRender}
       </div>
-    )
   }
 }
-
 
 export default RepCalculator;

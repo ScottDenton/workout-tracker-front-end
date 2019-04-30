@@ -1,4 +1,5 @@
 import React from 'react'
+import {createNewUser} from '../helpers/helpers.js'
 
 class Signup extends React.Component {
 constructor(){
@@ -21,14 +22,7 @@ handleChange = (e) => {
 
 handleSubmit = (e) => {
   e.preventDefault();
-  fetch("http://localhost:3000/api/v1/users",{
-    method: "POST",
-    headers: {
-      "accept": "application/json",
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(this.state)
-  }).then(resp => resp.json())
+  createNewUser(this.state)
   .then(user => {
     if(user.id !== null){
       this.props.setLoggedInUser(user)

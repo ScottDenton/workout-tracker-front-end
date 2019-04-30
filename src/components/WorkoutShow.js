@@ -3,6 +3,10 @@ import AutoComplete from './AutoComplete'
 import AutoCompleteItems from '../helpers/AutoCompleteItems';
 import {findExerciseId} from '../helpers/exerciseIdFinder'
 import {setDate} from '../helpers/helpers.js'
+import {postNewExercise} from '../helpers/helpers.js'
+import {postNewWorkout} from '../helpers/helpers.js'
+import {postNewWorkoutExercise} from '../helpers/helpers.js'
+import {findWorkoutsExercises} from '../helpers/helpers.js'
 
 class WorkoutShow extends Component {
   constructor(props){
@@ -35,15 +39,8 @@ class WorkoutShow extends Component {
   }
 
   fetchExercises = () => {
-    fetch("http://localhost:3000/api/v1/all_exercises/exercisesByWorkout", {
-      method: "POST",
-      headers: {
-        "accept": "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({id: this.state.workout.id})
-    })
-    .then(resp => resp.json())
+    const body = {id: this.state.workout.id}
+    findWorkoutsExercises(body)
     .then(exercises => {
       exercises.map(exercise => {
         this.setState({
@@ -88,22 +85,13 @@ class WorkoutShow extends Component {
     }
 
     this.state.newWorkout === '' ?
-    fetch("http://localhost:3000/api/v1/workouts", {
-    method: "POST",
-    headers: {
-      "accept": "application/json",
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(body)
-    })
-    .then(resp => resp.json())
+    postNewWorkout(body)
     .then(newWorkout => {
       this.setState({
         newWorkout
       })
     })
     .then(this.saveExerciseToWorkout(e, exercise))
-
     : this.saveExerciseToWorkout(e, exercise)
   }
 
@@ -118,14 +106,7 @@ class WorkoutShow extends Component {
       user_id: localStorage.getItem("user_id"),
       weight, reps, sets, notes, date:this.state.date, imported_id: exercise.imported_id, name: exercise.name
     }
-    fetch("http://localhost:3000/api/v1/exercise", {
-      method: "POST",
-      headers: {
-        "accept": "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(body)})
-      .then(resp=> resp.json())
+    postNewExercise(body)
       .then(exercise => {
         this.addExerciseToWorkout(exercise)
       })
@@ -136,21 +117,9 @@ class WorkoutShow extends Component {
        workout_id: this.state.newWorkout.id,
        exercise_id: exercise.id
      }
-     console.log('fetch body', body)
-
-     fetch("http://localhost:3000/api/v1/workout_exercises", {
-       method: "POST",
-       headers: {
-         "accept": "application/json",
-         "Content-Type": "application/json"
-       },
-       body: JSON.stringify(body)
-     })
-       .then(resp => resp.json())
+     postNewWorkoutExercise(body)
        .then(console.log)
-
    }
-
 
   renderNewExerciseForm = (exercise) => {
     return (<div>
@@ -190,17 +159,10 @@ class WorkoutShow extends Component {
       imported_id: findExerciseId(this.state.exercise),
       date, weight, reps, sets, notes
     }
-    fetch("http://localhost:3000/api/v1/exercise", {
-      method: "POST",
-      headers: {
-        "accept": "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(body)})
-      .then(resp=> resp.json())
-      .then(exercise => {
-        this.addExerciseToWorkout(exercise)
-      })
+    postNewExercise(body)
+    .then(exercise => {
+      this.addExerciseToWorkout(exercise)
+    })
   }
 
   renderNewExercise = () => {

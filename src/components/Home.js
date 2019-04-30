@@ -2,9 +2,6 @@ import React from 'react'
 import Login from './Login'
 import { Link } from "react-router-dom";
 
-
-
-
 class Home extends React.Component {
   constructor(props){
     super(props)
@@ -14,7 +11,8 @@ class Home extends React.Component {
   }
 
 renderLoginForm = () => {
-  return this.state.showLogin ? <Login setLoggedInUser={this.props.setLoggedInUser} /> :
+  return this.state.showLogin ?
+    <Login setLoggedInUser={this.props.setLoggedInUser} /> :
     <div>
       <button onClick={() => this.setState({showLogin: true})}> Login </button>
     </div>
