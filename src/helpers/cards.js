@@ -35,28 +35,35 @@ export const ExerciseCardBack = (props) => {
 }
 
 export const WorkoutCardFront = (props) => {
-  const exerciseList= props.exercises !== '' ? props.exercises.map(exercise => <p> {exercise.name}</p>) : <p>No exercises listed for this workout</p>
+  const exerciseList= props.exercises !== '' ? props.exercises.map(exercise => <h5> {exercise.name}</h5>) : <p>No exercises listed for this workout</p>
   return (
-    <div className="card" onClick={props.handleClick}>
-      <div className="card-body">
-        <h4 className="card-title">
+    <div
+      className="card"
+      onClick={props.handleClick}>
+      <div className="card-body scroll">
+        <h3 className="card-title">
           {props.workout.name}
-        </h4>
-        <h5 className="card-subtitle">
+        </h3>
+        <h4 className="card-subtitle">
           Date: {props.workout.date}
-        </h5>
-        <h5 className="card-subtitle">
+        </h4>
+        <hr />
+        <h4 className="card-subtitle">
           Exercises Completed
-        </h5>
+        </h4>
+        <div>
           {exerciseList}
-          <Link to={{
-            pathname: `/workout/${props.workout.id}`,
-            state: {workout: props.workout}
-          }}>
-        <button className="button small blue">
-          Do it again
-        </button>
-      </Link>
+        </div>
+      </div>
+      <div className="card-button">
+        <Link to={{
+          pathname: `/workout/${props.workout.id}`,
+          state: {workout: props.workout}
+        }}>
+          <button className="button small blue">
+            Do it again
+          </button>
+        </Link>
       </div>
     </div>
   )

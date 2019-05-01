@@ -66,6 +66,20 @@ text-align: center;
   display: inline-block;
 }
 
+.login_form{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.login_input {
+  margin-right: 20px;
+  padding: 2px 10px;
+  width: 150px;
+  text-align: center;
+}
+
 .btn {
 padding: 3px;
 transition: 0.4s;
@@ -76,6 +90,11 @@ transition: 0.4s;
 }
 
 /* GENERIC CLASSES  */
+
+.blue_highlight {
+  color: #269CE9;
+  font-size: 1.2em;
+}
 
 .inline {
   display: inline-block;
@@ -154,34 +173,7 @@ a:link {
   color: lightGrey;
 }
 
-/* Card */
 
-.card{
-  width: 300px;
-  border: 1px solid white;
-  text-align: center;
-  margin: 10px;
-  height: 400px
-}
-.card-description{
-  height: 100px;
-  padding: 10px;
-  overflow: scroll;
-}
-
-.card-image{
-  height: 200px;
-  width: 300px;
-  background-color: white;
-}
-
-.card-calculator {
-  height: 300px;
-  width: 300px;
-}
-
-
-/*  */
 
 
 @keyframes App-logo-spin {

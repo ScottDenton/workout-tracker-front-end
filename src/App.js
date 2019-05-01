@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './scripts/App.css';
 import './scripts/AutoComplete.css';
+import './scripts/Card.css';
 import './scripts/button.css';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
@@ -151,9 +152,13 @@ class App extends Component {
               exact
               path='/workout/:id'
               render={props => (
+                this.currentUser ?
                 <WorkoutShow {...props}
                   currentUser={this.state.currentUser}
-                  />
+                  /> :   <Home {...props}
+                      setLoggedInUser={this.setLoggedInUser}
+                      userLoggedIn={this.state.userLoggedIn}
+                      />
               )}
             />
             <Route

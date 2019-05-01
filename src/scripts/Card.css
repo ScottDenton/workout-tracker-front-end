@@ -1,0 +1,42 @@
+/* Card */
+
+.card{
+  width: 300px;
+  border: 1px solid white;
+  text-align: center;
+  margin: 10px;
+  height: 400px
+}
+
+.card-body{
+  height: 300px;
+}
+
+.scroll {
+  overflow: scroll;
+}
+.card-description{
+  height: 100px;
+  padding: 10px;
+  overflow: scroll;
+  /* border-top: 1px solid white;
+  border-bottom: 1px solid white; */
+}
+
+.card-image{
+  height: 200px;
+  width: 300px;
+  background-color: white;
+}
+
+.card-calculator {
+  height: 300px;
+  width: 300px;
+}
+
+.card-button {
+  margin: 20px;
+}
+
+
+/*  */

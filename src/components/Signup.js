@@ -1,5 +1,7 @@
 import React from 'react'
 import {createNewUser} from '../helpers/helpers.js'
+import {createSession} from '../helpers/helpers'
+
 import {Redirect} from 'react-router'
 
 class Signup extends React.Component {
@@ -25,11 +27,16 @@ handleChange = (e) => {
 handleSubmit = (e) => {
   e.preventDefault();
   createNewUser(this.state)
-  .then(user => {
-    if(user.id !== null){
-      this.props.setLoggedInUser(user)
+  .then(newUser => {
+    if(newUser.id !== null){
       this.setState({success: true})
-
+      createSession({
+        username:this.state.username,
+        password: this.state.password})
+        .then(user => {
+          localStorage.setItem("user_id", user.id)
+          this.props.setLoggedInUser(user)
+        })
     } else {
       alert("That username is already taken")
     }

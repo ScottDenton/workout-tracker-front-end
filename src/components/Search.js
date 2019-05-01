@@ -99,9 +99,8 @@ class Search extends Component {
 
     return this.state.workouts ?
       <div>
-        <h1> My Completed Workouts</h1>
-        <h5> Click on a workout do it again</h5>
-        <ul>
+        <h1 className="center"> My Completed Workouts</h1>
+        <div>
         {this.filterByDate(filteredWorkouts).map(workout => {
           return(
             // <Link to={{
@@ -115,7 +114,7 @@ class Search extends Component {
               </div>
           )
         })}
-        </ul>
+      </div>
       </div>
       : <div> ...loading </div>
   }
@@ -128,21 +127,16 @@ class Search extends Component {
 
     return this.state.exercises ?
       <div>
-        <h1> My Completed Exercises</h1>
-        <h5> Click on an exercise to see a suggested weight and rep scheme</h5>
+        <h1 className="center"> My Completed Exercises</h1>
+        <h5 className="center"> <span className='blue_highlight'>Click </span>on an exercise to see a suggested weight and rep scheme based on your last recorded workout for that exercise.</h5>
         <div>
         {this.filterByDate(filteredExercises).reverse().map(exercise => {
           return (
-            // <Link to={{
-            //     pathname: `/exercise/${exercise.id}`,
-            //     state: {exercise}
-            //   }}>
               <div
                 className="search_list"
                 key={exercise.id}>
                 <ExerciseCard exercise={exercise} />
               </div>
-            // </Link>
           )
         })}
       </div>
@@ -170,7 +164,7 @@ class Search extends Component {
           date={this.state.date}
           handleChange={this.handleChange}/>
         <button className="button small green"
-          onClick={this.clickedSearchAgain}> Start Fresh
+          onClick={this.clickedSearchAgain}> Search
         </button>
         <hr />
         {resultsToRender}

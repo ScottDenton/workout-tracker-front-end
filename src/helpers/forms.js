@@ -49,17 +49,22 @@ export const NewExerciseForm = (props) => {
   }
 
   export const LoginForm = (props) => {
-    return <form onSubmit={props.handleSubmit}>
-      <input type='text' name='username'
+    return <div className="login_form">
+    <form
+      onSubmit={props.handleSubmit}>
+      <input
+        className="login_input" type='text' name='username'
         value={props.username}
         placeholder="Username" onChange={props.handleChange}
       />
-      <input type='password' name='password'
+      <input
+        className="login_input"type='password' name='password'
         value={props.password}
         placeholder="Password" onChange={props.handleChange} />
       <input class="button small green"
         type="submit" value="Login" />
     </form>
+  </div>
   }
 
   export const SearchForm = (props) => {
