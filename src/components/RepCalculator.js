@@ -135,7 +135,7 @@ class RepCalculator extends Component {
  }
 
   render(){
-    const tableToRender = this.state.retrievedExercise !== '' ? this.renderTable() : <h3> You have not saved any results for this exercise yet </h3>
+    const tableToRender = this.state.retrievedExercise !== '' && this.checkExerciseOwner(this.state.retrievedExercise) ? this.renderTable() : <h3> You have not saved any results for this exercise yet </h3>
 
     const notesToRender = this.state.retrievedExercise.notes !=='' ? this.renderNotes() : <h5> You did not make any notes last time you did this exercise </h5>
 
