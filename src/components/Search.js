@@ -130,22 +130,22 @@ class Search extends Component {
       <div>
         <h1> My Completed Exercises</h1>
         <h5> Click on an exercise for more details</h5>
-        <ul>
+        <div>
         {this.filterByDate(filteredExercises).map(exercise => {
           return (
-            <Link to={{
-                pathname: `/exercise/${exercise.id}`,
-                state: {exercise}
-              }}>
-              <li
+            // <Link to={{
+            //     pathname: `/exercise/${exercise.id}`,
+            //     state: {exercise}
+            //   }}>
+              <div
                 className="search_list"
                 key={exercise.id}>
                 <ExerciseCard exercise={exercise} />
-              </li>
-            </Link>
+              </div>
+            // </Link>
           )
         })}
-        </ul>
+      </div>
       </div>
       : <div> ...loading </div>
   }
