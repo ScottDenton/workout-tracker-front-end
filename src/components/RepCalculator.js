@@ -118,8 +118,7 @@ class RepCalculator extends Component {
 
  renderNotes = () => {
    return <div>
-     <h5> Notes: </h5>
-     <p> {this.state.retrievedExercise.notes}</p>
+     <p> Notes: {this.state.retrievedExercise.notes}</p>
    </div>
  }
 

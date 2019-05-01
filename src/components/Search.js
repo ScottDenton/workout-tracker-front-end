@@ -4,6 +4,7 @@ import {findUsersWorkouts} from '../helpers/helpers'
 import {findUsersExercises} from '../helpers/helpers'
 import {SearchForm} from '../helpers/forms'
 import ExerciseCard from './ExerciseCard'
+import WorkoutCard from './WorkoutCard'
 
 class Search extends Component {
   constructor(props){
@@ -103,16 +104,15 @@ class Search extends Component {
         <ul>
         {this.filterByDate(filteredWorkouts).map(workout => {
           return(
-            <Link to={{
-              pathname: `/workout/${workout.id}`,
-              state: {workout}
-            }}>
-              <li
+            // <Link to={{
+            //   pathname: `/workout/${workout.id}`,
+            //   state: {workout}
+            // }}>
+              <div
                 className ="search_list"
                 key={workout.id}>
-                {workout.name}
-              </li>
-            </Link>
+                <WorkoutCard workout={workout} />
+              </div>
           )
         })}
         </ul>
@@ -129,9 +129,9 @@ class Search extends Component {
     return this.state.exercises ?
       <div>
         <h1> My Completed Exercises</h1>
-        <h5> Click on an exercise for more details</h5>
+        <h5> Click on an exercise to see a suggested weight and rep scheme</h5>
         <div>
-        {this.filterByDate(filteredExercises).map(exercise => {
+        {this.filterByDate(filteredExercises).reverse().map(exercise => {
           return (
             // <Link to={{
             //     pathname: `/exercise/${exercise.id}`,

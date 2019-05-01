@@ -34,10 +34,8 @@ class ExerciseCard extends React.Component {
       exercise={this.props.exercise}
       description={this.state.description} />
       </ReactCardFlip>
-
     )
   }
-
 
   render () {
     return(
@@ -45,7 +43,6 @@ class ExerciseCard extends React.Component {
       {this.renderCard()}
       </div>
     )
-
   }
 }
 
