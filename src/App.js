@@ -11,7 +11,6 @@ import Exercise from './components/Exercise';
 import WorkoutShow from './components/WorkoutShow';
 import ExerciseShow from './components/ExerciseShow';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import {Redirect} from 'react-router'
 
 
 class App extends Component {

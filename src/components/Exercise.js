@@ -1,6 +1,4 @@
 import React, {Component} from 'react'
-import AutoComplete from './AutoComplete'
-import AutoCompleteItems from '../helpers/AutoCompleteItems';
 import {findExerciseId} from '../helpers/exerciseIdFinder'
 import {postNewExercise} from '../helpers/helpers'
 import {NewExerciseForm} from '../helpers/forms.js'

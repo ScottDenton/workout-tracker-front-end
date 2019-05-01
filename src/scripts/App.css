@@ -113,6 +113,7 @@ transition: 0.4s;
 .search_list {
   color: white;
   list-style: none;
+  display: inline-block;
 }
 
 
@@ -159,6 +160,8 @@ a:link {
   width: 300px;
   border: 1px solid white;
   text-align: center;
+  margin: 10px;
+  height: 400px
 }
 .card-description{
   height: 100px;
@@ -170,6 +173,11 @@ a:link {
   height: 200px;
   width: 300px;
   background-color: white;
+}
+
+.card-calculator {
+  height: 300px;
+  width: 300px;
 }
 
 

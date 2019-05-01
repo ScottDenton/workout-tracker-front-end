@@ -1,6 +1,6 @@
-const imageIdFinder = (exerciseName) => {
+export const imageFinder = (exerciseName) => {
   const name = exerciseName.split(' ').join('-').toLowerCase()
-  return allExercisesWithImageIds.filter(exercise)
+  return allExercisesWithImageIds.filter(exercise => exercise.toLowerCase().includes(name))
 }
 
 const allExercisesWithImageIds =[

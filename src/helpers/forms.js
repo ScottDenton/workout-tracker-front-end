@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import AutoComplete from '../components/AutoComplete'
 import AutoCompleteItems from './AutoCompleteItems';
 

@@ -1,13 +1,15 @@
 import React from 'react'
 import {getDescription} from '../helpers/helpers'
-import {getImageUrl} from '../helpers/helpers'
+import ReactCardFlip from 'react-card-flip';
+import {ExerciseCardFront} from '../helpers/cards.js'
+import {ExerciseCardBack} from '../helpers/cards.js'
 
 class ExerciseCard extends React.Component {
   constructor(props){
     super(props)
     this.state={
       description: '',
-      url: ' '
+      isFlipped: false
     }
   }
 
@@ -15,33 +17,32 @@ class ExerciseCard extends React.Component {
     getDescription({id: this.props.exercise.id})
     .then(result => {
       this.setState({description: result.description})
-    }, this.getUrl())
-  }
-
-  getUrl = () => {
-     getImageUrl({id: this.props.exercise.imported_exercise_id})
-    .then(response => {
-      this.setState({url: response.image})
     })
   }
 
+  handleClick = () => {
+    this.setState({isFlipped: !this.state.isFlipped})
+  }
+
+  renderCard = () => {
+    return(
+      <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
+      <ExerciseCardFront key='front' handleClick={this.handleClick}
+      exercise={this.props.exercise}
+      description={this.state.description} />
+      <ExerciseCardBack key='back' handleClick={this.handleClick}
+      exercise={this.props.exercise}
+      description={this.state.description} />
+      </ReactCardFlip>
+
+    )
+  }
+
+
   render () {
     return(
-      <div className="card">
-        <div className="card-body">
-          <h4 className="card-title">{this.props.exercise.name}</h4>
-          <img className="card-image" src={this.state.url} />
-          <h5 className="card-subtitle">Date: {this.props.exercise.date}</h5>
-          <h5 className="card-subtitle">Exercise Description: </h5>
-          <p className="card-text card-description"> {this.state.description}</p>
-          <h5 className="card-subtitle">Results: </h5>
-          <p className="card-text">
-            Weight: {this.props.exercise.weight} kgs,
-             Reps: {this.props.exercise.reps},
-             Sets: {this.props.exercise.sets}
-          </p>
-          <p className="card-text">Notes: {this.props.exercise.notes}</p>
-        </div>
+      <div>
+      {this.renderCard()}
       </div>
     )
 
