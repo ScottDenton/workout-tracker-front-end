@@ -158,12 +158,17 @@ a:link {
 .card{
   width: 300px;
   border: 1px solid white;
+  text-align: center;
 }
 .card-description{
   height: 100px;
   padding: 10px;
   overflow: scroll;
-  color: black;
+}
+
+.card-image{
+  height: 200px;
+  width: 300px;
   background-color: white;
 }
 

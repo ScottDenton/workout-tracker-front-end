@@ -126,3 +126,14 @@ export const getDescription = (body) => {
     body: JSON.stringify(body)
   }).then(resp => resp.json())
 }
+
+export const getImageUrl = (body) => {
+  return fetch("http://localhost:3000/api/v1/exercise/getImageUrl",{
+    method: "POST",
+    headers: {
+      "accept": "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(body)
+  }).then(resp => resp.json())
+}
