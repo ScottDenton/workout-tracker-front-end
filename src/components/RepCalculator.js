@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {findExerciseId} from '../helpers/exerciseIdFinder'
 import {findExerciseById} from '../helpers/helpers.js'
+import {findUsersExercises} from '../helpers/helpers'
 
 class RepCalculator extends Component {
   // rep calculator taken from https://strengthlevel.com/one-rep-max-calculator
@@ -9,18 +10,30 @@ class RepCalculator extends Component {
     this.state = {
       exercise: this.props.exercise,
       retrievedExercise: this.props.retrievedExercise,
-      oneRepMax: 100
+      oneRepMax: 100,
+      usersExercises: ''
     }
   }
 
   componentDidMount(){
     this.fetchExercise()
+    findUsersExercises({user_id: localStorage.getItem("user_id")})
+    .then(console.log)
+    // .then(usersExercises => {
+    //   this.setState({usersExercises})
+    // })
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
       exercise: nextProps.exercise
     }, this.fetchExercise);
+  }
+
+  checkExerciseOwner = (exercise) =>  {
+  return this.state.usersExercises.some(ex => {
+      return ex.name === exercise.name
+    })
   }
 
   fetchExercise = () => {
@@ -39,15 +52,14 @@ class RepCalculator extends Component {
     })
  }
 
+ // Bryzcki formula = weight * (36 / 37-reps)
   calculateOneRepMax =() => {
-    // Bryzcki formula for calculation
-    // formula = weight * (36 / 37-reps)
     const{weight, reps} = this.state.retrievedExercise
     const oneRepMax = weight * (36/ (37-reps))
     this.setState({oneRepMax})
   }
   renderTable = () => {
-    const repCalculation= this.state.oneRepMax
+   const repCalculation= this.state.oneRepMax
    const weightUnits = "kgs"
    const oneRepCalc= `${Math.floor(repCalculation)}  ${weightUnits}`
    const twoRepCalc= `${Math.floor(repCalculation *.97)}  ${weightUnits}`
@@ -125,7 +137,7 @@ class RepCalculator extends Component {
   render(){
     const tableToRender = this.state.retrievedExercise !== '' ? this.renderTable() : <h3> You have not saved any results for this exercise yet </h3>
 
-  const notesToRender = this.state.retrievedExercise.notes !=='' ? this.renderNotes() : <h5> You did not make any notes last time you did this exercise </h5>
+    const notesToRender = this.state.retrievedExercise.notes !=='' ? this.renderNotes() : <h5> You did not make any notes last time you did this exercise </h5>
 
     return<div>
         {tableToRender}

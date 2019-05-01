@@ -70,7 +70,8 @@ class Exercise extends Component {
       return <div className='container'>
       <RepCalculator
       exercise={this.state.exercise}
-      retrievedExercise={this.state.retrievedExercise} />
+      retrievedExercise={this.state.retrievedExercise}
+       />
     </div>
   } else {
     return <div className="centered_text">
