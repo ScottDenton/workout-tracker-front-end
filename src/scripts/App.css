@@ -28,7 +28,18 @@ width: 60%;
   margin-left: 25%;
 }
 
+.workout_show_form{
+  padding:
+}
+
 .form_item{
+  padding: 10px;
+  margin: 10px;
+  text-align: left;
+}
+
+.left_form_item{
+  float: left;
   padding: 10px;
   margin: 10px;
   text-align: left;
@@ -80,14 +91,10 @@ text-align: center;
   text-align: center;
 }
 
-.btn {
-padding: 3px;
-transition: 0.4s;
+.button_div {
+  margin: 20px 0px ;
 }
 
-.btn:hover {
-  transform: scale(1.1);
-}
 
 /* GENERIC CLASSES  */
 
@@ -101,6 +108,9 @@ transition: 0.4s;
 }
 .float_right {
   float: right;
+}
+.float_left {
+  float: left;
 }
 
 
@@ -121,7 +131,7 @@ transition: 0.4s;
 
 
 .exercise_name {
-  margin: 20px 10px;
+  margin: 20px 0px;
   padding-bottom: 0px;
 }
 
@@ -146,16 +156,16 @@ transition: 0.4s;
 }
 
 
- /* workout show  */
+ /* exercise show  */
+ .show_left {
+   float: left;
+   width: 50%;
+ }
 .show_right{
   float: right;
   width: 50%;
 }
 
-.show_left {
-  float: left;
-  width: 50%;
-}
 
 .show_bottom {
   width: 100%;

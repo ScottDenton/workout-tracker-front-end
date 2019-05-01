@@ -61,7 +61,7 @@ export const NewExerciseForm = (props) => {
         className="login_input"type='password' name='password'
         value={props.password}
         placeholder="Password" onChange={props.handleChange} />
-      <input class="button small green"
+      <input className="button small green"
         type="submit" value="Login" />
     </form>
   </div>

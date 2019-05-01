@@ -104,7 +104,7 @@ handleSubmit = (e) => {
                 onChange={this.handleChange}/>
             </div>
             <div className="form_item">
-            <input className='btn'
+            <input className='button small blue'
               type='submit' value="Signup"/>
             </div>
           </form>

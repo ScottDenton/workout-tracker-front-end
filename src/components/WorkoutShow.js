@@ -21,25 +21,30 @@ class WorkoutShow extends Component {
       weight: '',
       reps: '',
       sets: '',
-      notes: ''
+      notes: '',
+      showNewExercise: false
     }
   }
 
+//if a workout is passed in from Link it is saved to state and its assosciated exercises are fetched.
+// date is saved in correct format
   componentDidMount(){
     if(this.props.location.state){
-    this.setState({
-      workout: this.props.location.state.workout
-    }, this.fetchExercises)}
+      this.setState({
+        workout: this.props.location.state.workout
+      }, this.fetchExercises)}
     const date = setDate()
     this.setState({date});
   }
 
+//handle changes to form fields
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
     })
   }
 
+//fetches exercises for a particular workout on load
   fetchExercises = () => {
     const body = {id: this.state.workout.id}
     findWorkoutsExercises(body)
@@ -52,12 +57,12 @@ class WorkoutShow extends Component {
     })
   }
 
-
+  // updates exercise thats clicked on to show its form
   updateShowForm = (exercise) => {
-    const updatedExercises = this.state.exercises.map(ex => {
-      return ex === exercise ?
-      {...exercise, showForm: !exercise.showForm} :
-      ex
+    const updatedExercises = this.state.exercises.map(thisExercise => {
+      return thisExercise === exercise ?
+      {...exercise, showForm: !exercise.showForm}
+      : thisExercise
     })
     this.setState({
       exercises: updatedExercises
@@ -72,15 +77,21 @@ class WorkoutShow extends Component {
     return (
       <div className="exercise_container">
         <div className="exercise_name">
-          {exercise.name} - {exercise.weight}kgs x {exercise.reps} reps</div>
+          {exercise.name} - {exercise.weight}kgs x {exercise.reps} reps
+        </div>
 
-          {exercise.showForm === true ? this.renderNewExerciseForm(exercise) : <button
+        {exercise.showForm === true ?
+           this.renderNewExerciseForm(exercise):
+           <button
             className="button small blue"
-            onClick={() => this.updateShowForm(exercise)}> Add to new workout </button> }
-      </div>
+            onClick={() => this.updateShowForm(exercise)}>
+            Add to new workout
+          </button> }
+        </div>
     )
   }
 
+//saves a new version of exercise from users list of previously completed exercises
   saveExercise = (e, exercise) => {
     e.preventDefault();
     const body ={
@@ -99,6 +110,7 @@ class WorkoutShow extends Component {
     : this.saveExerciseToWorkout(e, exercise)
   }
 
+//creates link between saved exercise and workout
   saveExerciseToWorkout = (e, exercise) =>{
     this.updateShowForm(exercise)
     const weight = e.target.querySelector("[name='weight']").value
@@ -112,7 +124,6 @@ class WorkoutShow extends Component {
     }
     postNewExercise(body)
       .then(newExercise => {
-        console.log('inside post new exercise')
         this.addExerciseToWorkout(newExercise)
         this.setState({
           newExercises: [...this.state.newExercises, newExercise],
@@ -128,36 +139,48 @@ class WorkoutShow extends Component {
      }
      postNewWorkoutExercise(body)
    }
-
+//renders form for previously completed exercises
   renderNewExerciseForm = (exercise) => {
     return (<div>
-      <form onSubmit={(e) => this.saveExercise(e, exercise)}>
+      <form className="form_inline"
+        onSubmit={(e) => this.saveExercise(e, exercise)}>
         <label> Weight </label>
-        <input type='number'
-          placeholder="Weight" name="weight"
+        <input
+          type='number'
+          placeholder="Weight"
+          name="weight"
         />
         <label> Reps </label>
-        <input type='number'
-          placeholder="Reps" name="reps" />
+        <input
+          type='number'
+          placeholder="Reps"
+          name="reps" />
         <label> Sets </label>
-        <input type='number'
-          placeholder="Sets" name="sets"
+        <input
+          type='number'
+          placeholder="Sets"
+          name="sets"
           />
         <label> Notes </label>
-        <textarea type='text'
-          placeholder="Enter Notes" name="notes"
-
+        <textarea
+          type='text'
+          placeholder="Enter Notes"
+          name="notes"
           />
-        <input type='submit' value='Save'/>
+        <input
+          className="button small green"
+          type='submit' value='Save'/>
       </form>
     </div>
     )
   }
 
+//saves input from autocomplete field
   retrieveUserInput = (exercise) => {
     this.setState({exercise})
   }
 
+//saves completely new exercise
   addExercise = (e) => {
     e.preventDefault();
     const {date, weight, reps, sets, notes} = this.state
@@ -176,28 +199,55 @@ class WorkoutShow extends Component {
     })
   }
 
+//triggered when user clicks to add different exercise
+  showNewForm = () => {
+    this.setState({showNewExercise: true})
+  }
+//form for completely new exercise
   renderNewExercise = () => {
-    return (
-    <div>
+    return this.state.showNewExercise ? (
+    <div >
       <h4> Add a new Exercise </h4>
-      <form className='form_inline'
+      <form
+        className='workout_show_form'
         onSubmit={this.addExercise}>
-        <label> Exercise </label>
-        <AutoComplete suggestions={AutoCompleteItems} retrieveUserInput={this.retrieveUserInput} />
-        <label> Weight </label>
-        <input type='number' placeholder="Weight" name="weight"  onChange={this.handleChange}/>
-        <label> Reps </label>
-        <input type='number' placeholder="Reps" name="reps" onChange={this.handleChange}/>
-        <label> Sets </label>
-        <input type='number' placeholder="Sets" name="sets" onChange={this.handleChange}/>
-        <label> Notes </label>
-        <textarea type='text' placeholder="Enter Notes" name="notes" onChange={this.handleChange}/>
-        <input type='submit' value='Save' />
+        <div className="left_form_item">
+          <label> Exercise </label>
+          <AutoComplete
+            suggestions={AutoCompleteItems} retrieveUserInput={this.retrieveUserInput} />
+        </div>
+        <div className=' grid'>
+          <div className="form_item">
+            <label> Weight </label>
+            <input type='number' placeholder="Weight" name="weight"  onChange={this.handleChange}/>
+          </div>
+          <div className="form_item">
+            <label> Reps </label>
+            <input type='number' placeholder="Reps" name="reps" onChange={this.handleChange}/>
+          </div>
+          <div className="form_item">
+            <label> Sets </label>
+            <input type='number' placeholder="Sets" name="sets" onChange={this.handleChange}/>
+          </div>
+          <div className="form_item">
+            <label> Notes </label>
+            <textarea type='text' placeholder="Enter Notes" name="notes" onChange={this.handleChange}/>
+          </div>
+          <div className="form_item">
+          <input className="button small green" type='submit' value='Save' />
+        </div>
+        </div>
       </form>
     </div>
-    )
+  ) : <div className="button_div center">
+        <button
+          className ="button small green"
+          onClick={this.showNewForm}> Add a different Exercise
+        </button>
+      </div>
   }
 
+//decides which exercises to display
   displayExercises = () => {
     return this.state.newExercises !== '' ? <div>
       <h3> Completed Exercises </h3>
@@ -207,10 +257,12 @@ class WorkoutShow extends Component {
 
   render () {
     const {name, date} = this.state.workout
-
     const exercisesToRender = this.state.exercises !=='' ?
       this.renderExercises() :
-      <p> It doesnt look like you recorded any exercises for this workout</p>
+      <p>
+        It doesnt look like you recorded any exercises for this workout
+      </p>
+
     return(
       <div className='container'>
         <h2>Name: {name} </h2>
@@ -221,9 +273,11 @@ class WorkoutShow extends Component {
         </div>
         {this.renderNewExercise()}
         {this.displayExercises()}
-        <Link to={"/"}>
-          <button className="small button red">End Workout</button>
+        <div className="center">
+          <Link to={"/"}>
+            <button className="small button red">End Workout</button>
           </Link>
+        </div>
       </div>
     )
 

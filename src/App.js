@@ -90,88 +90,95 @@ class App extends Component {
     localStorage.removeItem("user_id")
   }
 
+  authenticateUser = () => {
+    const userId = this.state.currentUser.id
+    const localId = Number(localStorage.getItem("user_id"))
+    return  userId === localId && userId !== undefined
+  }
+
   render(){
-      return (
-        <Router>
-          <React.Fragment>
-            <Route
-              path='/'
-              render={props => (
-                <Navbar {...props}
-                  signOut={this.signOut}
-                  currentUser={this.state.currentUser}
-                  />
-              )}
-            />
-            <Route
-              exact
-              path='/'
-              render={props => (
+    return (
+      <Router>
+        <React.Fragment>
+          <Route
+            path='/'
+            render={props => (
+              <Navbar {...props}
+                signOut={this.signOut}
+                currentUser={this.state.currentUser}
+                />
+            )}
+          />
+          <Route
+            exact
+            path='/'
+            render={props => (
+              <Home {...props}
+                setLoggedInUser={this.setLoggedInUser}
+                userLoggedIn={this.state.userLoggedIn}
+                />
+            )}
+          />
+          <Route
+            exact
+            path='/workout'
+            render={props => (
+              <Workout {...props}
+                currentUser={this.state.currentUser}
+                />
+            )}
+          />
+          <Route
+            exact
+            path='/exercise'
+            render={props => (
+              <Exercise {...props}
+                currentUser={this.state.currentUser}
+                />
+            )}
+          />
+          <Route
+            path='/signup'
+            render={props => (
+              <Signup {...props}
+                setUnits={this.setUnits}
+                setLoggedInUser={this.setLoggedInUser}
+                />
+            )}
+          />
+          <Route
+            path='/search'
+            render={props => (
+              <Search {...props}
+                currentUser={this.state.currentUser}
+                />
+            )}
+          />
+          <Route
+            exact
+            path='/workout/:id'
+            render={props => (
+              this.authenticateUser() ?
+              <WorkoutShow {...props}
+                currentUser={this.state.currentUser}
+                /> :
                 <Home {...props}
                   setLoggedInUser={this.setLoggedInUser}
                   userLoggedIn={this.state.userLoggedIn}
-                  />
-              )}
-            />
-            <Route
-              exact
-              path='/workout'
-              render={props => (
-                <Workout {...props}
-                  currentUser={this.state.currentUser}
-                  />
-              )}
-            />
-            <Route
-              exact
-              path='/exercise'
-              render={props => (
-                <Exercise {...props}
-                  currentUser={this.state.currentUser}
-                  />
-              )}
-            />
-            <Route
-              path='/signup'
-              render={props => (
-                <Signup {...props}
-                  setUnits={this.setUnits}
-                  setLoggedInUser={this.setLoggedInUser}
-                  />
-              )}
-            />
-            <Route
-              path='/search'
-              render={props => (
-                <Search {...props}
-                  currentUser={this.state.currentUser}
-                  />
-              )}
-            />
-            <Route
-              exact
-              path='/workout/:id'
-              render={props => (
-                this.currentUser ?
-                <WorkoutShow {...props}
-                  currentUser={this.state.currentUser}
-                  /> :   <Home {...props}
-                      setLoggedInUser={this.setLoggedInUser}
-                      userLoggedIn={this.state.userLoggedIn}
-                      />
-              )}
-            />
-            <Route
-              exact
-              path='/exercise/:id'
-              render={props => (
-                <ExerciseShow {...props}
-                  currentUser={this.state.currentUser}
-                  />
-              )}
-            />
-          </React.Fragment>
-        </Router>
+                    />
+            )}
+          />
+          <Route
+            exact
+            path='/exercise/:id'
+            render={props => (
+              <ExerciseShow {...props}
+                currentUser={this.state.currentUser}
+                />
+            )}
+          />
+        </React.Fragment>
+      </Router>
     );
   }
 }
