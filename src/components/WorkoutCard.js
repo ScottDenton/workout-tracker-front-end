@@ -1,5 +1,4 @@
 import React from 'react'
-import {getDescription} from '../helpers/helpers'
 import ReactCardFlip from 'react-card-flip';
 import {WorkoutCardFront} from '../helpers/cards.js'
 import {WorkoutCardBack} from '../helpers/cards.js'
@@ -26,11 +25,6 @@ componentDidMount(){
     })
   })
 }
-
-
-  // handleClick = () => {
-  //   this.setState({isFlipped: !this.state.isFlipped})
-  // }
 
   renderCard = () => {
     return(

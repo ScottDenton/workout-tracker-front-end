@@ -18,10 +18,9 @@ class RepCalculator extends Component {
   componentDidMount(){
     this.fetchExercise()
     findUsersExercises({user_id: localStorage.getItem("user_id")})
-    .then(console.log)
-    // .then(usersExercises => {
-    //   this.setState({usersExercises})
-    // })
+    .then(usersExercises => {
+      this.setState({usersExercises})
+    })
   }
 
   componentWillReceiveProps(nextProps) {
@@ -31,7 +30,7 @@ class RepCalculator extends Component {
   }
 
   checkExerciseOwner = (exercise) =>  {
-  return this.state.usersExercises.some(ex => {
+    return this.state.usersExercises.some(ex => {
       return ex.name === exercise.name
     })
   }
@@ -134,10 +133,14 @@ class RepCalculator extends Component {
    </div>
  }
 
-  render(){
-    const tableToRender = this.state.retrievedExercise !== '' && this.checkExerciseOwner(this.state.retrievedExercise) ? this.renderTable() : <h3> You have not saved any results for this exercise yet </h3>
+ hasUserDoneExercise = () =>{
+   return this.state.retrievedExercise.user_id === Number(localStorage.getItem("user_id"))
+ }
 
-    const notesToRender = this.state.retrievedExercise.notes !=='' ? this.renderNotes() : <h5> You did not make any notes last time you did this exercise </h5>
+  render(){
+    const tableToRender =  this.hasUserDoneExercise() ? this.renderTable() : <h3> You have not saved any results for this exercise yet </h3>
+
+  const notesToRender = this.hasUserDoneExercise()  ? this.renderNotes() : <h5> </h5>
 
     return<div>
         {tableToRender}
