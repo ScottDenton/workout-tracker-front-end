@@ -141,10 +141,9 @@ class RepCalculator extends Component {
  }
 
   render(){
-    console.log(this.props.units)
-    const tableToRender =  this.hasUserDoneExercise() ? this.renderTable() : <h3> You have not saved any results for this exercise yet </h3>
-
-  const notesToRender = this.hasUserDoneExercise()  ? this.renderNotes() : <h5> </h5>
+    const tableToRender =  this.hasUserDoneExercise() ? this.renderTable() :
+      <h3> You have not saved any results for this exercise yet </h3>
+    const notesToRender = this.hasUserDoneExercise()  ? this.renderNotes() : <h5> </h5>
 
     return<div>
         {tableToRender}

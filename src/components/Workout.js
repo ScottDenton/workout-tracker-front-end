@@ -157,10 +157,7 @@ class Workout extends Component {
           <button className="small button red">End Workout</button>
         </Link>
       </div>
-
-
     )
-
   }
 }
 

@@ -45,6 +45,7 @@ componentDidMount(){
     .then(user => {
       this.props.setLoggedInUser(user)
     })
+    alert("Account updated")
   }
 
 

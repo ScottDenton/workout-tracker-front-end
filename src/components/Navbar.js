@@ -6,7 +6,7 @@ class Navbar extends Component {
 
   signedOut = () => {
     return (
-      <div className="float_right">
+      <div className="navbar float_right">
         <div className='left_nav_item'>
           <Link to={"/"} className=' nav_item'>
             Home
