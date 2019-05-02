@@ -27,7 +27,7 @@ class ExerciseShow extends Component {
       return <RepCalculator
       exercise={this.state.exercise.name}
       retrievedExercise={this.state.exercise}
-      currentUser={this.props.currentUser} />
+       />
     }
   }
 

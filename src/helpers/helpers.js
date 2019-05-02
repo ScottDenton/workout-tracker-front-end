@@ -10,8 +10,8 @@ export const setDate = () => {
 return date
 }
 
-export const checkUnits = (user) => {
-  return user.units === 'metric' ? "kgs" : "lbs"
+export const checkUnits = (exercise) => {
+  return exercise.units === 'metric' ? "kgs" : "lbs"
 }
 
 export const createNewUser = (body) => {

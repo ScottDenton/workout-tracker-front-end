@@ -84,7 +84,7 @@ class WorkoutShow extends Component {
 
   listExercise = (exercise) => {
     const style = this.state.exerciseFormToDisplay.name === exercise.name ? "card short active" : "card short"
-    const weightUnits = checkUnits(this.props.currentUser)
+    const weightUnits = checkUnits(exercise)
     return (
       <div className={style} key={exercise.id}>
         <h4 className="card-title"> {exercise.name} </h4>
@@ -132,7 +132,11 @@ class WorkoutShow extends Component {
 
     const body={
       user_id: localStorage.getItem("user_id"),
-      weight, reps, sets, notes, date:this.state.date, imported_exercise_id: exercise.imported_exercise_id, name: exercise.name
+      weight, reps, sets, notes,
+      date:this.state.date,
+      imported_exercise_id: exercise.imported_exercise_id,
+      name: exercise.name,
+      units: this.props.currentUser.units
     }
     postNewExercise(body)
       .then(newExercise => {
@@ -163,7 +167,7 @@ class WorkoutShow extends Component {
         <RepCalculator
         exercise={exercise.name}
         retrievedExercise={exercise}
-        currentUser={this.props.currentUser}
+        
          />
       </div>
     </div>
@@ -183,6 +187,7 @@ class WorkoutShow extends Component {
       user_id: localStorage.getItem("user_id"),
       name: this.state.exercise,
       imported_exercise_id: findExerciseId(this.state.exercise),
+      units: this.props.currentUser.units,
       date, weight, reps, sets, notes
     }
     postNewExercise(body)

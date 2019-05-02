@@ -71,6 +71,7 @@ class Workout extends Component {
     const body ={
       user_id: localStorage.getItem("user_id"),
       name: this.state.exercise,
+      units: this.props.currentUser.units,
       imported_exercise_id: findExerciseId(this.state.exercise),
       date, weight, reps, sets, notes
     }
@@ -139,7 +140,6 @@ class Workout extends Component {
       return <RepCalculator
       exercise={this.state.exercise}
       retrievedExercise={this.state.retrievedExercise}
-      currentUser={this.props.currentUser}
       date={this.state.date}/>
     }
   }

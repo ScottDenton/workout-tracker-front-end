@@ -60,7 +60,7 @@ class RepCalculator extends Component {
   }
   renderTable = () => {
    const repCalculation= this.state.oneRepMax
-   const weightUnits = checkUnits(this.props.currentUser)
+   const weightUnits = checkUnits(this.state.retrievedExercise)
    const oneRepCalc= `${Math.floor(repCalculation)}  ${weightUnits}`
    const twoRepCalc= `${Math.floor(repCalculation *.97)}  ${weightUnits}`
    const threeRepCalc= `${Math.floor(repCalculation *.94)}  ${weightUnits}`

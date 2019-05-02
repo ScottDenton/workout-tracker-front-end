@@ -6,7 +6,7 @@ import {checkUnits} from '../helpers/helpers'
 
 
 export const ExerciseCardFront = (props) =>{
-  const weightUnits = checkUnits(props.currentUser)
+  const weightUnits = checkUnits(props.exercise)
   return (
     <div className="card" onClick={props.handleClick}>
       <div className="card-body">
@@ -34,7 +34,7 @@ export const ExerciseCardBack = (props) => {
       <RepCalculator
       exercise={props.exercise.name}
       retrievedExercise={props.exercise}
-      currentUser={props.currentUser}/>
+      />
     </div>
   )
 }
