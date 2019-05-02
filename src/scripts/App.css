@@ -224,12 +224,33 @@ a:link {
   padding: 0px;
 }
 
+
+
   .navbar  {
     margin-top:10px;
   }
 
   .nav_item {
     margin: 10px;
+  }
+
+  .form {
+    margin: 0px auto
+  }
+
+  .form_item input {
+    padding: 0px;
+    margin: 0px;
+  }
+  .form_item {
+    max-width: 300px;
+  }
+
+  .form_item label {
+    float: right;
+    padding: 10px 10px;
+    width: 150px;
+    text-align: center;
   }
 
   input, select{
@@ -255,9 +276,5 @@ a:link {
     padding: 0px;
   }
 
-  .form_item input {
-    padding: 0px;
-    margin: 0px;
-  }
 
 }

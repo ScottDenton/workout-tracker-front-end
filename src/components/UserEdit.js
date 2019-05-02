@@ -61,6 +61,7 @@ componentDidMount(){
 
     return (
       <div className='container'>
+        <h2> Edit My Account</h2>
         <div className="child_container">
           <form className = 'form'
             onSubmit={this.handleSubmit}>
