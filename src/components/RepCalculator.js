@@ -76,7 +76,8 @@ class RepCalculator extends Component {
    return<div>
      <h3> {this.state.exercise} </h3>
      <p> Based on workout from {dateToShow} </p>
-       <table>
+     <div className = "table_center">
+       <table className='center_table'>
          <tbody>
            <tr>
              <th> Reps </th>
@@ -124,6 +125,7 @@ class RepCalculator extends Component {
            </tr>
          </tbody>
        </table>
+     </div>
      </div>
  }
 

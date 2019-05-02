@@ -183,6 +183,11 @@ a:link {
   color: lightGrey;
 }
 
+table.center_table {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
 
 

@@ -26,7 +26,9 @@ export const ExerciseCardFront = (props) =>{
 
 export const ExerciseCardBack = (props) => {
   return (
-    <div className="card" onClick={props.handleClick}>
+    <div
+      className="card"
+      onClick={props.handleClick}>
       <RepCalculator
       exercise={props.exercise.name}
       retrievedExercise={props.exercise} />
