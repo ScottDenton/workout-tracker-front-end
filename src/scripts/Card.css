@@ -36,13 +36,6 @@
   height: 100px;
   padding: 0px 10px;
   overflow: scroll;
-
-}
-
-.card-image{
-  height: 200px;
-  width: 300px;
-  background-color: white;
 }
 
 .card-calculator {
@@ -54,5 +47,16 @@
   margin: 20px;
 }
 
-
-/*  */
+@media only screen and (max-width: 375px) {
+  .card {
+    height: 150px;
+    width: 250px;
+    margin: 10px auto;
+  }
+  .card-description {
+    display: none;
+  }
+  .card p, th {
+    font-size: 0.8em;
+  }
+}

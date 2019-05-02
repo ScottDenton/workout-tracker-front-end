@@ -6,17 +6,17 @@ class Navbar extends Component {
 
   signedOut = () => {
     return (
-      <div className="navbar float_right">
-        <div className='left_nav_item'>
+      <div className="navbar ">
+        <div>
           <Link to={"/"} className=' nav_item'>
             Home
           </Link>
         </div>
-        <div className='left_nav_item'>
+        <div>
           <Link to={"/signup"}className=" nav_item">SignUp
           </Link>
         </div>
-        <div className='left_nav_item'>
+        <div>
         <Link to={"/"}className=" nav_item">About
           </Link>
           </div>
@@ -26,16 +26,16 @@ class Navbar extends Component {
 
   signedIn = () => {
     return (
-      <div className="float_right">
-        <div className='left_nav_item'>
+      <div className="navbar ">
+        <div>
           <Link to={"/"} className="nav_item">Home
           </Link>
         </div>
-        <div className='left_nav_item'>
+        <div>
           <Link to={"/myaccount"}className=" nav_item">My Account
           </Link>
         </div>
-        <div className='left_nav_item'>
+        <div>
           <Link to={"/"} onClick={this.props.signOut} className="nav_item">Logout
           </Link>
         </div>

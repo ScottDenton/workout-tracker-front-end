@@ -105,23 +105,19 @@ class Search extends Component {
     })
 
     return this.state.workouts ?
-      <div>
+      <div >
         <h1 className="center"> My Completed Workouts</h1>
         <div>
         {this.filterByDate(filteredWorkouts).map(workout => {
           return(
-            // <Link to={{
-            //   pathname: `/workout/${workout.id}`,
-            //   state: {workout}
-            // }}>
-              <div
-                className ="search_list"
-                key={workout.id}>
-                <WorkoutCard
-                  workout={workout}
-                  deleteWorkout={this.deleteWorkout}
-                  />
-              </div>
+            <div
+              className ="search_list"
+              key={workout.id}>
+              <WorkoutCard
+                workout={workout}
+                deleteWorkout={this.deleteWorkout}
+                />
+            </div>
           )
         })}
       </div>
@@ -179,7 +175,9 @@ class Search extends Component {
           onClick={this.clickedSearchAgain}> Search
         </button>
         <hr />
-        {resultsToRender}
+        <div className="search_container">
+          {resultsToRender}
+        </div>
       </div>
     )
   }
