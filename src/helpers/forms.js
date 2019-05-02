@@ -48,6 +48,45 @@ export const NewExerciseForm = (props) => {
     )
   }
 
+  export const NoDateExerciseForm = (props) => {
+    return <form
+      className='form'
+      onSubmit={props.onSubmit}>
+    <div className="form_item">
+      <label> Weight: </label>
+    <input
+      type='number'
+      placeholder="Weight" name="weight"  onChange={props.onChange}/>
+    </div>
+    <div className="form_item">
+      <label> Reps: </label>
+    <input
+      type='number'
+      placeholder="Reps"
+      name="reps"
+      onChange={props.onChange}/>
+    </div>
+    <div className="form_item">
+      <label> Sets: </label>
+    <input
+      type='number'
+      placeholder="Sets"
+      name="sets"
+      onChange={props.onChange}/>
+    </div>
+    <div className="form_item">
+      <label> Notes: </label>
+      <textarea
+        type='text'
+        placeholder="Enter Notes"
+        name="notes" onChange={props.onChange}/>
+    </div>
+    <div className="form_item">
+      <input className="button small green" type='submit' value='Save' />
+    </div>
+  </form>
+  }
+
   export const LoginForm = (props) => {
     return <div className="login_form">
     <form

@@ -32,7 +32,7 @@ class Navbar extends Component {
           </Link>
         </div>
         <div className='left_nav_item'>
-          <Link to={"/"}className=" nav_item">My Account
+          <Link to={"/myaccount"}className=" nav_item">My Account
           </Link>
         </div>
         <div className='left_nav_item'>

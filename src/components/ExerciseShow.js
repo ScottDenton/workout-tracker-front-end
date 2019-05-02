@@ -26,7 +26,8 @@ class ExerciseShow extends Component {
      if(this.state.exercise !== '') {
       return <RepCalculator
       exercise={this.state.exercise.name}
-      retrievedExercise={this.state.exercise} />
+      retrievedExercise={this.state.exercise}
+      currentUser={this.props.currentUser} />
     }
   }
 

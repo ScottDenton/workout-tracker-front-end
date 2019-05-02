@@ -1,10 +1,12 @@
 import React from 'react'
 import RepCalculator from '../components/RepCalculator';
 import { Link } from "react-router-dom";
+import {checkUnits} from '../helpers/helpers'
 
 
 
 export const ExerciseCardFront = (props) =>{
+  const weightUnits = checkUnits(props.currentUser)
   return (
     <div className="card" onClick={props.handleClick}>
       <div className="card-body">
@@ -14,7 +16,7 @@ export const ExerciseCardFront = (props) =>{
         <p className="card-text card-description"> {props.description}</p>
         <h5 className="card-subtitle">Results: </h5>
         <p className="card-text">
-          Weight: {props.exercise.weight} kgs,
+          Weight: {props.exercise.weight} {weightUnits},
            Reps: {props.exercise.reps},
            Sets: {props.exercise.sets}
         </p>
@@ -31,7 +33,8 @@ export const ExerciseCardBack = (props) => {
       onClick={props.handleClick}>
       <RepCalculator
       exercise={props.exercise.name}
-      retrievedExercise={props.exercise} />
+      retrievedExercise={props.exercise}
+      currentUser={props.currentUser}/>
     </div>
   )
 }
@@ -62,10 +65,18 @@ export const WorkoutCardFront = (props) => {
           pathname: `/workout/${props.workout.id}`,
           state: {workout: props.workout}
         }}>
-          <button className="button small blue">
+          <button
+            className="button small blue">
             Do it again
           </button>
         </Link>
+        <div>
+          <button
+            className="button small red"
+            onClick={props.deleteWorkout}>
+            Delete
+          </button>
+        </div>
       </div>
     </div>
   )

@@ -3,6 +3,7 @@ import ReactCardFlip from 'react-card-flip';
 import {WorkoutCardFront} from '../helpers/cards.js'
 import {WorkoutCardBack} from '../helpers/cards.js'
 import {findWorkoutsExercises} from '../helpers/helpers.js'
+import {deleteWorkout} from '../helpers/helpers.js'
 
 
 class WorkoutCard extends React.Component {
@@ -26,6 +27,13 @@ componentDidMount(){
   })
 }
 
+deleteWorkout = () => {
+   if (window.confirm("Are you sure")){
+     deleteWorkout(this.props.workout.id)
+     this.props.deleteWorkout(this.props.workout)
+   }
+}
+
   renderCard = () => {
     return(
       <ReactCardFlip
@@ -34,10 +42,10 @@ componentDidMount(){
         <WorkoutCardFront key='front'
           handleClick={this.handleClick}
           workout={this.props.workout}
-          exercises={this.state.exercises}/>
-        <WorkoutCardBack key='back'
-          handleClick={this.handleClick}
-          workout={this.props.workout}/>
+          exercises={this.state.exercises}
+          deleteWorkout={this.deleteWorkout}
+          />
+        <WorkoutCardBack key='back'/>
       </ReactCardFlip>
     )
   }

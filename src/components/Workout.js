@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
-import AutoComplete from './AutoComplete'
 import RepCalculator from './RepCalculator'
-import AutoCompleteItems from '../helpers/AutoCompleteItems';
 import {findExerciseId} from '../helpers/exerciseIdFinder'
 import {setDate} from '../helpers/helpers'
 import {postNewExercise} from '../helpers/helpers'
@@ -141,7 +139,8 @@ class Workout extends Component {
       return <RepCalculator
       exercise={this.state.exercise}
       retrievedExercise={this.state.retrievedExercise}
-      date={this.state.date} />
+      currentUser={this.props.currentUser}
+      date={this.state.date}/>
     }
   }
 

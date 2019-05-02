@@ -71,6 +71,7 @@ class Exercise extends Component {
       <RepCalculator
       exercise={this.state.exercise}
       retrievedExercise={this.state.retrievedExercise}
+      currentUser={this.props.currentUser}
        />
     </div>
   } else {

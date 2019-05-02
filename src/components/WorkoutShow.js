@@ -7,6 +7,11 @@ import {postNewExercise} from '../helpers/helpers.js'
 import {postNewWorkout} from '../helpers/helpers.js'
 import {postNewWorkoutExercise} from '../helpers/helpers.js'
 import {findWorkoutsExercises} from '../helpers/helpers.js'
+import {NoDateExerciseForm} from '../helpers/forms.js'
+import {checkUnits} from '../helpers/helpers'
+
+import RepCalculator from './RepCalculator';
+
 import { Link } from "react-router-dom";
 
 class WorkoutShow extends Component {
@@ -60,7 +65,6 @@ class WorkoutShow extends Component {
 
   // updates exercise thats clicked on to show its form
   updateShowForm = (exercise) => {
-    console.log('clicked the button')
     const updatedExercises = this.state.exercises.map(thisExercise => {
       return thisExercise === exercise ?
       {...exercise, showForm: !exercise.showForm}
@@ -80,14 +84,12 @@ class WorkoutShow extends Component {
 
   listExercise = (exercise) => {
     const style = this.state.exerciseFormToDisplay.name === exercise.name ? "card short active" : "card short"
+    const weightUnits = checkUnits(this.props.currentUser)
     return (
-      <div className={style}>
-        <h4
-          className="card-title">
-          {exercise.name}
-        </h4>
+      <div className={style} key={exercise.id}>
+        <h4 className="card-title"> {exercise.name} </h4>
         <h5
-          className='card-subtitle'> {exercise.weight}kgs x {exercise.reps} reps
+          className='card-subtitle'> {exercise.weight}{weightUnits} x {exercise.reps} reps
         </h5>
          <button
           className="button small blue"
@@ -142,6 +144,7 @@ class WorkoutShow extends Component {
       })
    }
 
+//saves the new exercise to the current workout
    addExerciseToWorkout = (exercise) => {
      const body = {
        workout_id: this.state.newWorkout.id,
@@ -151,37 +154,18 @@ class WorkoutShow extends Component {
    }
 //renders form for previously completed exercises
   renderNewExerciseForm = (exercise) => {
-    return (<div>
+    const submit = (e) => this.saveExercise(e, exercise)
+    return (
+    <div>
       <h2 className="center">{exercise.name}</h2>
-      <form className="form_inline"
-        onSubmit={(e) => this.saveExercise(e, exercise)}>
-        <label> Weight </label>
-        <input
-          type='number'
-          placeholder="Weight"
-          name="weight"
-        />
-        <label> Reps </label>
-        <input
-          type='number'
-          placeholder="Reps"
-          name="reps" />
-        <label> Sets </label>
-        <input
-          type='number'
-          placeholder="Sets"
-          name="sets"
-          />
-        <label> Notes </label>
-        <textarea
-          type='text'
-          placeholder="Enter Notes"
-          name="notes"
-          />
-        <input
-          className="button small green"
-          type='submit' value='Save'/>
-      </form>
+      <div className='grid'>
+        <NoDateExerciseForm onSubmit={submit} />
+        <RepCalculator
+        exercise={exercise.name}
+        retrievedExercise={exercise}
+        currentUser={this.props.currentUser}
+         />
+      </div>
     </div>
     )
   }

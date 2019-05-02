@@ -11,6 +11,7 @@ import Workout from './components/Workout';
 import Exercise from './components/Exercise';
 import WorkoutShow from './components/WorkoutShow';
 import ExerciseShow from './components/ExerciseShow';
+import UserEdit from './components/UserEdit';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 
@@ -125,6 +126,7 @@ class App extends Component {
             render={props => (
               <Workout {...props}
                 currentUser={this.state.currentUser}
+                units={this.state.measurementUnits}
                 />
             )}
           />
@@ -134,6 +136,7 @@ class App extends Component {
             render={props => (
               <Exercise {...props}
                 currentUser={this.state.currentUser}
+                units={this.state.measurementUnits}
                 />
             )}
           />
@@ -151,6 +154,7 @@ class App extends Component {
             render={props => (
               <Search {...props}
                 currentUser={this.state.currentUser}
+                units={this.state.measurementUnits}
                 />
             )}
           />
@@ -161,11 +165,12 @@ class App extends Component {
               this.authenticateUser() ?
               <WorkoutShow {...props}
                 currentUser={this.state.currentUser}
+                units={this.state.measurementUnits}
                 /> :
-                <Home {...props}
-                  setLoggedInUser={this.setLoggedInUser}
-                  userLoggedIn={this.state.userLoggedIn}
-                    />
+              <Home {...props}
+                setLoggedInUser={this.setLoggedInUser}
+                userLoggedIn={this.state.userLoggedIn}
+              />
             )}
           />
           <Route
@@ -174,7 +179,24 @@ class App extends Component {
             render={props => (
               <ExerciseShow {...props}
                 currentUser={this.state.currentUser}
-                />
+              />
+            )}
+          />
+          <Route
+            exact
+            path='/myaccount'
+            render={props => (
+              this.authenticateUser() ?
+              <UserEdit {...props}
+                currentUser={this.state.currentUser}
+                units={this.state.measurementUnits}
+                setLoggedInUser={this.setLoggedInUser}
+                /> :
+              <Home {...props}
+                setLoggedInUser={this.setLoggedInUser}
+                userLoggedIn={this.state.userLoggedIn}
+              />
+
             )}
           />
         </React.Fragment>

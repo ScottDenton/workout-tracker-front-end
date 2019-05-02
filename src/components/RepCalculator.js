@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {findExerciseId} from '../helpers/exerciseIdFinder'
 import {findExerciseById} from '../helpers/helpers.js'
 import {findUsersExercises} from '../helpers/helpers'
+import {checkUnits} from '../helpers/helpers'
 
 class RepCalculator extends Component {
   // rep calculator taken from https://strengthlevel.com/one-rep-max-calculator
@@ -59,7 +60,7 @@ class RepCalculator extends Component {
   }
   renderTable = () => {
    const repCalculation= this.state.oneRepMax
-   const weightUnits = "kgs"
+   const weightUnits = checkUnits(this.props.currentUser)
    const oneRepCalc= `${Math.floor(repCalculation)}  ${weightUnits}`
    const twoRepCalc= `${Math.floor(repCalculation *.97)}  ${weightUnits}`
    const threeRepCalc= `${Math.floor(repCalculation *.94)}  ${weightUnits}`
@@ -140,6 +141,7 @@ class RepCalculator extends Component {
  }
 
   render(){
+    console.log(this.props.units)
     const tableToRender =  this.hasUserDoneExercise() ? this.renderTable() : <h3> You have not saved any results for this exercise yet </h3>
 
   const notesToRender = this.hasUserDoneExercise()  ? this.renderNotes() : <h5> </h5>

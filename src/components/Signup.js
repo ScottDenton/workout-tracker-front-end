@@ -70,13 +70,15 @@ handleSubmit = (e) => {
               <label>Username: </label>
               <input type='text' name='username'
                 placeholder="Username"
-                onChange={this.handleChange} />
+                onChange={this.handleChange}
+                value={this.state.username} />
             </div>
             <div className="form_item">
               <label>Password: </label>
               <input type='password' name='password'
                 placeholder="Password"
-                onChange={this.handleChange} />
+                onChange={this.handleChange}
+                value={this.state.password} />
             </div>
             <div className="form_item">
               <label>Date of Birth: </label>

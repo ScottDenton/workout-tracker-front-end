@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import { Link } from "react-router-dom";
 import {findUsersWorkouts} from '../helpers/helpers'
 import {findUsersExercises} from '../helpers/helpers'
 import {SearchForm} from '../helpers/forms'
@@ -89,6 +88,14 @@ class Search extends Component {
     )
   }
 
+  deleteWorkout = (workoutToDelete) => {
+
+    const workouts = this.state.workouts.filter(workout => {
+      return workout.id !== workoutToDelete.id
+    })
+    this.setState({ workouts })
+  }
+
 
   renderWorkoutList = () => {
     const filteredWorkouts = this.state.filteredWorkout === '' ?
@@ -110,7 +117,10 @@ class Search extends Component {
               <div
                 className ="search_list"
                 key={workout.id}>
-                <WorkoutCard workout={workout} />
+                <WorkoutCard
+                  workout={workout}
+                  deleteWorkout={this.deleteWorkout}
+                  />
               </div>
           )
         })}
@@ -135,7 +145,9 @@ class Search extends Component {
               <div
                 className="search_list"
                 key={exercise.id}>
-                <ExerciseCard exercise={exercise} />
+                <ExerciseCard
+                  exercise={exercise}
+                  currentUser={this.props.currentUser}/>
               </div>
           )
         })}

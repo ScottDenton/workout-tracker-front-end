@@ -10,6 +10,10 @@ export const setDate = () => {
 return date
 }
 
+export const checkUnits = (user) => {
+  return user.units === 'metric' ? "kgs" : "lbs"
+}
+
 export const createNewUser = (body) => {
   return fetch("http://localhost:3000/api/v1/users",{
     method: "POST",
@@ -19,6 +23,18 @@ export const createNewUser = (body) => {
     },
     body: JSON.stringify(body)
   }).then(resp => resp.json())
+}
+
+export const editUser = (id, body) => {
+  return fetch(`http://localhost:3000/api/v1/users/${id}`, {
+  method: "PATCH",
+  headers: {
+    "accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(body)
+})
+.then(resp => resp.json())
 }
 
 export const postNewExercise = (body) => {
@@ -54,6 +70,11 @@ export const postNewWorkout = (body) => {
   },
   body: JSON.stringify(body)})
   .then(resp => resp.json())
+}
+export const deleteWorkout = (id) => {
+  return fetch(`http://localhost:3000//api/v1/workouts/${id}`, {
+  method: "DELETE"
+  })
 }
 
 export const createSession = (body) => {

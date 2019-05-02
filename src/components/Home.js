@@ -21,7 +21,7 @@ renderLoginForm = () => {
 renderUserOptionsButtons = () => {
   return <div>
     <Link to={"/search"}>
-      <button className="small button blue">Search</button>
+      <button className="small button blue"> My Workouts/Exercises</button>
     </Link>
     <Link to={"/workout"}>
       <button className="small button blue">Log New Workout</button>
