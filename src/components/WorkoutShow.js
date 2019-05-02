@@ -60,14 +60,17 @@ class WorkoutShow extends Component {
 
   // updates exercise thats clicked on to show its form
   updateShowForm = (exercise) => {
+    console.log('clicked the button')
     const updatedExercises = this.state.exercises.map(thisExercise => {
       return thisExercise === exercise ?
       {...exercise, showForm: !exercise.showForm}
       : thisExercise
     })
+    //hides form if button clicked on again when already showing
+    const formToDisplay = this.state.exerciseFormToDisplay.name === exercise.name ? '' : exercise
     this.setState({
       exercises: updatedExercises,
-      exerciseFormToDisplay: exercise
+      exerciseFormToDisplay: formToDisplay
     })
   }
 
@@ -76,8 +79,9 @@ class WorkoutShow extends Component {
   }
 
   listExercise = (exercise) => {
+    const style = this.state.exerciseFormToDisplay.name === exercise.name ? "card short active" : "card short"
     return (
-      <div className="card short">
+      <div className={style}>
         <h4
           className="card-title">
           {exercise.name}

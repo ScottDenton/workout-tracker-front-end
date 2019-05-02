@@ -15,6 +15,10 @@
   height: 400px
 }
 
+.active{
+  border: 1px solid #269CE9;
+}
+
 .short {
   height: 150px;
   overflow: scroll;
