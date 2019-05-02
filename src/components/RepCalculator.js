@@ -74,8 +74,8 @@ class RepCalculator extends Component {
    const dateToShow = this.props.date ? this.props.date : this.props.retrievedExercise.date
 
    return<div>
-     <h3> {this.state.exercise} </h3>
-     <p> Based on workout from {dateToShow} </p>
+     <h3 className="center"> {this.state.exercise} </h3>
+     <p className="center"> Based on workout from {dateToShow} </p>
      <div className = "table_center">
        <table className='center_table'>
          <tbody>
@@ -126,11 +126,11 @@ class RepCalculator extends Component {
          </tbody>
        </table>
      </div>
-     </div>
+   </div>
  }
 
  renderNotes = () => {
-   return <div>
+   return <div className='center'>
      <p> Notes: {this.state.retrievedExercise.notes}</p>
    </div>
  }

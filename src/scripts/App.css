@@ -102,17 +102,25 @@ text-align: center;
   color: #269CE9;
   font-size: 1.2em;
 }
+.blue_text {
+  color: #269CE9;
+}
+
+.center {
+  text-align: center;
+}
 
 .inline {
   display: inline-block;
 }
+
 .float_right {
   float: right;
 }
+
 .float_left {
   float: left;
 }
-
 
 .float_right > div {
   display: inline-block;
@@ -129,6 +137,11 @@ text-align: center;
   text-align: center;
 }
 
+.nav_item:hover{
+  color: #269CE9;
+}
+
+/*  */
 
 .exercise_name {
   margin: 20px 0px;
@@ -146,9 +159,7 @@ text-align: center;
 }
 
 
-.center {
-  text-align: center;
-}
+
 
 .centered_text {
   text-align: center;
@@ -183,12 +194,10 @@ a:link {
   color: lightGrey;
 }
 
-table.center_table {
+ .table_center > table.center_table {
   margin-left: auto;
   margin-right: auto;
 }
-
-
 
 
 @keyframes App-logo-spin {

@@ -22,7 +22,8 @@ class WorkoutShow extends Component {
       reps: '',
       sets: '',
       notes: '',
-      showNewExercise: false
+      showNewExercise: false,
+      exerciseFormToDisplay: ''
     }
   }
 
@@ -65,7 +66,8 @@ class WorkoutShow extends Component {
       : thisExercise
     })
     this.setState({
-      exercises: updatedExercises
+      exercises: updatedExercises,
+      exerciseFormToDisplay: exercise
     })
   }
 
@@ -75,25 +77,27 @@ class WorkoutShow extends Component {
 
   listExercise = (exercise) => {
     return (
-      <div className="exercise_container">
-        <div className="exercise_name">
-          {exercise.name} - {exercise.weight}kgs x {exercise.reps} reps
-        </div>
-
-        {exercise.showForm === true ?
-           this.renderNewExerciseForm(exercise):
-           <button
-            className="button small blue"
-            onClick={() => this.updateShowForm(exercise)}>
-            Add to new workout
-          </button> }
-        </div>
+      <div className="card short">
+        <h4
+          className="card-title">
+          {exercise.name}
+        </h4>
+        <h5
+          className='card-subtitle'> {exercise.weight}kgs x {exercise.reps} reps
+        </h5>
+         <button
+          className="button small blue"
+          onClick={() => this.updateShowForm(exercise)}>
+          Add to new workout
+        </button>
+      </div>
     )
   }
 
 //saves a new version of exercise from users list of previously completed exercises
   saveExercise = (e, exercise) => {
     e.preventDefault();
+    this.setState({exerciseFormToDisplay: ''})
     const body ={
       user_id: localStorage.getItem("user_id"),
       name: this.state.workout.name,
@@ -103,11 +107,13 @@ class WorkoutShow extends Component {
     postNewWorkout(body)
     .then(newWorkout => {
       this.setState({
-        newWorkout
+        newWorkout,
+        exerciseFormToDisplay: ''
       })
     })
     .then(this.saveExerciseToWorkout(e, exercise))
-    : this.saveExerciseToWorkout(e, exercise)
+    : this.setState({
+      exerciseFormToDisplay: ''},this.saveExerciseToWorkout(e, exercise))
   }
 
 //creates link between saved exercise and workout
@@ -142,6 +148,7 @@ class WorkoutShow extends Component {
 //renders form for previously completed exercises
   renderNewExerciseForm = (exercise) => {
     return (<div>
+      <h2 className="center">{exercise.name}</h2>
       <form className="form_inline"
         onSubmit={(e) => this.saveExercise(e, exercise)}>
         <label> Weight </label>
@@ -263,14 +270,17 @@ class WorkoutShow extends Component {
         It doesnt look like you recorded any exercises for this workout
       </p>
 
+      const formToRender = this.state.exerciseFormToDisplay === '' ? <div> </div> : this.renderNewExerciseForm(this.state.exerciseFormToDisplay)
+
     return(
       <div className='container'>
-        <h2>Name: {name} </h2>
-        <h3>Date: {date}</h3>
-        <div>
-          <h3> Completed Exercises For This Workout</h3>
+        <h2 className='center'>Name: {name} </h2>
+        <h3 className='center'>Date: {date}</h3>
+        <h3 className='center'> Completed Exercises For This Workout</h3>
+        <div className="small_grid">
           {exercisesToRender}
         </div>
+        {formToRender}
         {this.renderNewExercise()}
         {this.displayExercises()}
         <div className="center">

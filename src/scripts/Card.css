@@ -1,6 +1,13 @@
 /* Card */
 
-.card{
+.small_grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  vertical-align: middle;
+}
+
+.card {
   width: 300px;
   border: 1px solid white;
   text-align: center;
@@ -8,7 +15,12 @@
   height: 400px
 }
 
-.card-body{
+.short {
+  height: 150px;
+  overflow: scroll;
+}
+
+.card-body {
   height: 300px;
 }
 
