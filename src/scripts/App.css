@@ -233,6 +233,10 @@ a:link {
     text-align: center;
   }
 
+  .grid{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 
   .navbar  {
     margin-top:10px;
@@ -245,39 +249,32 @@ a:link {
   .form {
     margin: 0px auto
   }
-
-  .form_item input {
-    padding: 0px;
-    margin: 0px;
-  }
   .form_item {
     max-width: 80%;
   }
 
-  .form_item label {
-    float: right;
-    padding: 10px 10px;
-    width: 150px;
+  .form_item input, textarea, select, label {
+    padding: 0px;
+    margin: 0px;
+    float:none;
+    width: 180px;
     text-align: center;
   }
 
-  input {
-    margin: 10px auto 0px auto;
-    min-width: 175px;
-  }
+  /* .form_item label {
+    padding: 00px 00px;
+    width: 150px;
+  } */
 
-  select {
+  input, select, textarea {
     margin: 10px auto 0px auto;
     min-width: 175px;
+    background-color: white;
   }
 
   .button.small {
     margin: 10px auto;
-    min-width: 140px;
-  }
-
-  select {
-    background-color: white;
+    min-width: 180px;
   }
 
   .search_form {
@@ -286,13 +283,22 @@ a:link {
   }
 
   .search_form > div {
-    margin: 0px auto;
+    margin: 5px auto;
     padding: 0px;
-    padding-right: 20%
+    text-align: center;
+    /* padding-right: 20% */
   }
 
   .login_input{
     margin:10px auto;
+  }
+
+  .justified{
+    text-align: justify;
+  }
+
+  .centered_text{
+    padding: 20px;
   }
 
 

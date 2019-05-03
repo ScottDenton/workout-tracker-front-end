@@ -73,9 +73,9 @@ class Exercise extends Component {
       exercise={this.state.exercise}
       retrievedExercise={this.state.retrievedExercise}
        />
-    </div>
+   </div>
   } else {
-    return <div className="centered_text">
+    return <div className="centered_text prompt">
       <span>Select an exercise you've done before to see a suggested rep/weight scheme
       </span>
     </div>

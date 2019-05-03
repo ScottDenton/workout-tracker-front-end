@@ -135,7 +135,7 @@ class Search extends Component {
     return this.state.exercises ?
       <div>
         <h1 className="center"> My Completed Exercises</h1>
-        <h5 className="center"> <span className='blue_highlight'>Click </span>on an exercise to see a suggested weight and rep scheme based on your last recorded workout for that exercise.</h5>
+        <h5 className="center justified"> <span className='blue_highlight'>Click </span>on an exercise to see a suggested weight and rep scheme based on your last recorded workout for that exercise.</h5>
         <div>
         {this.filterByDate(filteredExercises).reverse().map(exercise => {
           return (
