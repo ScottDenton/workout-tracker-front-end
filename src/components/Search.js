@@ -187,19 +187,3 @@ class Search extends Component {
 export default Search;
 
 //if there is an exercise saved to state, then show list
-
-
-
-// return (
-//      <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="vertical">
-//        <YOUR_FRONT_CCOMPONENT key="front">
-//          This is the front of the card.
-//          <button onClick={this.handleClick}>Click to flip</button>
-//        </FrontComponent>
-//
-//        <YOUR_BACK_COMPONENT key="back">
-//          This is the back of the card.
-//          <button onClick={this.handleClick}>Click to flip</button>
-//        </BackComponent>
-//      </ReactCardFlip>
-//    )

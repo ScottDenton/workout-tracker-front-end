@@ -26,6 +26,11 @@ componentDidMount(){
       })
     })
   })
+  .then(somethign => {
+    if(this.state.exercises === ''){
+    deleteWorkout(this.props.workout.id)
+  }
+})
 }
 
 deleteWorkout = () => {

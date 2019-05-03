@@ -43,7 +43,7 @@ export const WorkoutCardFront = (props) => {
   const exerciseList = props.exercises !== '' ?
   props.exercises.map(exercise => {
     return <h5 key={exercise.id}> {exercise.name}</h5>
-  }) : <p>No exercises listed for this workout</p>
+  }) : <p>No exercises were listed for this workout, you may delete it yourself otherwise it will be removed automatically</p>
   return (
     <div
       className="card"

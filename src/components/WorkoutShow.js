@@ -37,11 +37,11 @@ class WorkoutShow extends Component {
 // date is saved in correct format
   componentDidMount(){
     if(this.props.location.state){
+      const date = setDate()
       this.setState({
-        workout: this.props.location.state.workout
-      }, this.fetchExercises, this.createNewWorkout())}
-    const date = setDate()
-    this.setState({date});
+        workout: this.props.location.state.workout,
+        date
+      }, this.fetchExercises)}
   }
 
 //creates a new instance of a workout on page load
@@ -79,6 +79,7 @@ class WorkoutShow extends Component {
         })
       })
     })
+    this.createNewWorkout()
   }
 
   // updates exercise thats clicked on to show its form
@@ -172,7 +173,6 @@ class WorkoutShow extends Component {
         <RepCalculator
         exercise={exercise.name}
         retrievedExercise={exercise}
-
          />
       </div>
     </div>
@@ -181,7 +181,14 @@ class WorkoutShow extends Component {
 
 //saves input from autocomplete field
   retrieveUserInput = (exercise) => {
+
     this.setState({exercise})
+  }
+
+  //find exercise details by name for rep calculator
+  findExercise = (name) => {
+    const id = findExerciseId(name)
+    return findExerciseById(id)
   }
 
 //saves completely new exercise
@@ -215,6 +222,7 @@ class WorkoutShow extends Component {
   }
 //form for completely new exercise
   renderNewExercise = () => {
+    const exercise = this.findExercise(this.state.exercise)
     return this.state.showNewExercise ? (
   <div className='grid'>
     <div>
@@ -271,7 +279,7 @@ class WorkoutShow extends Component {
     </div>
     <RepCalculator
     exercise={this.state.exercise}
-    retrievedExercise={this.findExercise(this.state.exercise)}
+    retrievedExercise={exercise}
      />
  </div>
   ) : <div className="button_div center">
@@ -282,11 +290,7 @@ class WorkoutShow extends Component {
       </div>
   }
 
-  //find exercise details by name for rep calculator
-  findExercise = (name) => {
-    const id = findExerciseId(name)
-    return findExerciseById(id)
-  }
+
 
 //decides which exercises to display
   displayExercises = () => {
