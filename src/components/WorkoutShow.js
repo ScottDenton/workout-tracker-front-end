@@ -39,9 +39,26 @@ class WorkoutShow extends Component {
     if(this.props.location.state){
       this.setState({
         workout: this.props.location.state.workout
-      }, this.fetchExercises)}
+      }, this.fetchExercises, this.createNewWorkout())}
     const date = setDate()
     this.setState({date});
+  }
+
+//creates a new instance of a workout on page load
+  createNewWorkout = () => {
+    console.log('inside new workout')
+    const body ={
+      user_id: localStorage.getItem("user_id"),
+      name: this.state.workout.name,
+      date: this.state.date
+    }
+    postNewWorkout(body)
+    .then(newWorkout => {
+      this.setState({
+        newWorkout,
+        exerciseFormToDisplay: ''
+      })
+    })
   }
 
 //handle changes to form fields
@@ -104,23 +121,9 @@ class WorkoutShow extends Component {
 //saves a new version of exercise from users list of previously completed exercises
   saveExercise = (e, exercise) => {
     e.preventDefault();
-    this.setState({exerciseFormToDisplay: ''})
-    const body ={
-      user_id: localStorage.getItem("user_id"),
-      name: this.state.workout.name,
-      date: this.state.date
-    }
-    this.state.newWorkout === '' ?
-    postNewWorkout(body)
-    .then(newWorkout => {
-      this.setState({
-        newWorkout,
-        exerciseFormToDisplay: ''
-      })
-    })
-    .then(this.saveExerciseToWorkout(e, exercise))
-    : this.setState({
-      exerciseFormToDisplay: ''},this.saveExerciseToWorkout(e, exercise))
+    this.setState({
+      exerciseFormToDisplay: ''},
+      this.saveExerciseToWorkout(e, exercise))
   }
 
 //creates link between saved exercise and workout
@@ -155,7 +158,8 @@ class WorkoutShow extends Component {
        workout_id: this.state.newWorkout.id,
        exercise_id: exercise.id
      }
-     postNewWorkoutExercise(body)
+
+     postNewWorkoutExercise(body).then(console.log)
    }
 //renders form for previously completed exercises
   renderNewExerciseForm = (exercise) => {
