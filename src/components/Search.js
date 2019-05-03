@@ -107,6 +107,7 @@ class Search extends Component {
     return this.state.workouts ?
       <div >
         <h1 className="center"> My Completed Workouts</h1>
+        {window.innerWidth < 380 ? <h4> Scroll on an individual workout to see more details</h4> : <div> </div>}
         <div>
         {this.filterByDate(filteredWorkouts).map(workout => {
           return(

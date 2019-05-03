@@ -220,10 +220,18 @@ a:link {
   }
 }
 @media only screen and (max-width: 375px) {
-* {
-  padding: 0px;
-}
+  h1 {
+    font-size: 1.4em;
+  }
 
+  h3 {
+    color: white;
+  }
+
+  .container {
+    width: 80%;
+    text-align: center;
+  }
 
 
   .navbar  {
@@ -243,7 +251,7 @@ a:link {
     margin: 0px;
   }
   .form_item {
-    max-width: 300px;
+    max-width: 80%;
   }
 
   .form_item label {
@@ -253,7 +261,12 @@ a:link {
     text-align: center;
   }
 
-  input, select{
+  input {
+    margin: 10px auto 0px auto;
+    min-width: 175px;
+  }
+
+  select {
     margin: 10px auto 0px auto;
     min-width: 175px;
   }
@@ -269,11 +282,17 @@ a:link {
 
   .search_form {
     padding: 0px;
+
   }
 
   .search_form > div {
     margin: 0px auto;
     padding: 0px;
+    padding-right: 20%
+  }
+
+  .login_input{
+    margin:10px auto;
   }
 
 
