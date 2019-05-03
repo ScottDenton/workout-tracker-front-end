@@ -17,7 +17,7 @@ class Navbar extends Component {
           </Link>
         </div>
         <div>
-        <Link to={"/"}className=" nav_item">About
+        <Link to={"/about"}className=" nav_item">About
           </Link>
           </div>
       </div>

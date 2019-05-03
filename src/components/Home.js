@@ -50,7 +50,7 @@ whichButtonsToRender = () => {
           Once logged in you can create a new workout and select from a collection of 200 different exercises to add to your workout.
           </p>
           <p>
-            When you complete an exervise for the first time you will be shown suggested weights and reps to help you continue your progression in your next workout.
+            When you complete an exercise for the first time you will be shown suggested weights and reps to help you continue your progression in your next workout.
           </p>
           <p>
             If you dont want to log a full workout, you can just log a one off exercise and it will still be saved for your next workout.

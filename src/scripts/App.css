@@ -106,6 +106,16 @@ text-align: center;
   color: #269CE9;
 }
 
+.flatiron_link {
+  color: rgb(0, 170, 226);
+}
+.ruby_link {
+  color: rgb(197, 0, 0)
+}
+.react_link {
+  color: rgb(86, 213, 250)
+}
+
 .center {
   text-align: center;
 }

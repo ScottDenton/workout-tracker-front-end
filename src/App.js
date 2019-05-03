@@ -12,6 +12,7 @@ import Exercise from './components/Exercise';
 import WorkoutShow from './components/WorkoutShow';
 import ExerciseShow from './components/ExerciseShow';
 import UserEdit from './components/UserEdit';
+import AboutPage from './components/About';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 
@@ -196,7 +197,13 @@ class App extends Component {
                 setLoggedInUser={this.setLoggedInUser}
                 userLoggedIn={this.state.userLoggedIn}
               />
-
+            )}
+          />
+          <Route
+            path='/about'
+            render={props => (
+              <AboutPage {...props}
+                />
             )}
           />
         </React.Fragment>
