@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import './scripts/App.css';
 import './scripts/AutoComplete.css';
+import './scripts/Responsive.css';
 import './scripts/Card.css';
 import './scripts/button.css';
-import Home from './components/Home';
+import Home from './containers/Home';
 import Navbar from './components/Navbar';
 import Signup from './components/Signup';
 import Search from './components/Search';
-import Workout from './components/Workout';
-import Exercise from './components/Exercise';
+import Workout from './containers/Workout';
+import Exercise from './containers/Exercise';
 import WorkoutShow from './components/WorkoutShow';
 import ExerciseShow from './components/ExerciseShow';
 import UserEdit from './components/UserEdit';

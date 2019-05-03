@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {findExerciseId} from '../helpers/exerciseIdFinder'
 import {postNewExercise} from '../helpers/helpers'
 import {NewExerciseForm} from '../helpers/forms.js'
-import RepCalculator from './RepCalculator';
+import RepCalculator from '../components/RepCalculator'
 
 class Exercise extends Component {
   constructor(props){

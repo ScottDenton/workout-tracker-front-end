@@ -7,6 +7,7 @@ import {postNewExercise} from '../helpers/helpers.js'
 import {postNewWorkout} from '../helpers/helpers.js'
 import {postNewWorkoutExercise} from '../helpers/helpers.js'
 import {findWorkoutsExercises} from '../helpers/helpers.js'
+import {findExerciseById} from '../helpers/helpers.js'
 import {NoDateExerciseForm} from '../helpers/forms.js'
 import {checkUnits} from '../helpers/helpers'
 
@@ -167,7 +168,7 @@ class WorkoutShow extends Component {
         <RepCalculator
         exercise={exercise.name}
         retrievedExercise={exercise}
-        
+
          />
       </div>
     </div>
@@ -194,7 +195,12 @@ class WorkoutShow extends Component {
     .then(newExercise => {
       this.addExerciseToWorkout(newExercise)
       this.setState({
-        newExercises: [...this.state.newExercises, newExercise]
+        newExercises: [...this.state.newExercises, newExercise],
+        date: '',
+        weight: '',
+        reps: '',
+        sets: '',
+        notes: '',
       })
     })
   }
@@ -206,45 +212,76 @@ class WorkoutShow extends Component {
 //form for completely new exercise
   renderNewExercise = () => {
     return this.state.showNewExercise ? (
-    <div >
-      <h4> Add a new Exercise </h4>
+  <div className='grid'>
+    <div>
+      <h4 className='center'> Add a new Exercise </h4>
       <form
-        className='workout_show_form'
+        className='form'
         onSubmit={this.addExercise}>
-        <div className="left_form_item">
+        <div className="form_item">
           <label> Exercise </label>
           <AutoComplete
             suggestions={AutoCompleteItems} retrieveUserInput={this.retrieveUserInput} />
         </div>
-        <div className=' grid'>
+
           <div className="form_item">
             <label> Weight </label>
-            <input type='number' placeholder="Weight" name="weight"  onChange={this.handleChange}/>
+            <input
+              type='number'
+              placeholder="Weight"
+              name="weight"
+              value={this.state.weight}
+              onChange={this.handleChange}/>
           </div>
           <div className="form_item">
             <label> Reps </label>
-            <input type='number' placeholder="Reps" name="reps" onChange={this.handleChange}/>
+            <input
+              type='number'
+              placeholder="Reps"
+              name="reps"
+              value={this.state.reps}
+              onChange={this.handleChange}/>
           </div>
           <div className="form_item">
             <label> Sets </label>
-            <input type='number' placeholder="Sets" name="sets" onChange={this.handleChange}/>
+            <input
+              type='number'
+              placeholder="Sets"
+              name="sets"
+              value={this.state.sets}
+              onChange={this.handleChange}/>
           </div>
           <div className="form_item">
             <label> Notes </label>
-            <textarea type='text' placeholder="Enter Notes" name="notes" onChange={this.handleChange}/>
+            <textarea
+              type='text'
+              placeholder="Enter Notes"
+              name="notes"
+              value={this.state.notes}
+              onChange={this.handleChange}/>
           </div>
           <div className="form_item">
           <input className="button small green" type='submit' value='Save' />
         </div>
-        </div>
       </form>
     </div>
+    <RepCalculator
+    exercise={this.state.exercise}
+    retrievedExercise={this.findExercise(this.state.exercise)}
+     />
+ </div>
   ) : <div className="button_div center">
         <button
           className ="button small green"
           onClick={this.showNewForm}> Add a different Exercise
         </button>
       </div>
+  }
+
+  //find exercise details by name for rep calculator
+  findExercise = (name) => {
+    const id = findExerciseId(name)
+    return findExerciseById(id)
   }
 
 //decides which exercises to display

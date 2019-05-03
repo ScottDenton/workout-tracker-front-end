@@ -1,7 +1,7 @@
 import React from 'react'
 import {createNewUser} from '../helpers/helpers.js'
 import {createSession} from '../helpers/helpers'
-
+import Swal from 'sweetalert2'
 import {Redirect} from 'react-router'
 
 class Signup extends React.Component {
@@ -38,7 +38,11 @@ handleSubmit = (e) => {
           this.props.setLoggedInUser(user)
         })
     } else {
-      alert("That username is already taken")
+      Swal.fire({
+        type: 'warning',
+        // title: 'Oops...',
+        text: 'That username is already taken!',
+      })
     }
   })
   this.props.setUnits(this.state.units)
@@ -46,7 +50,11 @@ handleSubmit = (e) => {
 
   render () {
     if(this.state.success){
-      alert("Welcome")
+      Swal.fire({
+        type: 'success',
+        title: 'Welcome',
+        timer: 1200,
+      })
       return(<Redirect to="/"/>)
     }
 
@@ -71,14 +79,16 @@ handleSubmit = (e) => {
               <input type='text' name='username'
                 placeholder="Username"
                 onChange={this.handleChange}
-                value={this.state.username} />
+                value={this.state.username}
+                required/>
             </div>
             <div className="form_item">
               <label>Password: </label>
               <input type='password' name='password'
                 placeholder="Password"
                 onChange={this.handleChange}
-                value={this.state.password} />
+                value={this.state.password}
+                required/>
             </div>
             <div className="form_item">
               <label>Date of Birth: </label>

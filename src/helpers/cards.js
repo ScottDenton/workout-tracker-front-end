@@ -40,7 +40,10 @@ export const ExerciseCardBack = (props) => {
 }
 
 export const WorkoutCardFront = (props) => {
-  const exerciseList= props.exercises !== '' ? props.exercises.map(exercise => <h5> {exercise.name}</h5>) : <p>No exercises listed for this workout</p>
+  const exerciseList = props.exercises !== '' ?
+  props.exercises.map(exercise => {
+    return <h5 key={exercise.id}> {exercise.name}</h5>
+  }) : <p>No exercises listed for this workout</p>
   return (
     <div
       className="card"

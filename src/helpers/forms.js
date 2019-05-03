@@ -11,35 +11,53 @@ export const NewExerciseForm = (props) => {
       <div>
         <div className="form_item">
           <label> Date: </label>
-          <input type='date' name='date'
-            onChange={props.onChange}/>
+          <input
+            type='date' name='date'
+            onChange={props.onChange}
+            required/>
         </div>
       </div>
         : <p></p>}
       <div className="form_item">
         <label> Exercise: </label>
         <AutoComplete
-          suggestions={AutoCompleteItems} retrieveUserInput={props.retrieveUserInput} />
+          suggestions={AutoCompleteItems}
+          retrieveUserInput={props.retrieveUserInput} />
       </div>
       <div className="form_item">
         <label> Weight: </label>
-      <input type='number'
-        placeholder="Weight" name="weight"  onChange={props.onChange}/>
+      <input
+        type='number'
+        placeholder="Weight"
+        name="weight"
+        onChange={props.onChange}
+        required/>
       </div>
       <div className="form_item">
         <label> Reps: </label>
-      <input type='number'
-        placeholder="Reps" name="reps" onChange={props.onChange}/>
+      <input
+        type='number'
+        placeholder="Reps"
+        name="reps"
+        onChange={props.onChange}
+        required/>
       </div>
       <div className="form_item">
         <label> Sets: </label>
-      <input type='number'
-        placeholder="Sets" name="sets" onChange={props.onChange}/>
+      <input
+        type='number'
+        placeholder="Sets"
+        name="sets"
+        onChange={props.onChange}
+        required/>
       </div>
       <div className="form_item">
         <label> Notes: </label>
-        <textarea type='text'
-          placeholder="Enter Notes" name="notes" onChange={props.onChange}/>
+        <textarea
+          type='text'
+          placeholder="Enter Notes"
+          name="notes"
+          onChange={props.onChange}/>
       </div>
       <div className="form_item">
         <input className="button small blue" type='submit' value='Save' />
@@ -49,14 +67,16 @@ export const NewExerciseForm = (props) => {
   }
 
   export const NoDateExerciseForm = (props) => {
-    return <form
-      className='form'
+    return (<form className='form'
       onSubmit={props.onSubmit}>
     <div className="form_item">
       <label> Weight: </label>
     <input
       type='number'
-      placeholder="Weight" name="weight"  onChange={props.onChange}/>
+      placeholder="Weight"
+      name="weight"
+      onChange={props.onChange}
+      required/>
     </div>
     <div className="form_item">
       <label> Reps: </label>
@@ -64,7 +84,8 @@ export const NewExerciseForm = (props) => {
       type='number'
       placeholder="Reps"
       name="reps"
-      onChange={props.onChange}/>
+      onChange={props.onChange}
+      required/>
     </div>
     <div className="form_item">
       <label> Sets: </label>
@@ -72,7 +93,8 @@ export const NewExerciseForm = (props) => {
       type='number'
       placeholder="Sets"
       name="sets"
-      onChange={props.onChange}/>
+      onChange={props.onChange}
+      required/>
     </div>
     <div className="form_item">
       <label> Notes: </label>
@@ -82,32 +104,37 @@ export const NewExerciseForm = (props) => {
         name="notes" onChange={props.onChange}/>
     </div>
     <div className="form_item">
-      <input className="button small green" type='submit' value='Save' />
+      <input className="button small green" type='submit' value='Save'/>
     </div>
-  </form>
+  </form>)
   }
 
   export const LoginForm = (props) => {
-    return <div className="login_form">
+    return (<div className="login_form">
     <form
       onSubmit={props.handleSubmit}>
       <input
-        className="login_input" type='text' name='username'
+        className="login_input"
+        type='text' name='username'
         value={props.username}
-        placeholder="Username" onChange={props.handleChange}
+        placeholder="Username"
+        onChange={props.handleChange}
       />
       <input
-        className="login_input"type='password' name='password'
+        className="login_input"
+        type='password' name='password'
         value={props.password}
-        placeholder="Password" onChange={props.handleChange} />
-      <input className="button small green"
+        placeholder="Password"
+        onChange={props.handleChange} />
+      <input
+        className="button small green"
         type="submit" value="Login" />
     </form>
-  </div>
+  </div>)
   }
 
   export const SearchForm = (props) => {
-    return <form className='search_form'>
+    return (<form className='search_form'>
       <div className="form_item">
         <label> Search by: </label>
         <select onChange={props.handleCriteriaChange}>
@@ -124,5 +151,5 @@ export const NewExerciseForm = (props) => {
           value={props.date}
           onChange={props.handleChange}/>
       </div>
-    </form>
+    </form>)
   }

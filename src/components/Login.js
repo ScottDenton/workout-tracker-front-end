@@ -1,6 +1,7 @@
 import React from 'react'
 import {createSession} from '../helpers/helpers'
 import {LoginForm} from '../helpers/forms'
+import Swal from 'sweetalert2'
 
 class Login extends React.Component {
   constructor(props){
@@ -22,11 +23,22 @@ class Login extends React.Component {
     createSession(this.state)
     .then(user => {
       if(user.status === 500 || user.errors){
-        alert('Invalid credentials')
+        Swal.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'The credentials you entered were  incorrect!',
+          position: 'center'
+        })
       } else {
         localStorage.setItem("user_id", user.id )
         this.props.setLoggedInUser(user)
-        alert(`Welcome back ${user.username}`)
+        Swal.fire({
+          type: 'success',
+          title: `Welcome back ${user.username}`,
+          showConfirmButton: false,
+          timer: 1100,
+          position: 'center'
+        })
       }
     })
   }

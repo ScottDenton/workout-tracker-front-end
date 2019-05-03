@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import RepCalculator from './RepCalculator'
+import RepCalculator from '../components/RepCalculator'
 import {findExerciseId} from '../helpers/exerciseIdFinder'
 import {setDate} from '../helpers/helpers'
 import {postNewExercise} from '../helpers/helpers'
@@ -59,6 +59,7 @@ class Workout extends Component {
     })
   }
 
+// once submitted finds the exercise selected and saves to state before saving to db
   addExercise = (e) => {
     e.preventDefault();
     const exercise = document.querySelector("[name=exercise]").value
@@ -74,13 +75,16 @@ class Workout extends Component {
       units: this.props.currentUser.units,
       imported_exercise_id: findExerciseId(this.state.exercise),
       date, weight, reps, sets, notes
-    }
+    } // saves to db then, adds new exercise to completed exercises and resets form fields
     postNewExercise(body)
       .then(newExercise => {
         this.setState({
           exercises: [...this.state.exercises, newExercise],
           retrievedExercise: newExercise,
-          notes: ''
+          weight: '',
+          reps: '',
+          sets: '',
+          notes: ' '
         })
         this.createNewWorkoutExercise(newExercise.id)
       })
@@ -136,7 +140,7 @@ class Workout extends Component {
   }
 
   renderRepCalculator = () => {
-     if(this.state.retrievedExercise !== '') {
+     if(this.state.exercise !== '') {
       return <RepCalculator
       exercise={this.state.exercise}
       retrievedExercise={this.state.retrievedExercise}

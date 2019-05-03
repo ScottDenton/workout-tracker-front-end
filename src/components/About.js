@@ -38,7 +38,7 @@ const AboutPage = (props) => {
     </div>
 
     <p>
-      If you have any questions about the app, have found any bugs or issues, or if you have any suggestions on features to add, feel free to contact me<a href="mailto:scott.denton.sde@gmail.com?Subject=Workout%20Tracker" target="_top">here</a>.
+      If you have any questions about the app, have found any bugs or issues, or if you have any suggestions on features to add, feel free to contact me<a href="mailto:scott.denton.sde@gmail.com?Subject=Workout%20Tracker" target="_top"><span className='flatiron_link'>here</span></a>.
     </p>
 
   </div>

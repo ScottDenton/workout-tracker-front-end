@@ -1,0 +1,84 @@
+@media only screen and (max-width: 375px) {
+
+  h1 {
+    font-size: 1.4em;
+  }
+
+  h3 {
+    color: white;
+  }
+
+  p {
+    text-align: justify
+  }
+
+  .container {
+    width: 80%;
+    text-align: center;
+  }
+
+  .grid{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .justified{
+    text-align: justify;
+  }
+
+  .centered_text{
+    padding: 20px;
+  }
+
+  .navbar  {
+    margin-top:10px;
+  }
+
+  .nav_item {
+    margin: 10px;
+  }
+
+  .form {
+    margin: 0px auto
+  }
+
+  .form_item {
+    max-width: 80%;
+  }
+
+  .form_item input, textarea, select, label {
+    padding: 0px;
+    margin: 0px;
+    float:none;
+    width: 180px;
+    text-align: center;
+  }
+
+  input, select, textarea {
+    margin: 10px auto 0px auto;
+    min-width: 175px;
+    background-color: white;
+  }
+
+
+  .search_form {
+    padding: 0px;
+  }
+
+  .search_form > div {
+    margin: 5px auto;
+    padding: 0px;
+    text-align: center;
+  }
+
+  .login_input{
+    margin:10px auto;
+  }
+
+
+  .button.small {
+    margin: 10px auto;
+    min-width: 180px;
+  }
+
+}

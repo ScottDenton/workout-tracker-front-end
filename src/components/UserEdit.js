@@ -1,5 +1,6 @@
 import React from 'react'
 import {editUser} from '../helpers/helpers'
+import Swal from 'sweetalert2'
 
 
 class UserEdit extends React.Component {
@@ -9,8 +10,8 @@ constructor(){
     username: '',
     date_of_birth: '',
     units: '',
-    height: null,
-    weight: null
+    height: '',
+    weight: ''
   }
 }
 
@@ -28,8 +29,13 @@ componentDidMount(){
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.authenticateUser() ? this.saveEdit() : alert("you may only edit your account when you are logged in")
+    this.authenticateUser() ? this.saveEdit() : Swal.fire({
+      type: 'error',
+      title: 'Oops...',
+      text: 'Only a logged in user can edit their own account',
+    })
   }
+
   authenticateUser = () => {
     const userId = this.props.currentUser.id
     const localId = Number(localStorage.getItem("user_id"))
@@ -38,14 +44,16 @@ componentDidMount(){
 
   saveEdit = () => {
     const id = this.props.currentUser.id
-    console.log('id', id)
     const {username, date_of_birth, height, weight, units} = this.state
     const body={username, date_of_birth, height, weight, units}
     editUser(id, body)
     .then(user => {
       this.props.setLoggedInUser(user)
     })
-    alert("Account updated")
+    Swal.fire({
+      type: 'success',
+      title: 'Account Updated',
+    })
   }
 
 
@@ -61,7 +69,7 @@ componentDidMount(){
 
     return (
       <div className='container'>
-        <h2> Edit My Account</h2>
+        <h2 className='center'> Edit My Account</h2>
         <div className="child_container">
           <form className = 'form'
             onSubmit={this.handleSubmit}>
@@ -90,7 +98,8 @@ componentDidMount(){
             </div>
             <div className="form_item">
               <label>{heightLabel}: </label>
-              <input type='number'
+              <input
+                type='number'
                 name='height'
                 placeholder= {heightLabel}
                 onChange={this.handleChange}

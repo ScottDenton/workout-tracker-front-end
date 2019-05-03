@@ -3,6 +3,7 @@ body {
   color: lightGrey;
 }
 
+
 .container {
 margin: 5% auto;
 width: 60%;
@@ -95,6 +96,61 @@ text-align: center;
   margin: 20px 0px ;
 }
 
+.navbar {
+  text-align: center;
+  display: inline-block;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.navbar > div{
+  display: inline-block;
+}
+
+.nav_item {
+  margin: 100px;
+  text-decoration: none;
+  color: lightGrey;
+}
+
+.nav_item:hover{
+  color: #269CE9;
+}
+
+.workout_show{
+  display: inline-block;
+}
+
+.search_container {
+  text-align: center;
+}
+
+.search_list {
+  color: white;
+  list-style: none;
+  display: inline-block;
+  margin: 0px auto
+}
+
+/* exercise show  */
+.show_left {
+  float: left;
+  width: 50%;
+}
+.show_right{
+ float: right;
+ width: 50%;
+}
+
+.show_bottom {
+ width: 100%;
+}
+
+.exercise_name {
+  margin: 20px 0px;
+  padding-bottom: 0px;
+}
+/*  */
 
 /* GENERIC CLASSES  */
 
@@ -136,51 +192,6 @@ text-align: center;
   display: inline-block;
 }
 
-.navbar {
-  text-align: center;
-  display: inline-block;
-  margin-top: 40px;
-  width: 100%;
-}
-
-.navbar > div{
-  display: inline-block;
-}
-
-.nav_item {
-  margin: 100px;
-  text-decoration: none;
-  color: lightGrey;
-}
-
-.nav_item:hover{
-  color: #269CE9;
-}
-
-/*  */
-
-.exercise_name {
-  margin: 20px 0px;
-  padding-bottom: 0px;
-}
-
-.workout_show{
-  display: inline-block;
-}
-
-.search_container {
-  text-align: center;
-}
-
-.search_list {
-  color: white;
-  list-style: none;
-  display: inline-block;
-  margin: 0px auto
-}
-
-
-
 
 .centered_text {
   text-align: center;
@@ -188,21 +199,7 @@ text-align: center;
 }
 
 
- /* exercise show  */
- .show_left {
-   float: left;
-   width: 50%;
- }
-.show_right{
-  float: right;
-  width: 50%;
-}
 
-
-.show_bottom {
-  width: 100%;
-}
-/*  */
 
 a:link {
   color: white;
@@ -228,88 +225,4 @@ a:link {
   to {
     transform: rotate(360deg);
   }
-}
-@media only screen and (max-width: 375px) {
-  h1 {
-    font-size: 1.4em;
-  }
-
-  h3 {
-    color: white;
-  }
-
-  .container {
-    width: 80%;
-    text-align: center;
-  }
-
-  .grid{
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-
-  .navbar  {
-    margin-top:10px;
-  }
-
-  .nav_item {
-    margin: 10px;
-  }
-
-  .form {
-    margin: 0px auto
-  }
-  .form_item {
-    max-width: 80%;
-  }
-
-  .form_item input, textarea, select, label {
-    padding: 0px;
-    margin: 0px;
-    float:none;
-    width: 180px;
-    text-align: center;
-  }
-
-  /* .form_item label {
-    padding: 00px 00px;
-    width: 150px;
-  } */
-
-  input, select, textarea {
-    margin: 10px auto 0px auto;
-    min-width: 175px;
-    background-color: white;
-  }
-
-  .button.small {
-    margin: 10px auto;
-    min-width: 180px;
-  }
-
-  .search_form {
-    padding: 0px;
-
-  }
-
-  .search_form > div {
-    margin: 5px auto;
-    padding: 0px;
-    text-align: center;
-    /* padding-right: 20% */
-  }
-
-  .login_input{
-    margin:10px auto;
-  }
-
-  .justified{
-    text-align: justify;
-  }
-
-  .centered_text{
-    padding: 20px;
-  }
-
-
 }

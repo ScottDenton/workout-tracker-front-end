@@ -4,6 +4,7 @@ import {WorkoutCardFront} from '../helpers/cards.js'
 import {WorkoutCardBack} from '../helpers/cards.js'
 import {findWorkoutsExercises} from '../helpers/helpers.js'
 import {deleteWorkout} from '../helpers/helpers.js'
+import Swal from 'sweetalert2'
 
 
 class WorkoutCard extends React.Component {
@@ -28,10 +29,29 @@ componentDidMount(){
 }
 
 deleteWorkout = () => {
-   if (window.confirm("Are you sure")){
-     deleteWorkout(this.props.workout.id)
-     this.props.deleteWorkout(this.props.workout)
-   }
+  let width;
+  if(window.innerWidth < 380){
+    width = '50%'
+  }
+  Swal.fire({
+  title: 'Are you sure?',
+  width: width,
+  text: "You won't be able to revert this!",
+  type: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+  }).then(({value}) => {
+    if(value === true){
+      deleteWorkout(this.props.workout.id)
+      this.props.deleteWorkout(this.props.workout)
+    }
+  })
+   // if (window.confirm("Are you sure")){
+   //   deleteWorkout(this.props.workout.id)
+   //   this.props.deleteWorkout(this.props.workout)
+   // }
 }
 
   renderCard = () => {
