@@ -1,4 +1,4 @@
-#Workout Tracker
+# Workout Tracker
 The workout tracker allows users to securely login and record their workouts.
 
 Users can input an exercise name from a list of 200 exercises, weight used, number of reps and sets completed successfully and notes taken during workout.
