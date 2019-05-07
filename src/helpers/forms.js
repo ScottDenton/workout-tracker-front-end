@@ -32,6 +32,7 @@ export const NewExerciseForm = (props) => {
         name="weight"
         onChange={props.onChange}
         min='0'
+        step='0.01'
         required/>
       </div>
       <div className="form_item">
@@ -42,6 +43,7 @@ export const NewExerciseForm = (props) => {
         name="reps"
         onChange={props.onChange}
         min='0'
+        step='0.01'
         required/>
       </div>
       <div className="form_item">
@@ -79,6 +81,7 @@ export const NewExerciseForm = (props) => {
       placeholder="Weight"
       name="weight"
       min='0'
+      step='0.01'
       onChange={props.onChange}
       required/>
     </div>
@@ -89,6 +92,7 @@ export const NewExerciseForm = (props) => {
       placeholder="Reps"
       name="reps"
       min='0'
+      step='0.01'
       onChange={props.onChange}
       required/>
     </div>

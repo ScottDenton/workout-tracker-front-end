@@ -28,58 +28,23 @@ class App extends Component {
     }
   }
 
-//BELOW USED FOR INITIAL SEED. ONLY KEEPING FOR TESTING BACKEND
-  // componentDidMount(){
-  //   fetch("http://localhost:3000/api/v1/imported_exercises")
-  //   .then(resp => resp.json())
-  //   .then( data => {
-  //     data.results.map(exercise => {
-  //        this.createNewImportedExercise(exercise)
-  //     })
-  //   })
-  // }
 
-// retrieving list of names and ids for autocomplete
-// data.map(exercise => {
-  // this.setState({
-  //   allExerciseNames: [...this.state.allExerciseNames, {exercise.name, exercise.id]
-  //   })
 
 //retrieves user from local storage and sets as current user
   componentDidMount(){
     const id = localStorage.getItem("user_id")
     if(id){
-      fetch(`http://localhost:3000/api/v1/users/${id}`)
+      fetch(`https://workout-tracker-backend.herokuapp.com/api/v1/users/${id}`)
       .then(resp => resp.json())
       .then(currentUser => {
         this.setState({currentUser, userLoggedIn: true})
       })
-
     }
   }
 
-  // createNewImportedExercise = (data) => {
-  //   const body ={
-  //       "imported_exercise_id": data.id,
-  //       "description": data.description,
-  //       "name": data.name,
-  //       "category": data.category,
-  //       "muscles": data.muscles,
-  //       "equipment": data.equipment
-  //     }
-  //   fetch("http://localhost:3000/api/v1/imported_exercises", {
-  //     method: "POST",
-  //     headers: {
-  //       "accept": "application/json",
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify(body)
-  //   }).then(resp => resp.json())
-  // }
-
-  // setUnits = (measurementUnits) =>{
-  //   this.setState({measurementUnits})
-  // }
+  setUnits = (measurementUnits) =>{
+    this.setState({measurementUnits})
+  }
 
   setLoggedInUser = (currentUser) =>{
     this.setState({currentUser, userLoggedIn: true})
@@ -211,11 +176,41 @@ class App extends Component {
 export default App;
 
 
-// <Login setLoggedInUser={this.setLoggedInUser}/>
-// <Exercise currentUser={this.state.currentUser}/>
-// <Signup
-//   setUnits={this.setUnits}
-//   setLoggedInUser={this.setLoggedInUser}/>
-// <Workout currentUser={this.state.currentUser}/>
-// <RepCalculator />
-// <AutoComplete suggestions={AutoCompleteItems}/>
+
+//BELOW USED FOR INITIAL SEED. ONLY KEEPING FOR TESTING BACKEND
+
+//   fetch("https://workout-tracker-backend.herokuapp.com/api/v1/all_exercises/index")
+//   .then(resp => resp.json())
+//   .then(data => {
+//     data.results.map(exercise => {
+//        this.createNewImportedExercise(exercise)
+//     })
+//   })
+// }
+//
+// createNewImportedExercise = (data) => {
+//   const body ={
+//       "imported_id": data.id,
+//       "description": data.description,
+//       "name": data.name,
+//       "category": data.category,
+//       "muscles": data.muscles,
+//       "equipment": data.equipment
+//     }
+//   fetch('https://workout-tracker-backend.herokuapp.com/api/v1/imported_exercises', {
+//     method: "POST",
+//     headers: {
+//       "accept": "application/json",
+//       "Content-Type": "application/json"
+//     },
+//     body: JSON.stringify(body)
+//   }).then(resp => resp.json())
+//   .then(console.log)
+// }
+
+
+// retrieving list of names and ids for autocomplete
+// data.map(exercise => {
+  // this.setState({
+  //   allExerciseNames: [...this.state.allExerciseNames, {exercise.name, exercise.id]
+  //   })

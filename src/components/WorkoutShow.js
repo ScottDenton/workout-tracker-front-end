@@ -46,7 +46,6 @@ class WorkoutShow extends Component {
 
 //creates a new instance of a workout on page load
   createNewWorkout = () => {
-    console.log('inside new workout')
     const body ={
       user_id: localStorage.getItem("user_id"),
       name: this.state.workout.name,
@@ -160,7 +159,7 @@ class WorkoutShow extends Component {
        exercise_id: exercise.id
      }
 
-     postNewWorkoutExercise(body).then(console.log)
+     postNewWorkoutExercise(body)
    }
 //renders form for previously completed exercises
   renderNewExerciseForm = (exercise) => {

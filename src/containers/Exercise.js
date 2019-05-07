@@ -48,6 +48,7 @@ class Exercise extends Component {
       date, weight, reps, sets, notes
     }
     postNewExercise(body)
+    // .then(console.log)
     .then(retrievedExercise => {
       this.setState({retrievedExercise})
     })

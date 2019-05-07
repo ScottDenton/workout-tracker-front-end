@@ -1,3 +1,4 @@
+const base_url = 'https://workout-tracker-backend.herokuapp.com/api/v1'
 
 export const setDate = () => {
   const today = new Date();
@@ -13,9 +14,9 @@ return date
 export const checkUnits = (exercise) => {
   return exercise.units === 'metric' ? "kgs" : "lbs"
 }
-
+//works
 export const createNewUser = (body) => {
-  return fetch("http://localhost:3000/api/v1/users",{
+  return fetch(`${base_url}/users`,{
     method: "POST",
     headers: {
       "accept": "application/json",
@@ -25,8 +26,9 @@ export const createNewUser = (body) => {
   }).then(resp => resp.json())
 }
 
+//works
 export const editUser = (id, body) => {
-  return fetch(`http://localhost:3000/api/v1/users/${id}`, {
+  return fetch(`${base_url}/users/${id}`, {
   method: "PATCH",
   headers: {
     "accept": "application/json",
@@ -37,8 +39,9 @@ export const editUser = (id, body) => {
 .then(resp => resp.json())
 }
 
+// broken
 export const postNewExercise = (body) => {
-  return fetch("http://localhost:3000/api/v1/exercise", {
+  return fetch(`${base_url}/exercise`, {
     method: "POST",
     headers: {
       "accept": "application/json",
@@ -48,9 +51,9 @@ export const postNewExercise = (body) => {
   })
     .then(resp => resp.json())
 }
-
+// broken
 export const postNewWorkoutExercise = (body) => {
-  return fetch("http://localhost:3000/api/v1/workout_exercises", {
+  return fetch(`${base_url}/workout_exercises`, {
     method: "POST",
     headers: {
       "accept": "application/json",
@@ -61,8 +64,9 @@ export const postNewWorkoutExercise = (body) => {
     .then(resp => resp.json())
 }
 
+//works
 export const postNewWorkout = (body) => {
-  return fetch("http://localhost:3000/api/v1/workouts", {
+  return fetch(`${base_url}/workouts`, {
   method: "POST",
   headers: {
     "accept": "application/json",
@@ -71,14 +75,17 @@ export const postNewWorkout = (body) => {
   body: JSON.stringify(body)})
   .then(resp => resp.json())
 }
+
+//works
 export const deleteWorkout = (id) => {
-  return fetch(`http://localhost:3000//api/v1/workouts/${id}`, {
+  return fetch(`${base_url}/workouts/${id}`, {
   method: "DELETE"
   })
 }
 
+//works
 export const createSession = (body) => {
-  return fetch('http://localhost:3000/api/v1/sessions/create', {
+  return fetch(`${base_url}/sessions/create`, {
     method: "POST",
     headers: {
       "accept": "application/json",
@@ -90,7 +97,7 @@ export const createSession = (body) => {
 }
 
 export const findExerciseById = (body) => {
-  return fetch("http://localhost:3000/api/v1/all_exercises/find", {
+  return fetch(`${base_url}/all_exercises/find`, {
     method: "POST",
     headers: {
     "accept": "application/json",
@@ -101,8 +108,9 @@ export const findExerciseById = (body) => {
   .then(resp => resp.json())
 }
 
+//works
 export const findUsersWorkouts =(body) => {
-  return fetch("http://localhost:3000/api/v1/all_exercises/userWorkouts", {
+  return fetch(`${base_url}/all_exercises/userWorkouts`, {
     method: "POST",
     headers: {
       "accept": "application/json",
@@ -113,8 +121,9 @@ export const findUsersWorkouts =(body) => {
   .then(resp => resp.json())
 }
 
+//broken
 export const findUsersExercises = (body) => {
-  return fetch("http://localhost:3000/api/v1/all_exercises/userExercises", {
+  return fetch(`${base_url}/all_exercises/userExercises`, {
     method: "POST",
     headers: {
       "accept": "application/json",
@@ -125,8 +134,9 @@ export const findUsersExercises = (body) => {
   .then(resp => resp.json())
 }
 
+//broken
 export const findWorkoutsExercises = (body) => {
-  return fetch("http://localhost:3000/api/v1/all_exercises/exercisesByWorkout", {
+  return fetch(`${base_url}/all_exercises/exercisesByWorkout`, {
     method: "POST",
     headers: {
       "accept": "application/json",
@@ -137,19 +147,9 @@ export const findWorkoutsExercises = (body) => {
   .then(resp => resp.json())
 }
 
+//broken
 export const getDescription = (body) => {
-  return fetch("http://localhost:3000/api/v1/exercise/getDescription",{
-    method: "POST",
-    headers: {
-      "accept": "application/json",
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(body)
-  }).then(resp => resp.json())
-}
-
-export const getImageUrl = (body) => {
-  return fetch("http://localhost:3000/api/v1/exercise/getImageUrl",{
+  return fetch(`${base_url}/exercise/getDescription`,{
     method: "POST",
     headers: {
       "accept": "application/json",

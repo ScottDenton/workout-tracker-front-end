@@ -3,7 +3,7 @@ const workoutFinder = (userId) => {
     user_id: userId
   }
   let workouts;
-  fetch("http://localhost:3000/api/v1/all_exercises/userWorkouts", {
+  fetch("https://workout-tracker-backend.herokuapp.com/all_exercises/userWorkouts", {
     method: "POST",
     headers: {
       "accept": "application/json",

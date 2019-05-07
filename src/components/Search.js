@@ -89,7 +89,6 @@ class Search extends Component {
   }
 
   deleteWorkout = (workoutToDelete) => {
-
     const workouts = this.state.workouts.filter(workout => {
       return workout.id !== workoutToDelete.id
     })
