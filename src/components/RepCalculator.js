@@ -72,11 +72,11 @@ class RepCalculator extends Component {
    const nineRepCalc= `${Math.floor(repCalculation *.78)}  ${weightUnits}`
    const tenRepCalc= `${Math.floor(repCalculation *.75)}  ${weightUnits}`
 
-   const dateToShow = this.props.date ? this.props.date : this.props.retrievedExercise.date
+   const dateToShow = this.state.retrievedExercise !== '' ? this.state.retrievedExercise.date : this.state.retrievedExercise.date
 
    return<div>
      <h3 className="center"> {this.state.exercise} </h3>
-     <p className="center"> Based on workout from {dateToShow} </p>
+     <p className="center"> Based on workout from {dateToShow} where you completed {this.state.retrievedExercise.reps} reps of {this.state.retrievedExercise.weight}{weightUnits} </p>
      <div className = "table_center">
        <table className='center_table'>
          <tbody>

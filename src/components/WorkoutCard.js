@@ -26,7 +26,7 @@ componentDidMount(){
       })
     })
   })
-  .then(somethign => {
+  .then(result => {
     if(this.state.exercises === ''){
     deleteWorkout(this.props.workout.id)
   }

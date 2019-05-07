@@ -31,6 +31,7 @@ export const NewExerciseForm = (props) => {
         placeholder="Weight"
         name="weight"
         onChange={props.onChange}
+        min='0'
         required/>
       </div>
       <div className="form_item">
@@ -40,6 +41,7 @@ export const NewExerciseForm = (props) => {
         placeholder="Reps"
         name="reps"
         onChange={props.onChange}
+        min='0'
         required/>
       </div>
       <div className="form_item">
@@ -48,6 +50,7 @@ export const NewExerciseForm = (props) => {
         type='number'
         placeholder="Sets"
         name="sets"
+        min='0'
         onChange={props.onChange}
         required/>
       </div>
@@ -75,6 +78,7 @@ export const NewExerciseForm = (props) => {
       type='number'
       placeholder="Weight"
       name="weight"
+      min='0'
       onChange={props.onChange}
       required/>
     </div>
@@ -84,6 +88,7 @@ export const NewExerciseForm = (props) => {
       type='number'
       placeholder="Reps"
       name="reps"
+      min='0'
       onChange={props.onChange}
       required/>
     </div>
@@ -93,6 +98,7 @@ export const NewExerciseForm = (props) => {
       type='number'
       placeholder="Sets"
       name="sets"
+      min='0'
       onChange={props.onChange}
       required/>
     </div>

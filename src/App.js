@@ -21,7 +21,7 @@ class App extends Component {
   constructor(props){
     super()
     this.state={
-      measurementUnits: "metric",
+      // measurementUnits: "metric",
       currentUser: {},
       userLoggedIn: false,
       allExercises: [],
@@ -77,9 +77,9 @@ class App extends Component {
   //   }).then(resp => resp.json())
   // }
 
-  setUnits = (measurementUnits) =>{
-    this.setState({measurementUnits})
-  }
+  // setUnits = (measurementUnits) =>{
+  //   this.setState({measurementUnits})
+  // }
 
   setLoggedInUser = (currentUser) =>{
     this.setState({currentUser, userLoggedIn: true})
@@ -128,7 +128,6 @@ class App extends Component {
             render={props => (
               <Workout {...props}
                 currentUser={this.state.currentUser}
-                units={this.state.measurementUnits}
                 />
             )}
           />
@@ -138,7 +137,6 @@ class App extends Component {
             render={props => (
               <Exercise {...props}
                 currentUser={this.state.currentUser}
-                units={this.state.measurementUnits}
                 />
             )}
           />
@@ -156,7 +154,6 @@ class App extends Component {
             render={props => (
               <Search {...props}
                 currentUser={this.state.currentUser}
-                units={this.state.measurementUnits}
                 />
             )}
           />
@@ -167,7 +164,6 @@ class App extends Component {
               this.authenticateUser() ?
               <WorkoutShow {...props}
                 currentUser={this.state.currentUser}
-                units={this.state.measurementUnits}
                 /> :
               <Home {...props}
                 setLoggedInUser={this.setLoggedInUser}
@@ -191,7 +187,6 @@ class App extends Component {
               this.authenticateUser() ?
               <UserEdit {...props}
                 currentUser={this.state.currentUser}
-                units={this.state.measurementUnits}
                 setLoggedInUser={this.setLoggedInUser}
                 /> :
               <Home {...props}

@@ -101,6 +101,7 @@ componentDidMount(){
               <input
                 type='number'
                 name='height'
+                min='0'
                 placeholder= {heightLabel}
                 onChange={this.handleChange}
                 value={this.state.height}/>
@@ -110,6 +111,7 @@ componentDidMount(){
               <input type='number' name='weight'
                 placeholder={weightLabel}
                 onChange={this.handleChange}
+                min='0'
                 value={this.state.weight}/>
             </div>
             <div className="form_item">
