@@ -13,21 +13,18 @@ class AutoComplete extends Component {
     }
   };
 
-// will have to fill out suggestions and pass in
-// handles the updating of the search bar
+// suggestions passed in as a prop from autocomplete items file
   onChange = (e) => {
     const { suggestions } = this.props
     const userInput = e.target.value
     const filteredSuggestions= suggestions.filter( suggestion => suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
     )
-
     this.setState({
       activeSuggestion: 0,
       filteredSuggestions,
       showSuggestions: true,
       userInput
     })
-
   }
 
   onClick = (e) => {
@@ -54,22 +51,20 @@ class AutoComplete extends Component {
       })
     }
     //check if up arrow is hit
-    else if(e.keyCode === "ArrowUp"){
+    else if(e.key === "ArrowUp"){
       if(activeSuggestion === 0){
         return
       }
       this.setState({activeSuggestion: activeSuggestion - 1})
     }
     //check if down arrow is hit
-    else if(e.keyCode === "ArrowDown"){
+    else if(e.key === "ArrowDown"){
       if(activeSuggestion -1 === filteredSuggestions.length){
         return
       }
       this.setState({activeSuggestion: activeSuggestion + 1})
     }
   }
-
-
 
   render () {
     const {onChange,
@@ -89,12 +84,11 @@ class AutoComplete extends Component {
         suggestionsListComponent = (
           <ul className="suggestions" >
           {filteredSuggestions.map((suggestion, index) => {
-            let className
+            let className;
             //adds the different display to active suggestion
             if(index === activeSuggestion){
               className="suggestion_active"
             }
-
             return(
               <li
                 className={className}
@@ -103,7 +97,6 @@ class AutoComplete extends Component {
               > {suggestion}
               </li>
             )
-
           })}
           </ul>
         )

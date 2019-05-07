@@ -10,9 +10,7 @@ import {findWorkoutsExercises} from '../helpers/helpers.js'
 import {findExerciseById} from '../helpers/helpers.js'
 import {NoDateExerciseForm} from '../helpers/forms.js'
 import {checkUnits} from '../helpers/helpers'
-
 import RepCalculator from './RepCalculator';
-
 import { Link } from "react-router-dom";
 
 class WorkoutShow extends Component {
@@ -33,8 +31,8 @@ class WorkoutShow extends Component {
     }
   }
 
-//if a workout is passed in from Link it is saved to state and its assosciated exercises are fetched.
-// date is saved in correct format
+  //if a workout is passed in from Link it is saved to state and its assosciated exercises are fetched.
+  // date is saved in correct format
   componentDidMount(){
     if(this.props.location.state){
       const date = setDate()
@@ -43,8 +41,7 @@ class WorkoutShow extends Component {
         date
       }, this.fetchExercises)}
   }
-
-//creates a new instance of a workout on page load
+  //creates a new instance of a workout on page load
   createNewWorkout = () => {
     const body ={
       user_id: localStorage.getItem("user_id"),
@@ -288,8 +285,6 @@ class WorkoutShow extends Component {
         </button>
       </div>
   }
-
-
 
 //decides which exercises to display
   displayExercises = () => {

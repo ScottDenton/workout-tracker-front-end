@@ -17,22 +17,24 @@ class ExerciseShow extends Component {
 
   componentDidMount(){
     if(this.props.location.state){
-    this.setState({
-      exercise: this.props.location.state.exercise
-    })}
+      this.setState({
+        exercise: this.props.location.state.exercise
+      })}
   }
 
   renderRepCalculator = () => {
-     if(this.state.exercise !== '') {
-      return <RepCalculator
-      exercise={this.state.exercise.name}
-      retrievedExercise={this.state.exercise}
-       />
+    if(this.state.exercise !== '') {
+      return (
+        <RepCalculator
+        exercise={this.state.exercise.name}
+        retrievedExercise={this.state.exercise}
+         />
+      )
     }
   }
 
   render () {
-    return(<div>
+    return (<div>
       {this.renderRepCalculator()}
       <button onClick={() => this.props.history.goBack()}> Back To Search</button>
       </div>

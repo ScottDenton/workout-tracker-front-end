@@ -17,8 +17,8 @@ export const ExerciseCardFront = (props) =>{
         <h5 className="card-subtitle">Results: </h5>
         <p className="card-text">
           Weight: {props.exercise.weight} {weightUnits},
-           Reps: {props.exercise.reps},
-           Sets: {props.exercise.sets}
+          Reps: {props.exercise.reps},
+          Sets: {props.exercise.sets}
         </p>
         <p className="card-text">Notes: {props.exercise.notes}</p>
       </div>

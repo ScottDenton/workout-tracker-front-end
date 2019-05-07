@@ -66,7 +66,6 @@ class Workout extends Component {
     this.setState({exercise},
     this.saveExerciseToWorkout(e))
   }
-
   saveExerciseToWorkout = (e) => {
     const {date, weight, reps, sets, notes} = this.state
     const body ={
@@ -136,11 +135,11 @@ class Workout extends Component {
         <h3> Completed Exercises </h3>
         {this.state.exercises.map(exercise => (<li key={exercise.id}> {exercise.name}</li>))}
         </div>
-      }
+    }
   }
 
   renderRepCalculator = () => {
-     if(this.state.exercise !== '') {
+    if(this.state.exercise !== '') {
       return <RepCalculator
       exercise={this.state.exercise}
       retrievedExercise={this.state.retrievedExercise}

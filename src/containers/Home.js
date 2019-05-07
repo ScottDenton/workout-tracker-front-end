@@ -10,33 +10,33 @@ class Home extends React.Component {
     }
   }
 
-renderLoginForm = () => {
-  return this.state.showLogin ?
-    <Login setLoggedInUser={this.props.setLoggedInUser} /> :
-    <div>
-      <button className=" small button blue" onClick={() => this.setState({showLogin: true})}> Login </button>
+  renderLoginForm = () => {
+    return this.state.showLogin ?
+      <Login setLoggedInUser={this.props.setLoggedInUser} /> :
+      <div>
+        <button className=" small button blue" onClick={() => this.setState({showLogin: true})}> Login </button>
+      </div>
+  }
+
+  renderUserOptionsButtons = () => {
+    return <div>
+      <Link to={"/search"}>
+        <button className="small button blue"> My Workouts/Exercises</button>
+      </Link>
+      <Link to={"/workout"}>
+        <button className="small button blue">Log New Workout</button>
+      </Link>
+      <Link to={"/exercise"}>
+        <button className="small button blue">Log New Exercise</button>
+      </Link>
     </div>
-}
+  }
 
-renderUserOptionsButtons = () => {
-  return <div>
-    <Link to={"/search"}>
-      <button className="small button blue"> My Workouts/Exercises</button>
-    </Link>
-    <Link to={"/workout"}>
-      <button className="small button blue">Log New Workout</button>
-    </Link>
-    <Link to={"/exercise"}>
-      <button className="small button blue">Log New Exercise</button>
-    </Link>
-  </div>
-}
-
-whichButtonsToRender = () => {
-  return this.props.userLoggedIn ?
-    <div> {this.renderUserOptionsButtons()} </div> :
-    <div> {this.renderLoginForm()}</div>
-}
+  whichButtonsToRender = () => {
+    return this.props.userLoggedIn ?
+      <div> {this.renderUserOptionsButtons()} </div> :
+      <div> {this.renderLoginForm()}</div>
+  }
 
   render () {
     return(
@@ -47,7 +47,7 @@ whichButtonsToRender = () => {
             Login below or signup for a new account to start tracking your workouts.
           </p>
           <p>
-          Once logged in you can create a new workout and select from a collection of 200 different exercises to add to your workout.
+            Once logged in you can create a new workout and select from a collection of 200 different exercises to add to your workout.
           </p>
           <p>
             When you complete an exercise for the first time you will be shown suggested weights and reps to help you continue your progression in your next workout.
@@ -59,7 +59,7 @@ whichButtonsToRender = () => {
           {this.whichButtonsToRender()}
         </div>
     </div>
-  )
+    )
   }
 }
 

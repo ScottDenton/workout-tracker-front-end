@@ -27,14 +27,14 @@ class ExerciseCard extends React.Component {
   renderCard = () => {
     return(
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
-      <ExerciseCardFront key='front' handleClick={this.handleClick}
-      exercise={this.props.exercise}
-      description={this.state.description}
-     />
-      <ExerciseCardBack key='back' handleClick={this.handleClick}
-      exercise={this.props.exercise}
-      description={this.state.description}
-    />
+        <ExerciseCardFront key='front' handleClick={this.handleClick}
+        exercise={this.props.exercise}
+        description={this.state.description}
+        />
+        <ExerciseCardBack key='back' handleClick={this.handleClick}
+        exercise={this.props.exercise}
+        description={this.state.description}
+        />
       </ReactCardFlip>
     )
   }

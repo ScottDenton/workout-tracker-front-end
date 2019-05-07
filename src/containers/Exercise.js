@@ -26,12 +26,12 @@ class Exercise extends Component {
     })
   }
 
-//passed into autocomple component to retrieve the users choice
+  //passed into autocomple component to retrieve the users choice
   retrieveUserInput = (exercise) => {
     this.setState({exercise})
   }
 
-// retrieves the selected workout name/id from autocomplete component, saves it to state then completes fetch only when that is done.
+  // retrieves the selected workout name/id from autocomplete component, saves it to state then completes fetch only when that is done.
   addExercise = (e) => {
     e.preventDefault();
     const exercise = document.querySelector("[name=exercise]").value
@@ -48,7 +48,6 @@ class Exercise extends Component {
       date, weight, reps, sets, notes
     }
     postNewExercise(body)
-    // .then(console.log)
     .then(retrievedExercise => {
       this.setState({retrievedExercise})
     })
@@ -69,20 +68,23 @@ class Exercise extends Component {
 
   renderRepCalculator = () => {
      if(this.state.exercise !== '') {
-      return <div className='container'>
-      <RepCalculator
-      exercise={this.state.exercise}
-      retrievedExercise={this.state.retrievedExercise}
-       />
-   </div>
+      return (
+        <div className='container'>
+          <RepCalculator
+            exercise={this.state.exercise}
+            retrievedExercise={this.state.retrievedExercise}
+           />
+        </div>
+    )
   } else {
-    return <div className="centered_text prompt">
-      <span>Select an exercise you've done before to see a suggested rep/weight scheme
-      </span>
-    </div>
+      return (
+        <div className="centered_text prompt">
+          <span>Select an exercise you've done before to see a suggested rep/weight scheme
+          </span>
+        </div>
+      )
     }
   }
-
 
   render () {
     return(
@@ -90,10 +92,7 @@ class Exercise extends Component {
         {this.renderNewExerciseForm()}
         {this.renderRepCalculator()}
       </div>
-
-
     )
-
   }
 }
 

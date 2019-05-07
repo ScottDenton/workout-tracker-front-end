@@ -14,7 +14,7 @@ return date
 export const checkUnits = (exercise) => {
   return exercise.units === 'metric' ? "kgs" : "lbs"
 }
-//works
+
 export const createNewUser = (body) => {
   return fetch(`${base_url}/users`,{
     method: "POST",
@@ -26,7 +26,6 @@ export const createNewUser = (body) => {
   }).then(resp => resp.json())
 }
 
-//works
 export const editUser = (id, body) => {
   return fetch(`${base_url}/users/${id}`, {
   method: "PATCH",
@@ -35,11 +34,10 @@ export const editUser = (id, body) => {
     "Content-Type": "application/json"
   },
   body: JSON.stringify(body)
-})
-.then(resp => resp.json())
+  })
+  .then(resp => resp.json())
 }
 
-// broken
 export const postNewExercise = (body) => {
   return fetch(`${base_url}/exercise`, {
     method: "POST",
@@ -51,7 +49,8 @@ export const postNewExercise = (body) => {
   })
     .then(resp => resp.json())
 }
-// broken
+
+//create new exercise linked to a workout
 export const postNewWorkoutExercise = (body) => {
   return fetch(`${base_url}/workout_exercises`, {
     method: "POST",
@@ -64,7 +63,6 @@ export const postNewWorkoutExercise = (body) => {
     .then(resp => resp.json())
 }
 
-//works
 export const postNewWorkout = (body) => {
   return fetch(`${base_url}/workouts`, {
   method: "POST",
@@ -76,14 +74,12 @@ export const postNewWorkout = (body) => {
   .then(resp => resp.json())
 }
 
-//works
 export const deleteWorkout = (id) => {
   return fetch(`${base_url}/workouts/${id}`, {
   method: "DELETE"
   })
 }
 
-//works
 export const createSession = (body) => {
   return fetch(`${base_url}/sessions/create`, {
     method: "POST",
@@ -108,7 +104,7 @@ export const findExerciseById = (body) => {
   .then(resp => resp.json())
 }
 
-//works
+//find a specific users workouts
 export const findUsersWorkouts =(body) => {
   return fetch(`${base_url}/all_exercises/userWorkouts`, {
     method: "POST",
@@ -121,7 +117,7 @@ export const findUsersWorkouts =(body) => {
   .then(resp => resp.json())
 }
 
-//broken
+//find a specific users exercises
 export const findUsersExercises = (body) => {
   return fetch(`${base_url}/all_exercises/userExercises`, {
     method: "POST",
@@ -134,7 +130,7 @@ export const findUsersExercises = (body) => {
   .then(resp => resp.json())
 }
 
-//broken
+// find the exercises belonging to a specific workout
 export const findWorkoutsExercises = (body) => {
   return fetch(`${base_url}/all_exercises/exercisesByWorkout`, {
     method: "POST",
@@ -147,7 +143,7 @@ export const findWorkoutsExercises = (body) => {
   .then(resp => resp.json())
 }
 
-//broken
+// description for a specific workout
 export const getDescription = (body) => {
   return fetch(`${base_url}/exercise/getDescription`,{
     method: "POST",

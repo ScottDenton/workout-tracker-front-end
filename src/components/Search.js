@@ -35,6 +35,7 @@ class Search extends Component {
       filteredExercise: ''
     })
   }
+
   handleCriteriaChange = (e) => {
     const searchSelection = e.target.value
     this.setState({ searchSelection })
@@ -46,7 +47,7 @@ class Search extends Component {
     })
   }
 
-// fetch all of a users workouts
+  // fetch all of a users workouts
   fetchWorkouts = () => {
     const body = {user_id: this.props.currentUser.id}
     findUsersWorkouts(body)
@@ -54,6 +55,7 @@ class Search extends Component {
       this.setState({workouts})
     })
   }
+
   //fetch of all of users exercises
   fetchExercises = () => {
     const body = {user_id: this.props.currentUser.id}
@@ -95,13 +97,12 @@ class Search extends Component {
     this.setState({ workouts })
   }
 
-
   renderWorkoutList = () => {
     const filteredWorkouts = this.state.filteredWorkout === '' ?
     this.state.workouts :
-    this.state.workouts.filter(workout => {
-      return workout.name.toLowerCase().includes(this.state.filteredWorkout.toLowerCase())
-    })
+    this.state.workouts.filter(workout => (
+      workout.name.toLowerCase().includes(this.state.filteredWorkout.toLowerCase())
+    ))
 
     return this.state.workouts ?
       <div >
@@ -120,7 +121,7 @@ class Search extends Component {
             </div>
           )
         })}
-      </div>
+        </div>
       </div>
       : <div> ...loading </div>
   }
@@ -137,14 +138,14 @@ class Search extends Component {
         <h5 className="center justified"> <span className='blue_highlight'>Click </span>on an exercise to see a suggested weight and rep scheme based on your last recorded workout for that exercise.</h5>
         <div>
         {this.filterByDate(filteredExercises).reverse().map(exercise => {
-          return (
-              <div
-                className="search_list"
-                key={exercise.id}>
-                <ExerciseCard
-                  exercise={exercise}
-                  currentUser={this.props.currentUser}/>
-              </div>
+        return (
+          <div
+            className="search_list"
+            key={exercise.id}>
+            <ExerciseCard
+              exercise={exercise}
+              currentUser={this.props.currentUser}/>
+          </div>
           )
         })}
       </div>
@@ -153,7 +154,7 @@ class Search extends Component {
   }
 
   filterByDate = (array) => {
-  return  this.state.date === '' ? array : array.filter(exercise => new Date(exercise.date) - new Date(this.state.date) > 0)
+    return  this.state.date === '' ? array : array.filter(exercise => new Date(exercise.date) - new Date(this.state.date) > 0)
   }
 
   render () {
@@ -184,5 +185,3 @@ class Search extends Component {
 }
 
 export default Search;
-
-//if there is an exercise saved to state, then show list

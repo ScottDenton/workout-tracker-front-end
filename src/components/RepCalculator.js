@@ -73,7 +73,7 @@ class RepCalculator extends Component {
 
    const dateToShow = this.state.retrievedExercise !== '' ? this.state.retrievedExercise.date : this.state.retrievedExercise.date
 
-   return<div>
+   return(<div>
      <h3 className="center"> {this.state.exercise} </h3>
      <p className="center"> Based on workout from {dateToShow} where you completed {this.state.retrievedExercise.reps} reps of {this.state.retrievedExercise.weight}{weightUnits} </p>
      <div className = "table_center">
@@ -126,7 +126,7 @@ class RepCalculator extends Component {
          </tbody>
        </table>
      </div>
-   </div>
+   </div>)
  }
 
  renderNotes = () => {

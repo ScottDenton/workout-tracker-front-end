@@ -40,7 +40,6 @@ handleSubmit = (e) => {
     } else {
       Swal.fire({
         type: 'warning',
-        // title: 'Oops...',
         text: 'That username is already taken!',
       })
     }
@@ -58,6 +57,7 @@ handleSubmit = (e) => {
       return(<Redirect to="/"/>)
     }
 
+    // set the height and weight based on if user selected imperial or metric on signup
     let heightLabel;
     this.state.units === "metric" ?
     heightLabel = "Height (cms)": heightLabel = "Height (inches)"
@@ -65,12 +65,11 @@ handleSubmit = (e) => {
     this.state.units === "metric" ?
     weightLabel = "Weight (kgs)": weightLabel = "Weight (lbs)"
 
-
     return (
       <div className='container'>
         <div className="child_container">
           <p className="signup_disclaimer">
-            DISCLAIMER: Everything within is to be considered advice only. You should seek medical advice before starting any new exercise routine. 
+            DISCLAIMER: Everything within is to be considered advice only. You should seek medical advice before starting any new exercise routine.
           </p>
           <form className = 'form'
             onSubmit={this.handleSubmit}>
@@ -123,7 +122,6 @@ handleSubmit = (e) => {
         </div>
       </div>
     )
-
   }
 }
 

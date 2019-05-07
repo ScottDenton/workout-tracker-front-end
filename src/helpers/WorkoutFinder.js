@@ -18,9 +18,3 @@ const workoutFinder = (userId) => {
 }
 
 export {workoutFinder}
-
-
-// get all workouts
-// filter through them to just find current users
-// display these workouts in the search results
-// then filter them as parameters change
