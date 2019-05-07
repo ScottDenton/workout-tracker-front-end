@@ -17,7 +17,7 @@ class AutoComplete extends Component {
   onChange = (e) => {
     const { suggestions } = this.props
     const userInput = e.target.value
-    const filteredSuggestions= suggestions.filter( suggestion => suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
+    const filteredSuggestions= suggestions.filter( suggestion => suggestion.toLowerCase().indexOf(userInput) > -1
     )
     this.setState({
       activeSuggestion: 0,
