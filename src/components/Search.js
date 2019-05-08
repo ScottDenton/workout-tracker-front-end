@@ -101,7 +101,7 @@ class Search extends Component {
     const filteredWorkouts = this.state.filteredWorkout === '' ?
     this.state.workouts :
     this.state.workouts.filter(workout => (
-      workout.name.includes(this.state.filteredWorkout)
+      workout.name.toLowerCase().includes(this.state.filteredWorkout.toLowerCase())
     ))
 
     return this.state.workouts ?
@@ -129,7 +129,7 @@ class Search extends Component {
     const filteredExercises = this.state.filteredExercise === '' ?
     this.state.exercises :
     this.state.exercises.filter(exercise => {
-      return exercise.name ? exercise.name.includes(this.state.filteredExercise) : exercise.name
+      return exercise.name ? exercise.name.toLowerCase().includes(this.state.filteredExercise.toLowerCase()) : exercise.name
     })
 
     return this.state.exercises ?

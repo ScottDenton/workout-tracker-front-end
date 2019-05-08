@@ -9,14 +9,14 @@
   "dependencies": {
     "react": "^16.8.6",
     "react-autocomplete": "^1.8.1",
-    "react-card-flip": "^0.7.0",
-    "react-date-range": "^1.0.0-beta",
+    "react-card-flip": "^0.7.1",
+    "react-date-range": "^1.0.0-beta2",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.0",
     "redux": "^4.0.1",
-    "sweetalert2": "^8.10.0"
+    "sweetalert2": "^8.10.2"
   },
   "scripts": {
     "start": "react-scripts start",
