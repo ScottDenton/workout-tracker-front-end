@@ -55,12 +55,19 @@
     height: 150px;
     width: 250px;
     margin: 10px auto;
+    text-align: center;
   }
   .card-description {
     display: none;
   }
   .card p, th {
     font-size: 0.8em;
+    text-align: center;
+  }
+
+  li {
+    text-align: left;
+    margin-left: 20px;
   }
 
   .card-button {
