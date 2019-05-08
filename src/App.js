@@ -21,7 +21,6 @@ class App extends Component {
   constructor(props){
     super()
     this.state={
-      // measurementUnits: "metric",
       currentUser: {},
       userLoggedIn: false,
       allExercises: [],
@@ -42,9 +41,9 @@ class App extends Component {
     }
   }
 
-  setUnits = (measurementUnits) =>{
-    this.setState({measurementUnits})
-  }
+  // setUnits = (measurementUnits) =>{
+  //   this.setState({measurementUnits})
+  // }
 
   setLoggedInUser = (currentUser) =>{
     this.setState({currentUser, userLoggedIn: true})
@@ -177,7 +176,10 @@ export default App;
 
 
 
-//BELOW USED FOR INITIAL SEED. ONLY KEEPING FOR TESTING BACKEND
+//BELOW USED FOR INITIAL SEED.
+// instead of calling the API everytime someone wanted to do an exercise I did one big initial fetch to the API
+// and saved those 199 approved exercises to the backend.
+// if any new exercises get added they can simply be added through the rails console
 
 //   fetch("https://workout-tracker-backend.herokuapp.com/api/v1/all_exercises/index")
 //   .then(resp => resp.json())
@@ -207,10 +209,3 @@ export default App;
 //   }).then(resp => resp.json())
 //   .then(console.log)
 // }
-
-
-// retrieving list of names and ids for autocomplete
-// data.map(exercise => {
-  // this.setState({
-  //   allExerciseNames: [...this.state.allExerciseNames, {exercise.name, exercise.id]
-  //   })

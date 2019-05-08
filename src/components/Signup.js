@@ -44,7 +44,7 @@ handleSubmit = (e) => {
       })
     }
   })
-  this.props.setUnits(this.state.units)
+  // this.props.setUnits(this.state.units)
 }
 
   render () {
