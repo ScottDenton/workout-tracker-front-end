@@ -1,4 +1,4 @@
-# Workout Tracker
+# Exercise Buddy
 The workout tracker allows users to securely login and record their workouts.
 
 Users can choose an exercise from a list of 200 exercises and input the weight used, number of reps and sets completed successfully and notes taken during a workout.

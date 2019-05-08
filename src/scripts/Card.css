@@ -1,11 +1,14 @@
 /* Card */
 
-.small_grid{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-  vertical-align: middle;
+@media only screen and (min-width: 420px) {
+  .small_grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    vertical-align: middle;
+  }
 }
+
 
 .card {
   width: 300px;
@@ -47,7 +50,7 @@
   margin: 20px;
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 420px) {
   .card {
     height: 150px;
     width: 250px;
@@ -61,6 +64,6 @@
   }
 
   .card-button {
-    
+
   }
 }

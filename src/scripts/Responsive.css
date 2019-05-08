@@ -44,6 +44,7 @@
 
   .form_item {
     max-width: 80%;
+    margin: 0px;
   }
 
   .form_item input, textarea, select, label {
@@ -60,11 +61,6 @@
     background-color: white;
   }
 
-
-  .search_form {
-    padding: 0px;
-  }
-
   .search_form > div {
     margin: 5px auto;
     padding: 0px;
@@ -79,6 +75,10 @@
   .button.small {
     margin: 10px auto;
     min-width: 180px;
+  }
+
+  .small_grid {
+    grid-column: auto;
   }
 
 }

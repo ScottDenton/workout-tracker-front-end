@@ -42,7 +42,7 @@ class Home extends React.Component {
     return(
       <div className="container">
         <div className="child_container">
-          <h1> Workout Tracker </h1>
+          <h1> Exercise Buddy </h1>
           <p>
             Login below or signup for a new account to start tracking your workouts.
           </p>
