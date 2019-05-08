@@ -39,7 +39,7 @@
   }
 
   .form {
-    margin: 0px auto
+    margin-left: 15%
   }
 
   .form_item {
@@ -80,5 +80,9 @@
   .small_grid {
     grid-column: auto;
   }
+
+.center p {
+  text-align: center;
+}
 
 }

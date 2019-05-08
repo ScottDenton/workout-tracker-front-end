@@ -5,6 +5,7 @@ import {SearchForm} from '../helpers/forms'
 import ExerciseCard from './ExerciseCard'
 import WorkoutCard from './WorkoutCard'
 
+
 class Search extends Component {
   constructor(props){
     super(props)
@@ -121,10 +122,10 @@ class Search extends Component {
             <div
               className ="search_list"
               key={workout.id}>
-              <WorkoutCard
-                workout={workout}
-                deleteWorkout={this.deleteWorkout}
-                />
+                <WorkoutCard
+                  workout={workout}
+                  deleteWorkout={this.deleteWorkout}
+                  />
             </div>
           )
         })}
@@ -142,7 +143,10 @@ class Search extends Component {
     return this.state.exercises ?
       <div>
         <h1 className="center"> My Completed Exercises</h1>
-        <h5 className="center justified"> <span className='blue_highlight'>Click </span>on an exercise to see the rep calculator. To  <span className="red_highlight">delete</span> an exercise look for the button below the rep calculator.</h5>
+        <h5 className="center justified">
+          <span className='blue_highlight'>Click </span>on an exercise to see the rep calculator.<br/>
+          To <span className="red_highlight">delete</span> an exercise look for the button below the rep calculator. <br/>
+        <span className="warning"> Warning: </span> deleting an exercise will remove it from its associated workout.</h5>
         <div>
         {this.filterByDate(filteredExercises).reverse().map(exercise => {
         return (

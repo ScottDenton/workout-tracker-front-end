@@ -29,9 +29,6 @@ width: 60%;
   margin-left: 25%;
 }
 
-.workout_show_form{
-}
-
 .form_item{
   padding: 10px;
   margin: 10px;
@@ -159,6 +156,10 @@ text-align: center;
 }
 .red_highlight {
   color: #FF2B19;
+  font-size: 1.2em;
+}
+.warning {
+  color: #FFD500;
   font-size: 1.2em;
 }
 .blue_text {
