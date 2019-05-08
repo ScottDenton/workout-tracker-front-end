@@ -309,7 +309,7 @@ class WorkoutShow extends Component {
         <h2 className='center'>Name: {name} </h2>
         <h3 className='center'>Date: {date}</h3>
         <h3 className='center'> Completed Exercises For This Workout</h3>
-        {window.innerWidth < 420 ? <p> Click on an exercise and scroll down to add to add details and for the rep calculator. <br/>The active exercise will show in <span className="blue_text"> blue </span>. </p>: <p> </p> }
+        {window.innerWidth < 420 ? <p> Click on an exercise, then scroll down to add details and see rep calculator. <br/>The active exercise will show in <span className="blue_text"> blue </span>. </p>: <p> </p> }
         <div className="small_grid">
           {exercisesToRender}
         </div>
