@@ -8,3 +8,5 @@ On returning to an exercise previously logged, the app will provide a suggested 
 I am still actively working on this but I have created a brief demo [video](https://vimeo.com/334182434) showcasing the app and will update this page when the app is officially online.
 
 The backend for the project is stored in a separate repo and can be found [here](https://github.com/ScottDenton/workout-tracker-back-end).
+
+Credits/ Attribution

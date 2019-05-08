@@ -35,11 +35,19 @@ const AboutPage = (props) => {
         <a href='https://github.com/ScottDenton/workout-tracker-front-end' target= 'blank'><span className='react_link'> React Front End </span></a>
       </p>
     </div>
-
-    <p>
-      If you have any questions about the app, have found any bugs or issues, or if you have any suggestions on features to add, feel free to contact me<a href="mailto:scott.denton.sde@gmail.com?Subject=Workout%20Tracker" target="_top"><span className='flatiron_link'>here</span></a>.
-    </p>
+    <div>
+      <p>
+        If you have any questions about the app, have found any bugs or issues, or if you have any suggestions on features to add, feel free to contact me<a href="mailto:scott.denton.sde@gmail.com?Subject=Workout%20Tracker" target="_top"><span className='flatiron_link'>here</span></a>.
+      </p>
+    </div>
+    <div>
+      <h2> Attributions </h2>
+      <p> Icon made by Freepik from www.flaticon.com </p>
+      <p> button css from https://1stwebdesigner.com/free-code-snippets-css-buttons/</p>
+      <p> Autocomplete basics from https://alligator.io/react/react-autocomplete/</p>
+    </div>
   </div>
+
   )
 }
 
