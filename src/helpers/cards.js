@@ -35,6 +35,13 @@ export const ExerciseCardBack = (props) => {
       exercise={props.exercise.name}
       retrievedExercise={props.exercise}
       />
+      <div>
+        <button
+          className="button small red"
+          onClick={props.deleteExercise}>
+          Delete
+        </button>
+      </div>
     </div>
   )
 }

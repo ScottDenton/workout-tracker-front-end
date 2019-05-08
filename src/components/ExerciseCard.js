@@ -3,6 +3,9 @@ import {getDescription} from '../helpers/helpers'
 import ReactCardFlip from 'react-card-flip';
 import {ExerciseCardFront} from '../helpers/cards.js'
 import {ExerciseCardBack} from '../helpers/cards.js'
+import {deleteExercise} from '../helpers/helpers.js'
+
+import Swal from 'sweetalert2'
 
 class ExerciseCard extends React.Component {
   constructor(props){
@@ -24,6 +27,28 @@ class ExerciseCard extends React.Component {
     this.setState({isFlipped: !this.state.isFlipped})
   }
 
+  deleteExercise = () => {
+    let width;
+    if(window.innerWidth < 4200){
+      width = '50%'
+    }
+    Swal.fire({
+    title: 'Are you sure?',
+    width: width,
+    text: "You won't be able to revert this!",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+    }).then(({value}) => {
+      if(value === true){
+        deleteExercise(this.props.exercise.id)
+        this.props.deleteExercise(this.props.exercise)
+      }
+    })
+}
+
   renderCard = () => {
     return(
       <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
@@ -34,6 +59,7 @@ class ExerciseCard extends React.Component {
         <ExerciseCardBack key='back' handleClick={this.handleClick}
         exercise={this.props.exercise}
         description={this.state.description}
+        deleteExercise={this.deleteExercise}
         />
       </ReactCardFlip>
     )

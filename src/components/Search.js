@@ -97,6 +97,13 @@ class Search extends Component {
     this.setState({ workouts })
   }
 
+  deleteExercise = (exerciseToDelete) => {
+    const exercises = this.state.exercises.filter(exercise => {
+      return exercise.id !== exerciseToDelete.id
+    })
+    this.setState({ exercises })
+  }
+
   renderWorkoutList = () => {
     const filteredWorkouts = this.state.filteredWorkout === '' ?
     this.state.workouts :
@@ -135,7 +142,7 @@ class Search extends Component {
     return this.state.exercises ?
       <div>
         <h1 className="center"> My Completed Exercises</h1>
-        <h5 className="center justified"> <span className='blue_highlight'>Click </span>on an exercise to see a suggested weight and rep scheme based on your last recorded workout for that exercise.</h5>
+        <h5 className="center justified"> <span className='blue_highlight'>Click </span>on an exercise to see the rep calculator. To  <span className="red_highlight">delete</span> an exercise look for the button below the rep calculator.</h5>
         <div>
         {this.filterByDate(filteredExercises).reverse().map(exercise => {
         return (
@@ -144,7 +151,8 @@ class Search extends Component {
             key={exercise.id}>
             <ExerciseCard
               exercise={exercise}
-              currentUser={this.props.currentUser}/>
+              currentUser={this.props.currentUser}
+              deleteExercise={this.deleteExercise}/>
           </div>
           )
         })}

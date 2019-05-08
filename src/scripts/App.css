@@ -157,6 +157,10 @@ text-align: center;
   color: #269CE9;
   font-size: 1.2em;
 }
+.red_highlight {
+  color: #FF2B19;
+  font-size: 1.2em;
+}
 .blue_text {
   color: #269CE9;
 }

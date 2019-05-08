@@ -35,7 +35,7 @@ class WorkoutCard extends React.Component {
 
   deleteWorkout = () => {
     let width;
-    if(window.innerWidth < 380){
+    if(window.innerWidth < 420){
       width = '50%'
     }
     Swal.fire({

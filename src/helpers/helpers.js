@@ -80,6 +80,12 @@ export const deleteWorkout = (id) => {
   })
 }
 
+export const deleteExercise = (id) => {
+  return fetch(`${base_url}/exercise/${id}`, {
+  method: "DELETE"
+  })
+}
+
 export const createSession = (body) => {
   return fetch(`${base_url}/sessions/create`, {
     method: "POST",
