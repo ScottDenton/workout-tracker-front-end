@@ -50,12 +50,15 @@ class App extends Component {
       userLoggedIn: false,
     })
     localStorage.removeItem("user_id")
+    localStorage.removeItem("password_digest")
   }
 
   authenticateUser = () => {
     const userId = this.state.currentUser.id
+    const password = this.state.currentUser.password
     const localId = Number(localStorage.getItem("user_id"))
-    return  userId === localId && userId !== undefined
+    const localPassword = Number(localStorage.getItem("password_digest"))
+    return  userId === localId && password === localPassword && userId !== undefined
   }
 
   render(){

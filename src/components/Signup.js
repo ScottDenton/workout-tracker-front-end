@@ -34,7 +34,9 @@ handleSubmit = (e) => {
         username:this.state.username,
         password: this.state.password})
         .then(user => {
+          console.log(user)
           localStorage.setItem("user_id", user.id)
+          localStorage.setItem("password_digest", user.password_digest )
           this.props.setLoggedInUser(user)
         })
     } else {

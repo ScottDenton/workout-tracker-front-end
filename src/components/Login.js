@@ -30,7 +30,9 @@ class Login extends React.Component {
           position: 'center'
         })
       } else {
+        console.log(user)
         localStorage.setItem("user_id", user.id )
+        localStorage.setItem("password_digest", user.password_digest )
         this.props.setLoggedInUser(user)
         Swal.fire({
           type: 'success',
