@@ -20,6 +20,7 @@
   .grid{
     display: grid;
     grid-template-columns: 1fr;
+    margin: 0px
   }
 
   .justified{
@@ -28,6 +29,11 @@
 
   .centered_text{
     padding: 20px;
+  }
+
+  .prompt {
+    width: 100%;
+    padding-left: 40px
   }
 
   .navbar  {
@@ -40,6 +46,13 @@
 
   .form {
     margin-left: 15%
+  }
+
+  .exercise_container .form {
+    margin-left: 20%;
+  }
+  .exercise_container .center {
+    margin-left: 20%;
   }
 
   .form_item {
@@ -81,8 +94,8 @@
     grid-column: auto;
   }
 
-.center p {
-  text-align: center;
-}
+  .center p {
+    text-align: center;
+  }
 
 }

@@ -11,7 +11,6 @@ import Search from './components/Search';
 import Workout from './containers/Workout';
 import Exercise from './containers/Exercise';
 import WorkoutShow from './components/WorkoutShow';
-import ExerciseShow from './components/ExerciseShow';
 import UserEdit from './components/UserEdit';
 import AboutPage from './components/About';
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -40,10 +39,6 @@ class App extends Component {
       })
     }
   }
-
-  // setUnits = (measurementUnits) =>{
-  //   this.setState({measurementUnits})
-  // }
 
   setLoggedInUser = (currentUser) =>{
     this.setState({currentUser, userLoggedIn: true})
@@ -90,18 +85,28 @@ class App extends Component {
             exact
             path='/workout'
             render={props => (
+              this.authenticateUser() ?
               <Workout {...props}
                 currentUser={this.state.currentUser}
-                />
+                />:
+              <Home {...props}
+                setLoggedInUser={this.setLoggedInUser}
+                userLoggedIn={this.state.userLoggedIn}
+              />
             )}
           />
           <Route
             exact
             path='/exercise'
             render={props => (
+              this.authenticateUser() ?
               <Exercise {...props}
                 currentUser={this.state.currentUser}
-                />
+                />:
+              <Home {...props}
+                setLoggedInUser={this.setLoggedInUser}
+                userLoggedIn={this.state.userLoggedIn}
+              />
             )}
           />
           <Route
@@ -132,15 +137,6 @@ class App extends Component {
               <Home {...props}
                 setLoggedInUser={this.setLoggedInUser}
                 userLoggedIn={this.state.userLoggedIn}
-              />
-            )}
-          />
-          <Route
-            exact
-            path='/exercise/:id'
-            render={props => (
-              <ExerciseShow {...props}
-                currentUser={this.state.currentUser}
               />
             )}
           />

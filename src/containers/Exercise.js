@@ -55,7 +55,7 @@ class Exercise extends Component {
   }
 
   renderNewExerciseForm = () => {
-    return (<div>
+    return (<div className="exercise_container">
       <h2 className="center"> Save a New Exercise </h2>
       <NewExerciseForm
         onSubmit={this.addExercise}

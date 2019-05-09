@@ -24,17 +24,13 @@ class RepCalculator extends Component {
     })
   }
 
+
   componentWillReceiveProps(nextProps) {
     this.setState({
       exercise: nextProps.exercise
     }, this.fetchExercise);
   }
 
-  checkExerciseOwner = (exercise) =>  {
-    return this.state.usersExercises.some(ex => {
-      return ex.name === exercise.name
-    })
-  }
 
   fetchExercise = () => {
     const exerciseId = findExerciseId(this.state.exercise)
@@ -130,9 +126,9 @@ class RepCalculator extends Component {
  }
 
  renderNotes = () => {
-   return <div className='center'>
+   return (<div className='center'>
      <p> Notes: {this.state.retrievedExercise.notes}</p>
-   </div>
+   </div>)
  }
 
  hasUserDoneExercise = () =>{
