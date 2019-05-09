@@ -93,6 +93,7 @@ export const createSession = (body) => {
       "accept": "application/json",
       "Content-Type": "application/json"
     },
+    mode: 'cors',
     body: JSON.stringify(body)
   })
   .then(resp => resp.json())

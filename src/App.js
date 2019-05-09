@@ -55,9 +55,9 @@ class App extends Component {
 
   authenticateUser = () => {
     const userId = this.state.currentUser.id
-    const password = this.state.currentUser.password
     const localId = Number(localStorage.getItem("user_id"))
-    const localPassword = Number(localStorage.getItem("password_digest"))
+    const password = this.state.currentUser.password_digest
+    const localPassword = (localStorage.getItem("password_digest"))
     return  userId === localId && password === localPassword && userId !== undefined
   }
 
@@ -175,9 +175,8 @@ export default App;
 
 
 
-//BELOW USED FOR INITIAL SEED.
-// instead of calling the API everytime someone wanted to do an exercise I did one big initial fetch to the API
-// and saved those 199 approved exercises to the backend.
+// ******    BELOW USED FOR INITIAL SEED OF EXERCISES ******
+// instead of calling the API everytime someone wanted to do an exercise I did one big initial fetch to the API and saved those 199 approved exercises to the backend.
 // if any new exercises get added they can simply be added through the rails console
 
 //   fetch("https://workout-tracker-backend.herokuapp.com/api/v1/all_exercises/index")
