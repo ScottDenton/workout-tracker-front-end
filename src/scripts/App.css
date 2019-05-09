@@ -68,6 +68,7 @@ text-align: center;
 
 .search_form{
   padding:20px;
+  text-align: center;
 }
 
 .search_form > div {
