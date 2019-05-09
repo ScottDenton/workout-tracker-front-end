@@ -86,8 +86,9 @@ export const deleteExercise = (id) => {
   })
 }
 
+//create the session for when the user logs in
 export const createSession = (body) => {
-  return fetch(`${base_url}/sessions/create`, {
+  return fetch(`'https://cors-anywhere.herokuapp.com'/${base_url}/sessions/create`, {
     method: "POST",
     headers: {
       "accept": "application/json",
