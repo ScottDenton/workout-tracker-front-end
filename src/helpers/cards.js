@@ -77,7 +77,7 @@ export const WorkoutCardFront = (props) => {
         }}>
           <button
             className="button small blue">
-            Do it again
+            Do it again / See details
           </button>
         </Link>
         <div>
