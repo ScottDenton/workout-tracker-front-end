@@ -102,7 +102,7 @@ class Workout extends Component {
     return (
     <form className='form'
       onSubmit={this.createWorkout}>
-      <div className='form_item'>
+      <div className='form_item '>
         <label htmlFor="name"> Name this workout </label>
         <input type="text" name="name"
           placeholder="Workout Name" onChange={this.handleChange}/>

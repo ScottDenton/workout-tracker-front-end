@@ -19,7 +19,7 @@ class Home extends React.Component {
   }
 
   renderUserOptionsButtons = () => {
-    return <div>
+    return (<div>
       <Link to={"/search"}>
         <button className="small button blue"> My Workouts/Exercises</button>
       </Link>
@@ -29,7 +29,7 @@ class Home extends React.Component {
       <Link to={"/exercise"}>
         <button className="small button blue">Log New Exercise</button>
       </Link>
-    </div>
+    </div>)
   }
 
   whichButtonsToRender = () => {

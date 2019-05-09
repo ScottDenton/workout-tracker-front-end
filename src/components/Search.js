@@ -4,6 +4,7 @@ import {findUsersExercises} from '../helpers/helpers'
 import {SearchForm} from '../helpers/forms'
 import ExerciseCard from './ExerciseCard'
 import WorkoutCard from './WorkoutCard'
+import { Link } from "react-router-dom";
 
 
 class Search extends Component {
@@ -115,6 +116,9 @@ class Search extends Component {
     return this.state.workouts ?
       <div >
         <h1 className="center"> My Completed Workouts</h1>
+        <Link to={"/workout"}>
+          <button className="small button blue">Log New Workout</button>
+        </Link>
         {window.innerWidth < 420 ? <h4> Scroll on an individual workout to see more details</h4> : <div> </div>}
         <div>
         {this.filterByDate(filteredWorkouts).map(workout => {
@@ -143,6 +147,9 @@ class Search extends Component {
     return this.state.exercises ?
       <div>
         <h1 className="center"> My Completed Exercises</h1>
+          <Link to={"/exercise"}>
+            <button className="small button blue">Log New Exercise</button>
+          </Link>
         <h5 className="center justified">
           <span className='blue_highlight'>Click </span>on an exercise to see the rep calculator.<br/>
           To <span className="red_highlight">delete</span> an exercise look for the button below the rep calculator. <br/>
