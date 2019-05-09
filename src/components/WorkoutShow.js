@@ -97,6 +97,7 @@ class WorkoutShow extends Component {
     return this.state.exercises.map(exercise => this.listExercise(exercise))
   }
 
+  //inserts exercise info into cards
   listExercise = (exercise) => {
     const style = this.state.exerciseFormToDisplay.name === exercise.name ? "card short active" : "card short"
     const weightUnits = checkUnits(exercise)
@@ -155,9 +156,9 @@ class WorkoutShow extends Component {
        workout_id: this.state.newWorkout.id,
        exercise_id: exercise.id
      }
-
      postNewWorkoutExercise(body)
    }
+
 //renders form for previously completed exercises
   renderNewExerciseForm = (exercise) => {
     const submit = (e) => this.saveExercise(e, exercise)
@@ -230,44 +231,43 @@ class WorkoutShow extends Component {
           <AutoComplete
             suggestions={AutoCompleteItems} retrieveUserInput={this.retrieveUserInput} />
         </div>
-
-          <div className="form_item">
-            <label> Weight </label>
-            <input
-              type='number'
-              placeholder="Weight"
-              name="weight"
-              value={this.state.weight}
-              onChange={this.handleChange}/>
-          </div>
-          <div className="form_item">
-            <label> Reps </label>
-            <input
-              type='number'
-              placeholder="Reps"
-              name="reps"
-              value={this.state.reps}
-              onChange={this.handleChange}/>
-          </div>
-          <div className="form_item">
-            <label> Sets </label>
-            <input
-              type='number'
-              placeholder="Sets"
-              name="sets"
-              value={this.state.sets}
-              onChange={this.handleChange}/>
-          </div>
-          <div className="form_item">
-            <label> Notes </label>
-            <textarea
-              type='text'
-              placeholder="Enter Notes"
-              name="notes"
-              value={this.state.notes}
-              onChange={this.handleChange}/>
-          </div>
-          <div className="form_item">
+        <div className="form_item">
+          <label> Weight </label>
+          <input
+            type='number'
+            placeholder="Weight"
+            name="weight"
+            value={this.state.weight}
+            onChange={this.handleChange}/>
+        </div>
+        <div className="form_item">
+          <label> Reps </label>
+          <input
+            type='number'
+            placeholder="Reps"
+            name="reps"
+            value={this.state.reps}
+            onChange={this.handleChange}/>
+        </div>
+        <div className="form_item">
+          <label> Sets </label>
+          <input
+            type='number'
+            placeholder="Sets"
+            name="sets"
+            value={this.state.sets}
+            onChange={this.handleChange}/>
+        </div>
+        <div className="form_item">
+          <label> Notes </label>
+          <textarea
+            type='text'
+            placeholder="Enter Notes"
+            name="notes"
+            value={this.state.notes}
+            onChange={this.handleChange}/>
+        </div>
+        <div className="form_item">
           <input className="button small green" type='submit' value='Save' />
         </div>
       </form>
@@ -322,7 +322,6 @@ class WorkoutShow extends Component {
         </div>
       </div>
     )
-
   }
 }
 

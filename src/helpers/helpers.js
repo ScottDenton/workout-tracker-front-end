@@ -6,11 +6,11 @@ export const setDate = () => {
   const today = new Date();
   const year = today.getFullYear()
   const month = (today.getMonth() + 1) < 10 ?
-    `0${today.getMonth() + 1}` :  today.getMonth() +1
+  `0${today.getMonth() + 1}` :  today.getMonth() +1
   const day = today.getDate() < 10 ?
-    `0${today.getDate()}` : today.getDate()
+  `0${today.getDate()}` : today.getDate()
   const date = `${year}-${month}-${day}`
-return date
+  return date
 }
 
 export const checkUnits = (exercise) => {
@@ -102,6 +102,7 @@ export const createSession = (body) => {
   .then(resp => resp.json())
 }
 
+//find a specific exercise by its id
 export const findExerciseById = (body) => {
   return fetch(`${base_url}/all_exercises/find`, {
     method: "POST",

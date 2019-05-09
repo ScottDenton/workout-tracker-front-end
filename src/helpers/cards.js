@@ -3,8 +3,6 @@ import RepCalculator from '../components/RepCalculator';
 import { Link } from "react-router-dom";
 import {checkUnits} from '../helpers/helpers'
 
-
-
 export const ExerciseCardFront = (props) =>{
   const weightUnits = checkUnits(props.exercise)
   return (

@@ -4,7 +4,6 @@ import ReactCardFlip from 'react-card-flip';
 import {ExerciseCardFront} from '../helpers/cards.js'
 import {ExerciseCardBack} from '../helpers/cards.js'
 import {deleteExercise} from '../helpers/helpers.js'
-
 import Swal from 'sweetalert2'
 
 class ExerciseCard extends React.Component {
@@ -42,7 +41,7 @@ class ExerciseCard extends React.Component {
         this.props.deleteExercise(this.props.exercise)
       }
     })
-}
+  }
 
   renderCard = () => {
     return(

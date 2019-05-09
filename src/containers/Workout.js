@@ -8,8 +8,6 @@ import {postNewWorkout} from '../helpers/helpers'
 import {NewExerciseForm} from '../helpers/forms.js'
 import { Link } from "react-router-dom";
 
-
-
 class Workout extends Component {
   constructor(props){
     super(props)

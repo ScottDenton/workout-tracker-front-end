@@ -6,7 +6,6 @@ import {findWorkoutsExercises} from '../helpers/helpers.js'
 import {deleteWorkout} from '../helpers/helpers.js'
 import Swal from 'sweetalert2'
 
-
 class WorkoutCard extends React.Component {
   constructor(props){
     super(props)
@@ -50,7 +49,7 @@ class WorkoutCard extends React.Component {
         this.props.deleteWorkout(this.props.workout)
       }
     })
-}
+  }
 
   renderCard = () => {
     if(this.state.exercises){
@@ -73,7 +72,7 @@ class WorkoutCard extends React.Component {
   render () {
     return(
       <div>
-      {this.renderCard()}
+        {this.renderCard()}
       </div>
     )
   }
