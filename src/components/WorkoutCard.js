@@ -20,7 +20,7 @@ class WorkoutCard extends React.Component {
     const body = {id: this.props.workout.id}
     findWorkoutsExercises(body)
     .then(exercises => {
-      exercises.map(exercise => {
+      exercises.forEach(exercise => {
         this.setState({
           exercises: [...this.state.exercises, exercise]
         })

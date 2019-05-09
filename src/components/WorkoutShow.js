@@ -69,7 +69,7 @@ class WorkoutShow extends Component {
     const body = {id: this.state.workout.id}
     findWorkoutsExercises(body)
     .then(exercises => {
-      exercises.map(exercise => {
+      exercises.forEach(exercise => {
         this.setState({
           exercises: [...this.state.exercises, {...exercise, showForm: false}]
         })
