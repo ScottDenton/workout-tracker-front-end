@@ -5,7 +5,7 @@ Users can choose an exercise from a list of 200 exercises and input the weight u
 
 On returning to an exercise previously logged, the app will provide a suggested weight and rep count based on the last time a user did that exercise along with any notes they may have taken at the time.
 
-For a demo of the app's main functionality visit [video](https://vimeo.com/334182434) or go to [Exercise Buddy](https://exercise-buddy.herokuapp.com/) and try it for yourself.
+For a demo of the app's main functionality click [here](https://vimeo.com/334182434) or go to [Exercise Buddy](https://exercise-buddy.herokuapp.com/) and try out the app for yourself.
 
 The backend for the project is stored in a separate repo and can be found [here](https://github.com/ScottDenton/workout-tracker-back-end).
 
