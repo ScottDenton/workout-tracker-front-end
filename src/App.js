@@ -32,7 +32,7 @@ class App extends Component {
   componentDidMount(){
     const id = localStorage.getItem("user_id")
     if(id){
-      fetch(`https://cors-anywhere.herokuapp.com/https://workout-tracker-backend.herokuapp.com/api/v1/users/${id}`)
+      fetch(`https://workout-tracker-backend.herokuapp.com/api/v1/users/${id}`)
       .then(resp => resp.json())
       .then(currentUser => {
         this.setState({currentUser, userLoggedIn: true})
