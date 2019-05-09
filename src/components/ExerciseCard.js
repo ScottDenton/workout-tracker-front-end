@@ -28,13 +28,8 @@ class ExerciseCard extends React.Component {
   }
 
   deleteExercise = () => {
-    let width;
-    if(window.innerWidth < 4200){
-      width = '50%'
-    }
     Swal.fire({
     title: 'Are you sure?',
-    width: width,
     text: "You won't be able to revert this!",
     type: 'warning',
     showCancelButton: true,
