@@ -131,10 +131,10 @@ class Workout extends Component {
 
   displayExercises = () => {
     if(this.state.workoutId !== null){
-      return <div>
+      return (<div>
         <h3> Completed Exercises </h3>
         {this.state.exercises.map(exercise => (<li key={exercise.id}> {exercise.name}</li>))}
-        </div>
+      </div>)
     }
   }
 
