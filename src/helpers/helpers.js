@@ -1,4 +1,5 @@
-const base_url = 'https://workout-tracker-backend.herokuapp.com/api/v1'
+const proxy = 'https://cors-anywhere.herokuapp.com'
+const base_url = `${proxy}/https://workout-tracker-backend.herokuapp.com/api/v1`
 
 export const setDate = () => {
   const today = new Date();
@@ -88,7 +89,7 @@ export const deleteExercise = (id) => {
 
 //create the session for when the user logs in
 export const createSession = (body) => {
-  return fetch(`https://cors-anywhere.herokuapp.com/${base_url}/sessions/create`, {
+  return fetch(`${base_url}/sessions/create`, {
     method: "POST",
     headers: {
       "accept": "application/json",
