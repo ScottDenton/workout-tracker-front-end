@@ -46,7 +46,7 @@ class Navbar extends Component {
   navToRender = () => {
     const userId = this.props.currentUser.id
     const localId = Number(localStorage.getItem("user_id"))
-    
+
     if (userId === localId && userId !== undefined){
       return this.signedIn()
     } else {

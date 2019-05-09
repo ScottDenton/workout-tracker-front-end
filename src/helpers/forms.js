@@ -53,6 +53,7 @@ export const NewExerciseForm = (props) => {
         placeholder="Sets"
         name="sets"
         min='0'
+        step='0.01'
         onChange={props.onChange}
         required/>
       </div>
@@ -102,6 +103,7 @@ export const NewExerciseForm = (props) => {
       type='number'
       placeholder="Sets"
       name="sets"
+      step='0.01'
       min='0'
       onChange={props.onChange}
       required/>

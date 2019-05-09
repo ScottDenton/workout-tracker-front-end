@@ -1,5 +1,5 @@
 body {
-  background-color: black;
+  background-color: rgb(0,0,0);
   color: lightGrey;
 }
 
@@ -93,6 +93,8 @@ text-align: center;
 }
 
 .navbar {
+  font-size: 1.2em;
+  padding: 30px;
   text-align: center;
   display: inline-block;
   margin-top: 40px;

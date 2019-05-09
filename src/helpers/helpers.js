@@ -1,5 +1,5 @@
 //proxy required for cors but is limited by number of calls per hour(too low for testing)
-const proxy = 'https://cors-anywhere.herokuapp.com/'
+// const proxy = 'https://cors-anywhere.herokuapp.com/'
 const base_url = `https://workout-tracker-backend.herokuapp.com/api/v1`
 
 export const setDate = () => {

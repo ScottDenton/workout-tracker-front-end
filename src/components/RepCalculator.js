@@ -140,10 +140,10 @@ class RepCalculator extends Component {
       <h3> You have not saved any results for this exercise yet </h3>
     const notesToRender = this.hasUserDoneExercise()  ? this.renderNotes() : <h5> </h5>
 
-    return<div>
+  return(<div className='workout_rep_calculator'>
         {tableToRender}
         {notesToRender}
-      </div>
+      </div>)
   }
 }
 

@@ -177,7 +177,6 @@ class WorkoutShow extends Component {
 
 //saves input from autocomplete field
   retrieveUserInput = (exercise) => {
-
     this.setState({exercise})
   }
 
