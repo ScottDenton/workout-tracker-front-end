@@ -107,8 +107,11 @@ class Workout extends Component {
         <input type="text" name="name"
           placeholder="Workout Name" onChange={this.handleChange}/>
       </div>
-      <div className='form_item'>
-        <input className='button small blue' type="submit" value="Start Working" />
+      <div className='form_item center'>
+        <input
+          className='button small blue'
+          type="submit"
+          value="Start Working" />
       </div>
     </form>
     )
@@ -148,17 +151,20 @@ class Workout extends Component {
   }
 
   render () {
+    const formClass = this.state.workoutId === null ? "container" : "container grid"
     return(
       <div className='container'>
         <h1 className='center'>{this.state.workoutName} </h1>
-        <div className='container grid'>
+        <div className={formClass}>
           {this.itemsToRender()}
           {this.renderRepCalculator()}
         </div>
-          {this.displayExercises()}
-        <Link to={"/"}>
-          <button className="small button red">End Workout</button>
-        </Link>
+        {this.displayExercises()}
+        <div className='center'>
+          <Link to={"/"}>
+            <button className="small button red">End Workout</button>
+          </Link>
+        </div>
       </div>
     )
   }
